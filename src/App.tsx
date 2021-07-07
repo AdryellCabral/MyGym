@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AcademyRoutes from "./routes/academy";
+import CoachRoutes from "./routes/coach";
+import StudentRoutes from "./routes/student";
+import DefaultRoutes from "./routes/default";
 
-function App() {
+import { GlobalStyle } from "./styles/global";
+
+const App = () => {
+  let typeUser = localStorage.getItem("@typeUser") || "";
+  if (typeUser !== "") {
+    typeUser = JSON.parse(typeUser);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {typeUser === "" ? (
+        <DefaultRoutes />
+      ) : (
+        <>
+          {typeUser === "academy" && <AcademyRoutes />}
+          {typeUser === "coach" && <CoachRoutes />}
+          {typeUser === "student" && <StudentRoutes />}
+        </>
+      )}
+      <GlobalStyle />
+
+    </>
   );
-}
+};
 
 export default App;
