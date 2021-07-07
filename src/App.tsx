@@ -16,9 +16,9 @@ const App = () => {
         <DefaultRoutes />
       ) : (
         <>
-          {typeUser === "academy" && <AcademyRoutes />}
-          {typeUser === "coach" && <CoachRoutes />}
-          {typeUser === "student" && <StudentRoutes />}
+          {typeUser === "academys" && <AcademyRoutes />}
+          {typeUser === "coaches" && <CoachRoutes />}
+          {typeUser === "students" && <StudentRoutes />}
         </>
       )}
       <GlobalStyle />
