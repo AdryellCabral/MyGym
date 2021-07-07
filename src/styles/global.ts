@@ -30,11 +30,11 @@ export const GlobalStyle = createGlobalStyle`
 	--font-list-mobile: 18px;
 	--font-button-purple-mobile: 24px;
 	--font-button-green-mobile: 28px;
-	--font-menu-desktop: 22px;
-	--font-card-student-desktop: 24px; 
-	--font-title-desktop: 18px;
-	--font-list-desktop: 18px;
-	--font-button-purple-desktop: 24px;
+	--font-menu-desktop: 26px;
+	--font-card-student-desktop: 45px; 
+	--font-title-desktop: 30px;
+	--font-list-desktop: 30px;
+	--font-button-purple-desktop: 32px;
 	--font-button-green-desktop: 28px;
 }
 
