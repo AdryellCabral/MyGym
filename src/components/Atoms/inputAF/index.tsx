@@ -1,6 +1,6 @@
 import { Input } from "./style";
 
 export default function InputAF(props: any) {
-  const { label } = props;
-  return <Input name={label} placeholder={label} />;
+  const { label, name } = props;
+  return <Input name={name} placeholder={label} />;
 }

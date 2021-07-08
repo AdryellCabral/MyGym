@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 	--light-green: #71FF80;
 	--light-gray: #F1F1F1;
 	--light-purple: #8F5AFF;
+	--light-black: #272d3f;
 	
 	--dark-purple: #200C58;	
 	
@@ -36,6 +37,9 @@ export const GlobalStyle = createGlobalStyle`
 	--font-list-desktop: 30px;
 	--font-button-purple-desktop: 32px;
 	--font-button-green-desktop: 28px;
+
+	--font-roboto: "Roboto", sans-serif;
+
 }
 
 
@@ -83,4 +87,4 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-`
+`;
