@@ -1,34 +1,30 @@
 import React, { ReactNode } from 'react';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import { OutlinedInput } from '@material-ui/core';
+import { OutlinedInput, FormControl, InputAdornment } from '@material-ui/core';
 import clsx from 'clsx';
-import { useStyles } from './styles';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { useStyles } from './styles';
 
 
 interface InputProps {
   children?: ReactNode;
-  placeholder: string;
-  register: UseFormRegister<FieldValues>
+  label: string;
+  register?: UseFormRegister<FieldValues>
 }
 
-
-
-export function Input({children, placeholder, register}: InputProps) {
+function Input(props: InputProps) {
   const classes = useStyles();
   
   return (
     <div>
-      
      <FormControl className={clsx(classes.margin, classes.textField)} >
           <OutlinedInput
-            placeholder={placeholder}
-            ref={register}
-            startAdornment={<InputAdornment position="start">{children}</InputAdornment>}
+            placeholder={props.label}
+            ref={props.register}
+            startAdornment={<InputAdornment position="start">{props.children}</InputAdornment>}
           />
       </FormControl>
-        
     </div>
   );
 }
+
+export default Input;
