@@ -10,6 +10,7 @@ const App = () => {
   if (typeUser !== "") {
     typeUser = JSON.parse(typeUser);
   }
+
   return (
     <>
       {typeUser === "" ? (
