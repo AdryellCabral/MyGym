@@ -26,11 +26,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ isOpen })=>{
   window.addEventListener('resize', ()=>{
     setWindowWidth(getWindowWidth);
   });
-
-  //Esta variável é provisória e foi utilizada apenas para testar a funcionalidade do menu e seus diferentes tipos de renderização
-  // typeUser = 'academys';
-  // typeUser = 'coaches'; 
-  typeUser = 'students'; 
   
   return(
     <StyledUl isOpen = { isOpen } windowWidth = { windowWidth }>
