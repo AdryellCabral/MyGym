@@ -6,9 +6,9 @@ import { useStyles } from './styles';
 
 
 interface InputProps {
-  children?: ReactNode;
+  children: ReactNode;
   label: string;
-  register?: UseFormRegister<Record<string, any>>;
+  register: UseFormRegister<Record<string, any>>;
   nameRegister: string;
 }
 
@@ -19,9 +19,10 @@ function Input({children, label, register, nameRegister}: InputProps) {
     <div>
      <FormControl className={clsx(classes.margin, classes.textField)} >
           <OutlinedInput
+            id={nameRegister}
             name={nameRegister}
             placeholder={label}
-            ref={register}
+            inputRef={register}
             startAdornment={<InputAdornment position="start">{children}</InputAdornment>}
           />
       </FormControl>
