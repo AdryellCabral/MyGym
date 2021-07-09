@@ -15,17 +15,31 @@ export const GlobalStyle = createGlobalStyle`
 	--color-black: #10172B;
 	--color-green: #4AD85D;
 
-	--ligth-green: #71FF80;
-	--ligth-gray: #F1F1F1;
-	--ligth-purple: #8F5AFF;
+	--light-green: #71FF80;
+	--light-gray: #F1F1F1;
+	--light-purple: #8F5AFF;
 	
 	--dark-purple: #200C58;	
 	
 	--btnColor-primary: #EEFFFF;
 	--btnColor-secondary: #FFFFFF;	
 
-	--title-font: 'Bill', sans-serif
+	--title-font: 'Bill', sans-serif;
+	--font-input: 14px;
+	--font-menu-mobile: 22px;
+	--font-card-student-mobile: 24px; 
+	--font-title-mobile: 18px;
+	--font-list-mobile: 18px;
+	--font-button-purple-mobile: 24px;
+	--font-button-green-mobile: 28px;
+	--font-menu-desktop: 26px;
+	--font-card-student-desktop: 45px; 
+	--font-title-desktop: 30px;
+	--font-list-desktop: 30px;
+	--font-button-purple-desktop: 32px;
+	--font-button-green-desktop: 28px;
 }
+
 
 
 html, body, div, span, applet, object, iframe,

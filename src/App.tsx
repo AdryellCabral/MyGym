@@ -2,12 +2,9 @@ import AcademyRoutes from "./routes/academy";
 import CoachRoutes from "./routes/coach";
 import StudentRoutes from "./routes/student";
 import DefaultRoutes from "./routes/default";
-import "./styles/font.css";
-import "./assets/fonts/postnobillscolombo-bold.ttf";
+import { GlobalStyle } from "./styles/global";
 import GreenButton from "./components/GreenButton";
 import RedButton from "./components/RedButton";
-import PurpleButton from "./components/PurpleButton";
-import { GlobalStyle } from "./styles/global";
 
 const App = () => {
   let typeUser = localStorage.getItem("@typeUser") || "";
@@ -15,28 +12,21 @@ const App = () => {
     typeUser = JSON.parse(typeUser);
   }
 
+
   const handleClick = () => {
-    console.log("oi");
-  };
+    console.log('oi')
+  }
+
   return (
     <>
-      <GreenButton onClick={handleClick} small>
-        ADD
-      </GreenButton>
-      <RedButton onClick={handleClick} size="large">
-        REMOVE
-      </RedButton>
-      <PurpleButton onClick={handleClick} small>
-        CADASTRAR
-      </PurpleButton>
-
+      <RedButton onClick={handleClick} size={'small'}>TEXTO</RedButton>
       {typeUser === "" ? (
         <DefaultRoutes />
       ) : (
         <>
-          {typeUser === "academy" && <AcademyRoutes />}
-          {typeUser === "coach" && <CoachRoutes />}
-          {typeUser === "student" && <StudentRoutes />}
+          {typeUser === "academys" && <AcademyRoutes />}
+          {typeUser === "coaches" && <CoachRoutes />}
+          {typeUser === "students" && <StudentRoutes />}
         </>
       )}
       <GlobalStyle />

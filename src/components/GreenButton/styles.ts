@@ -5,13 +5,13 @@ interface sizeButton {
 }
 
 export const StyledButton = styled.button<sizeButton>`
-  background: var(--ligth-green);
+  background: var(--color-green);
   width: 90%;
   height: 40px;
   border-radius: 5px;
   border: none;
   font-family: var(--title-font);
-  font-size: large;
+  font-size: var(--font-button-green-mobile);
   color: var(--btnColor-primary);
   transition: color 150ms ease-in-out;
   position: relative;
@@ -45,4 +45,7 @@ export const StyledButton = styled.button<sizeButton>`
       border: black solid 1px;
     `};
 
+  @media (min-width: 768px) {
+    font-size: var(--font-button-purple-desktop);
+  }
 `;

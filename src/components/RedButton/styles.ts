@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface sizeButton {
-  widht: string;
+  widht: string; //props não utilizada, procurar se os buttons reds diferem o tamanho, caso ñ = deletar
 }
 
 export const StyledButton = styled.button<sizeButton>`
@@ -10,6 +10,7 @@ export const StyledButton = styled.button<sizeButton>`
   height: 40px;
   border-radius: 5px;
   border: none;
+  padding: 5px;
   font-family: var(--title-font);
   font-size: large;
   color: var(--btnColor-primary);

@@ -11,7 +11,7 @@ export const StyledButton = styled.button<sizeButton>`
   border-radius: 5px;
   border: none;
   font-family: var(--title-font);
-  font-size: large;
+  font-size: var(--font-button-purple-mobile);
   color: var(--btnColor-primary);
   transition: color 150ms ease-in-out;
   position: relative;
@@ -40,9 +40,10 @@ export const StyledButton = styled.button<sizeButton>`
   ${(props) =>
     props.small &&
     css`
-        width: 75%;
+      width: 75%;
     `};
 
-  @media (max-width: 945px) {
+  @media (min-width: 768px) {
+    font-size: var(--font-button-purple-desktop);
   }
 `;
