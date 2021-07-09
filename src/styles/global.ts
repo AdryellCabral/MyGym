@@ -2,7 +2,8 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+import "./font.css";
+import "../assets/fonts/postnobillscolombo-extrabold.ttf";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -23,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
 	--btnColor-primary: #EEFFFF;
 	--btnColor-secondary: #FFFFFF;	
 
+	--title-font: 'Bill', sans-serif;
 	--font-input: 14px;
 	--font-menu-mobile: 22px;
 	--font-card-student-mobile: 24px; 
@@ -37,6 +39,7 @@ export const GlobalStyle = createGlobalStyle`
 	--font-button-purple-desktop: 32px;
 	--font-button-green-desktop: 28px;
 }
+
 
 
 html, body, div, span, applet, object, iframe,
@@ -83,4 +86,4 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-`
+`;
