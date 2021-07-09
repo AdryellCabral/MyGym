@@ -9,23 +9,23 @@ interface OptionsType {
 interface ListProps {
   options: Array<OptionsType>;
   src: string;
-  func?: () => void;
-  func2?: () => void;
+  funcText?: () => void;
+  funcIcon?: () => void;
 }
 
 // se fez necessario ter duas funções, algumas telas se clicar no nome abre o modal e se clicar no icone faz outra coisa
 
-export const List = ({ options, src, func, func2 }: ListProps) => {
+export const List = ({ options, src, funcText, funcIcon }: ListProps) => {
   return (
     <Container>
       {options?.map((option, index) => (
         <div key={index}>
-          <li  onClick={func2}>
+          <li  onClick={funcText}>
             {option.coaches?.name}
             {option.students?.name}
             {option?.category}
           </li>
-          <img src={src} alt="" onClick={func} />
+          <img src={src} alt="" onClick={funcIcon} />
         </div>
       ))}
     </Container>
