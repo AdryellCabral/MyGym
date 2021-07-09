@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 	--font-menu-mobile: 22px;
 	--font-card-student-mobile: 24px; 
 	--font-title-mobile: 18px;
-	--font-list-mobile: 18px;
+	--font-list-mobile: 24px;;
 	--font-button-purple-mobile: 24px;
 	--font-button-green-mobile: 28px;
 	--font-menu-desktop: 26px;
