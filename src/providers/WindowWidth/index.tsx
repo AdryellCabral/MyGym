@@ -25,8 +25,6 @@ export const WindowWidthProvider = ({children}: WindowWidthProviderProps)=>{
         setWindowWidth(getWindowWidth);
     });
 
-    console.log(windowWidth);
-
 	return(
 		<WindowWidthContext.Provider value = {{ windowWidth, setWindowWidth }}>
 			{children}
