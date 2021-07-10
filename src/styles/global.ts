@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 :root {
 	--color-red: #C91111;
 	--color-black: #10172B;
+	--color-light: #282F41;
 	--color-green: #4AD85D;
 
 	--light-green: #71FF80;
@@ -83,4 +84,4 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-`
+`;
