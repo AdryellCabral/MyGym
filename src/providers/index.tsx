@@ -1,9 +1,10 @@
+import { AcademyProvider } from "./Academy";
 interface providersProps {
   children: React.ReactNode;
 }
 
 const Providers = ({ children }: providersProps) => {
-  return <>{children}</>;
+  return <AcademyProvider>{children}</AcademyProvider>;
 };
 
 export default Providers;
