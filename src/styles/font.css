@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "Bill"; /*Can be any text*/
+  src: local("postnobillscolombo-bold"),
+    url("../assets/fonts/postnobillscolombo-extrabold.ttf") format("truetype");
+}
