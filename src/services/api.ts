@@ -1,5 +1,5 @@
 import axios from "axios";
 
-export const apiKabit = axios.create({
+export const apiMyGym = axios.create({
   baseURL: "https://capstonebd.herokuapp.com/",
 });

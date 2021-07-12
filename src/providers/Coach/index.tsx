@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createContext, ReactNode, useContext } from "react";
 import jwtDecode, { JwtPayload } from "jwt-decode";
-import { apiKabit } from "../../services/api";
+import { apiMyGym } from "../../services/api";
 import { useEffect } from "react";
 
 interface CoachProvidersProps {
@@ -44,63 +44,84 @@ interface PhysicalAssessment {
   physicalAssessment: Assessment;
 }
 
-interface CoachProviderData {}
+interface CoachProviderData {
+  loginCoach: (info: InfosToLogin) => void;
+  loadInfoCoach: (idCoach: string) => void;
+  updadteWorkouts: (idStudent: string, workoutData: Workouts) => void;
+  updadteSnacks: (idStudent: string, snacksData: Snacks) => void;
+  updadtePhysicalAssessment: (
+    idStudent: string,
+    physicalAssessmentData: PhysicalAssessment
+  ) => void;
+  coachAuthInfo: any;
+  coachResume: any;
+}
 
 const CoachContext = createContext<CoachProviderData>({} as CoachProviderData);
 
 export const CoachProvider = ({ children }: CoachProvidersProps) => {
   const idCoach = localStorage.getItem("@idAcademy") || "";
 
-  const [coachInfo, setCoachInfo] = useState({} as CoachInformation);
+  const [coachAuthInfo, setCoachAuthInfo] = useState({} as CoachInformation);
   const [coachResume, setCoachResume] = useState();
 
-  const acess = "ss";
-
   const loginCoach = (info: InfosToLogin) => {
-    apiKabit.post("login", info).then((response) => {
+    apiMyGym.post("login", info).then((response) => {
       const { accessToken } = response.data;
       const { sub } = jwtDecode<JwtPayload>(accessToken);
-      setCoachInfo({ token: accessToken, id: sub });
+      setCoachAuthInfo({ token: accessToken, id: sub });
       localStorage.setItem("@tokenCoach", JSON.stringify(accessToken));
       localStorage.setItem("@idCoach", JSON.stringify(sub));
     });
   };
 
   const loadInfoCoach = (idCoach: string) => {
-    apiKabit
+    apiMyGym
       .get(`coaches?userId=${idCoach}&_embed=students`, {
         headers: {
-          Authorization: `Bearer ${acess}`,
+          Authorization: `Bearer ${coachAuthInfo.token}`,
         },
       })
       .then((response) => setCoachResume(response.data));
   };
 
   const updadteWorkouts = (idStudent: string, workoutData: Workouts) => {
-    apiKabit.patch(`students/${idStudent}`, workoutData);
+    apiMyGym.patch(`students/${idStudent}`, workoutData);
   };
 
   const updadteSnacks = (idStudent: string, snacksData: Snacks) => {
-    apiKabit.patch(`students/${idStudent}`, snacksData);
+    apiMyGym.patch(`students/${idStudent}`, snacksData);
   };
 
   const updadtePhysicalAssessment = (
     idStudent: string,
     physicalAssessmentData: PhysicalAssessment
   ) => {
-    apiKabit.patch(`students/${idStudent}`, physicalAssessmentData);
+    apiMyGym.patch(`students/${idStudent}`, physicalAssessmentData);
   };
-
 
   useEffect(() => {
     if (localStorage.getItem("@idCoach") !== "") {
-        loadInfoCoach(idCoach);
+      loadInfoCoach(idCoach);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-  return <CoachContext.Provider value={{}}>{children}</CoachContext.Provider>;
+  return (
+    <CoachContext.Provider
+      value={{
+        loginCoach,
+        loadInfoCoach,
+        updadteWorkouts,
+        updadteSnacks,
+        updadtePhysicalAssessment,
+        coachAuthInfo,
+        coachResume,
+      }}
+    >
+      {children}
+    </CoachContext.Provider>
+  );
 };
 
 export const useCoach = () => useContext(CoachContext);

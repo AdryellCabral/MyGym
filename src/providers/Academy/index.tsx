@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { createContext, ReactNode, useContext } from "react";
 import jwtDecode, { JwtPayload } from "jwt-decode";
-import { apiKabit } from "../../services/api";
+import { apiMyGym } from "../../services/api";
 import { useEffect } from "react";
-
-// interface TypeUser {
-//   userType: string;
-// }
 
 interface AcademyProvidersProps {
   children: ReactNode;
@@ -54,11 +50,13 @@ const AcademyContext = createContext<AcademyProviderData>(
 export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   const idAcademy = localStorage.getItem("@idAcademy") || "";
 
-  const [academyAuthInfo, setAcademyAuthInfo] = useState({} as AcademyInformation);
+  const [academyAuthInfo, setAcademyAuthInfo] = useState(
+    {} as AcademyInformation
+  );
   const [gymResume, setGymResume] = useState({});
 
   const loginAcademy = (info: InfosToLogin) => {
-    apiKabit.post("login", info).then((response) => {
+    apiMyGym.post("login", info).then((response) => {
       const { accessToken } = response.data;
       const { sub } = jwtDecode<JwtPayload>(accessToken);
       setAcademyAuthInfo({ token: accessToken, id: sub });
@@ -68,7 +66,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   };
 
   const addCoach = (info: Coach) => {
-    apiKabit.post("coaches", info, {
+    apiMyGym.post("coaches", info, {
       headers: {
         Authorization: `Bearer ${academyAuthInfo.token}`,
       },
@@ -76,7 +74,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   };
 
   const addStudent = (info: Student) => {
-    apiKabit.post("students", info, {
+    apiMyGym.post("students", info, {
       headers: {
         Authorization: `Bearer ${academyAuthInfo.token}`,
       },
@@ -84,7 +82,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   };
 
   const loadInfoAcademy = (idAcademy: string) => {
-    apiKabit
+    apiMyGym
       .get(`academys?userId=${idAcademy}&_embed=coaches&_embed=students`, {
         headers: {
           Authorization: `Bearer ${academyAuthInfo.token}`,
@@ -94,14 +92,14 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   };
 
   const getStudent = (idStudent: string) => {
-    apiKabit.get(`/students?userId=${idStudent}`);
+    apiMyGym.get(`/students?userId=${idStudent}`);
   };
 
   useEffect(() => {
     if (localStorage.getItem("@idAcademy") !== "") {
       loadInfoAcademy(idAcademy);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -122,5 +120,3 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
 };
 
 export const useAcademy = () => useContext(AcademyContext);
-
-
