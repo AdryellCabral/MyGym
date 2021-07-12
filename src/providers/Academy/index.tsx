@@ -39,7 +39,7 @@ interface AcademyProviderData {
   addCoach: (info: Coach) => void;
   addStudent: (info: Student) => void;
   getStudent: (idStudent: string) => void;
-  gymResume: any;
+  academyResume: any;
   academyAuthInfo: any;
 }
 
@@ -53,7 +53,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   const [academyAuthInfo, setAcademyAuthInfo] = useState(
     {} as AcademyInformation
   );
-  const [gymResume, setGymResume] = useState({});
+  const [academyResume, setAcademyResume] = useState({});
 
   const loginAcademy = (info: InfosToLogin) => {
     apiMyGym.post("login", info).then((response) => {
@@ -88,7 +88,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
           Authorization: `Bearer ${academyAuthInfo.token}`,
         },
       })
-      .then((response) => setGymResume(response.data));
+      .then((response) => setAcademyResume(response.data));
   };
 
   const getStudent = (idStudent: string) => {
@@ -110,7 +110,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
         addCoach,
         addStudent,
         getStudent,
-        gymResume,
+        academyResume,
         academyAuthInfo,
       }}
     >
