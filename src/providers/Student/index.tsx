@@ -23,10 +23,9 @@ interface Decoded {
 interface StudentProviderData {
   token: string;
   typeUser: string;
-  decoded: Decoded;
   student?: any; 
   setStudent: Dispatch<React.SetStateAction<Student | undefined>>;
-  getStudent: () => void;
+  getStudent: (userId: number) => void;
 }
 
 const StudentContext = createContext<StudentProviderData>({} as StudentProviderData);
@@ -40,23 +39,24 @@ export const StudentProvider = ({children }: StudentProps) => {
   if (typeUser !== "") {
     typeUser = JSON.parse(typeUser);
   }
-  const decoded: Decoded  = jwt_decode(token);
+
   const [student, setStudent] = useState<Student>();
 
-  const getStudent = () => {
+  const getStudent = (userId: number) => {
     apiKabit
-        .get(`${typeUser}?userId=${decoded.sub}`)
+        .get(`${typeUser}?userId=${userId}`)
         .then((res) => setStudent(res.data))
   }
 
   useEffect (() => {
-    if (typeUser !== ""){
-      getStudent()
+    if (typeUser !== "" && token !== ""){
+      const decoded: Decoded = jwt_decode(token);
+      getStudent(decoded.sub);
     }
   }, [])
 
   return (
-    <StudentContext.Provider value={{token, student, setStudent, decoded, typeUser, getStudent}}>
+    <StudentContext.Provider value={{token, student, setStudent, typeUser, getStudent}}>
       {children}
     </StudentContext.Provider>
   );
