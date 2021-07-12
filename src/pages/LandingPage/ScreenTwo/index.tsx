@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import FigOnePageTwo from "../../../assets/LandingPage/FigOnePageTwo.svg";
+import FigPageTwo from "../../../assets/LandingPage/FigOnePageTwo.svg";
 const ScreenTwo = () => {
   return (
     <section className="info--Product" style={{ width: "100%" }}>
@@ -8,7 +8,7 @@ const ScreenTwo = () => {
           <h1>Informações sobre o produto</h1>
         </header>
         <figure>
-          <img src={FigOnePageTwo} alt="Pessoas malhando" />
+          <img src={FigPageTwo} alt="Pessoas malhando" />
         </figure>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa maxime
