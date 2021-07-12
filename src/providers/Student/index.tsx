@@ -31,7 +31,7 @@ interface StudentProviderData {
   tokenDecoded: Decoded;
   student?: any;
   setStudent: Dispatch<React.SetStateAction<Student | undefined>>;
-  getStudent: () => void;
+  getStudent: (userId: number) => void;
 }
 
 const StudentContext = createContext<StudentProviderData>(
