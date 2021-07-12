@@ -3,7 +3,6 @@ import CoachRoutes from "./routes/coach";
 import StudentRoutes from "./routes/student";
 import DefaultRoutes from "./routes/default";
 import { GlobalStyle } from "./styles/global";
-import LandingPage from "./pages/LandingPage";
 
 const App = () => {
   let typeUser = localStorage.getItem("@typeUser") || "";
@@ -23,7 +22,6 @@ const App = () => {
         </>
       )}
       <GlobalStyle />
-      <LandingPage />
     </>
   );
 };

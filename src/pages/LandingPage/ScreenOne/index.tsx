@@ -1,14 +1,19 @@
 import { Container } from "./styles";
 import Logo from "../../../assets/logo.png";
+import { useHistory } from "react-router-dom";
 
 const ScreenOne = () => {
+  const history = useHistory();
+  const handleLogin = () => {
+    history.push("/login");
+  };
   return (
     <section className="apresentation">
       <Container>
         <header>
           <div className="containerHeader">
             <img src={Logo} alt="Logo" />
-            <button>Login</button>
+            <button onClick={() => handleLogin()}>Login</button>
           </div>
           <p className="apresentationText">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
