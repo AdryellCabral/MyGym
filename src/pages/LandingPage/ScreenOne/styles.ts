@@ -170,8 +170,9 @@ export const Container = styled.div`
           margin-left: 7%;
         }
 
-        span {
+        a {
           color: var(--color-green);
+          text-decoration: none
         }
       }
     }

@@ -33,14 +33,17 @@ const StudentContext = createContext<StudentProviderData>({} as StudentProviderD
 
 export const StudentProvider = ({children }: StudentProps) => {
   let token = localStorage.getItem("token") || "";
+  const [decoded, setDecoded] = useState<Decoded>({} as Decoded)
+
   if (token !== "") {
     token = JSON.parse(token);
+    let tokenDecoded: Decoded = jwt_decode(token);
+    setDecoded(tokenDecoded)
   }
   let typeUser = localStorage.getItem("typeUser") || "";
   if (typeUser !== "") {
     typeUser = JSON.parse(typeUser);
   }
-  const decoded: Decoded  = jwt_decode(token);
   const [student, setStudent] = useState<Student>();
 
   const getStudent = () => {
