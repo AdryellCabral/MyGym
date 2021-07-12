@@ -1,6 +1,6 @@
 import { AcademyProvider } from "./Academy";
 import { WindowWidthProvider } from "./WindowWidth";
-
+import { CoachProvider } from "./Coach";
 interface providersProps {
   children: React.ReactNode;
 }
@@ -8,7 +8,9 @@ interface providersProps {
 const Providers = ({ children }: providersProps) => {
   return (
     <WindowWidthProvider>
-      <AcademyProvider>{children}</AcademyProvider>;
+      <AcademyProvider>
+        <CoachProvider>{children}</CoachProvider>
+      </AcademyProvider>
     </WindowWidthProvider>
   );
 };

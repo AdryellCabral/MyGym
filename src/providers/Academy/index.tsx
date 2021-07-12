@@ -3,11 +3,9 @@ import { createContext, ReactNode, useContext } from "react";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { apiMyGym } from "../../services/api";
 import { useEffect } from "react";
-
 interface AcademyProvidersProps {
   children: ReactNode;
 }
-
 interface Coach {
   email: string;
   academyId: number;
