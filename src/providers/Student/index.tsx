@@ -1,6 +1,6 @@
 import { createContext, Dispatch, ReactNode, useContext, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
-import { apiKabit } from "../../services/api";
+import { apiMyGym } from "../../services/api";
  
 interface StudentProps {
   children: ReactNode;
@@ -44,7 +44,7 @@ export const StudentProvider = ({children }: StudentProps) => {
   const [student, setStudent] = useState<Student>();
 
   const getStudent = () => {
-    apiKabit
+    apiMyGym
         .get(`${typeUser}?userId=${decoded.sub}`)
         .then((res) => setStudent(res.data))
   }
