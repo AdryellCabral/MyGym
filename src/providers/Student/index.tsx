@@ -1,7 +1,14 @@
-import { createContext, Dispatch, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import jwt_decode from "jwt-decode";
-import { apiKabit } from "../../services/api";
- 
+import { apiMyGym } from "../../services/api";
+
 interface StudentProps {
   children: ReactNode;
 }
@@ -21,46 +28,46 @@ interface Decoded {
 }
 
 interface StudentProviderData {
-  token: string;
-  typeUser: string;
-  decoded: Decoded;
-  student?: any; 
+  tokenDecoded: Decoded;
+  student?: any;
   setStudent: Dispatch<React.SetStateAction<Student | undefined>>;
   getStudent: () => void;
 }
 
-const StudentContext = createContext<StudentProviderData>({} as StudentProviderData);
+const StudentContext = createContext<StudentProviderData>(
+  {} as StudentProviderData
+);
 
-export const StudentProvider = ({children }: StudentProps) => {
+export const StudentProvider = ({ children }: StudentProps) => {
   let token = localStorage.getItem("token") || "";
+  const [tokenDecoded, setTokenDecoded] = useState<Decoded>({} as Decoded);
   if (token !== "") {
     token = JSON.parse(token);
+    const decoded: Decoded = jwt_decode(token);
+    setTokenDecoded(decoded);
   }
-  let typeUser = localStorage.getItem("typeUser") || "";
-  if (typeUser !== "") {
-    typeUser = JSON.parse(typeUser);
-  }
-  const decoded: Decoded  = jwt_decode(token);
+
   const [student, setStudent] = useState<Student>();
 
   const getStudent = () => {
-    apiKabit
-        .get(`${typeUser}?userId=${decoded.sub}`)
-        .then((res) => setStudent(res.data))
-  }
+    apiMyGym
+      .get(`students?userId=${tokenDecoded.sub}`)
+      .then((response) => setStudent(response.data));
+  };
 
-  useEffect (() => {
-    if (typeUser !== ""){
-      getStudent()
+  useEffect(() => {
+    if (token !== "") {
+      getStudent();
     }
-  }, [])
+  }, []);
 
   return (
-    <StudentContext.Provider value={{token, student, setStudent, decoded, typeUser, getStudent}}>
+    <StudentContext.Provider
+      value={{ student, setStudent, tokenDecoded, getStudent }}
+    >
       {children}
     </StudentContext.Provider>
   );
 };
 
 export const useStudent = () => useContext(StudentContext);
-
