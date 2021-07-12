@@ -100,12 +100,12 @@ export const CoachProvider = ({ children }: CoachProvidersProps) => {
     apiMyGym.patch(`students/${idStudent}`, physicalAssessmentData);
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("@idCoach") !== "") {
-      loadInfoCoach(idCoach);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("@idCoach") !== "") {
+  //     loadInfoCoach(idCoach);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <CoachContext.Provider

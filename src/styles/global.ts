@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
 	--btnColor-primary: #EEFFFF;
 	--btnColor-secondary: #FFFFFF;	
 
-	--title-font: 'Bill', sans-serif;
+	--title-font: 'Bill', sans-serif; 
 	--font-input: 14px;
 	--font-menu-mobile: 22px;
 	--font-card-student-mobile: 24px; 

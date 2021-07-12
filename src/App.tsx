@@ -3,6 +3,7 @@ import CoachRoutes from "./routes/coach";
 import StudentRoutes from "./routes/student";
 import DefaultRoutes from "./routes/default";
 import { GlobalStyle } from "./styles/global";
+import Register from "./components/Register";
 
 const App = () => {
   let typeUser = localStorage.getItem("@typeUser") || "";
@@ -12,6 +13,8 @@ const App = () => {
 
   return (
     <>
+
+    <Register/>
       {typeUser === "" ? (
         <DefaultRoutes />
       ) : (

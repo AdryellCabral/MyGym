@@ -93,12 +93,12 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
     apiMyGym.get(`/students?userId=${idStudent}`);
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("@idAcademy") !== "") {
-      loadInfoAcademy(idAcademy);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("@idAcademy") !== "") {
+  //     loadInfoAcademy(idAcademy);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <AcademyContext.Provider
