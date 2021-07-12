@@ -11,7 +11,7 @@ interface InputProps {
   // nameRegister: string;
 }
 
-function Input({ children, label, ...rest }: InputProps) {
+function Input({ children, label,...rest }: InputProps) {
   const classes = useStyles();
 
   return (
