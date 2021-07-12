@@ -31,7 +31,7 @@ const ScreenOne = () => {
               repellat hic eveniet harum eius id qui praesentium natus aut
               alias. Eveniet vel rem omnis natus veniam blanditiis? Tempore, ad
               debitis.
-              <span> Get now!</span>
+              <a href="#getNow"> Get now!</a>
             </p>
           </div>
         </div>

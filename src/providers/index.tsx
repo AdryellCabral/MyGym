@@ -1,3 +1,4 @@
+import { StudentProvider } from "./Student";
 import { AcademyProvider } from "./Academy";
 import { WindowWidthProvider } from "./WindowWidth";
 import { CoachProvider } from "./Coach";
@@ -12,7 +13,9 @@ const Providers = ({ children }: providersProps) => {
     <WindowWidthProvider>
       <AcademyProvider>
         <ExercisesProvider>
-          <CoachProvider>{children}</CoachProvider>
+          <CoachProvider>
+            <StudentProvider>{children}</StudentProvider>
+          </CoachProvider>
         </ExercisesProvider>
       </AcademyProvider>
     </WindowWidthProvider>
