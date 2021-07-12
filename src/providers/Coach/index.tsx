@@ -63,7 +63,7 @@ export const CoachProvider = ({ children }: CoachProvidersProps) => {
   const idCoach = localStorage.getItem("@idAcademy") || "";
 
   const [coachAuthInfo, setCoachAuthInfo] = useState({} as CoachInformation);
-  const [coachResume, setCoachResume] = useState();
+  const [coachResume, setCoachResume] = useState({});
 
   const loginCoach = (info: InfosToLogin) => {
     apiMyGym.post("login", info).then((response) => {
