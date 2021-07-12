@@ -3,22 +3,15 @@ import { createContext, ReactNode, useContext } from "react";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { apiKabit } from "../../services/api";
 import { useEffect } from "react";
-
-// interface TypeUser {
-//   userType: string;
-// }
-
 interface AcademyProvidersProps {
   children: ReactNode;
 }
-
 interface Coach {
   email: string;
   academyId: number;
   userId: number;
   id?: number;
 }
-
 interface Student {
   email: string;
   academyId: number;
@@ -43,7 +36,7 @@ interface AcademyProviderData {
   addCoach: (info: Coach) => void;
   addStudent: (info: Student) => void;
   getStudent: (idStudent: string) => void;
-  gymResume: any;
+  academyResume: any;
   academyAuthInfo: any;
 }
 
@@ -55,7 +48,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   const idAcademy = localStorage.getItem("@idAcademy") || "";
 
   const [academyAuthInfo, setAcademyAuthInfo] = useState({} as AcademyInformation);
-  const [gymResume, setGymResume] = useState({});
+  const [academyResume, setAcademyResume] = useState({});
 
   const loginAcademy = (info: InfosToLogin) => {
     apiKabit.post("login", info).then((response) => {
@@ -90,7 +83,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
           Authorization: `Bearer ${academyAuthInfo.token}`,
         },
       })
-      .then((response) => setGymResume(response.data));
+      .then((response) => setAcademyResume(response.data));
   };
 
   const getStudent = (idStudent: string) => {
@@ -112,7 +105,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
         addCoach,
         addStudent,
         getStudent,
-        gymResume,
+        academyResume,
         academyAuthInfo,
       }}
     >
