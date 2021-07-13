@@ -5,7 +5,7 @@ const DefaultRoutes = () => {
   return (
     <Switch>
       <Route exact path="/" component={LandingPage} />
-      <Route path="login" component={LoginUser} />
+      <Route path="/login" component={LoginUser} />
     </Switch>
   );
 };
