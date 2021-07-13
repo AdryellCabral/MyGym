@@ -18,11 +18,22 @@ export const ContainerForm = styled.div`
   }
   button {
     width: 225px;
-    margin-top: 15px;
+    margin-top: 5px;
+  }
+  h1 {
+    font-size: var(--font-title-mobile);
+    font-family: var(--title-font);
+    margin: 5px 0;
   }
   p {
     height: 16px;
-    margin: 5px 0;
+    margin: 4px 0;
+  }
+
+  @media (min-width:768px) {
+    h1 {
+      font-size: var(--font-title-desktop)
+    }
   }
 `;
 
