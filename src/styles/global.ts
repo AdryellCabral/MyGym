@@ -2,7 +2,8 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+import "./font.css";
+import "../assets/fonts/postnobillscolombo-extrabold.ttf";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -12,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 :root {
 	--color-red: #C91111;
 	--color-black: #10172B;
+	/* --color-blacklight: #282F41; */
 	--color-green: #4AD85D;
 
 	--light-green: #71FF80;
@@ -24,11 +26,12 @@ export const GlobalStyle = createGlobalStyle`
 	--btnColor-primary: #EEFFFF;
 	--btnColor-secondary: #FFFFFF;	
 
+	--title-font: 'Bill', sans-serif;
 	--font-input: 14px;
 	--font-menu-mobile: 22px;
 	--font-card-student-mobile: 24px; 
 	--font-title-mobile: 18px;
-	--font-list-mobile: 18px;
+	--font-list-mobile: 24px;;
 	--font-button-purple-mobile: 24px;
 	--font-button-green-mobile: 28px;
 	--font-menu-desktop: 26px;
@@ -41,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
 	--font-roboto: "Roboto", sans-serif;
 
 }
+
 
 
 html, body, div, span, applet, object, iframe,
@@ -63,6 +67,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
     box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
