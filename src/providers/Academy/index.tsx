@@ -86,7 +86,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
           Authorization: `Bearer ${academyAuthInfo.token}`,
         },
       })
-      .then((response) => setAcademyResume(response.data));
+      .then((response) => setAcademyResume(response.data[0]));
   };
 
   const getStudent = (idStudent: string) => {
