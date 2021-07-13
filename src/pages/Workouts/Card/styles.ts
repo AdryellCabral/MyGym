@@ -18,6 +18,10 @@ export const Container = styled.li<ContainerProps>`
   -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.27);
   box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.27);
 
+  @media (min-width: 1200px) {
+    max-width: 42%;
+  }
+
   .image {
     width: 65%;
     height: 95%;
@@ -40,16 +44,28 @@ export const Container = styled.li<ContainerProps>`
       margin-bottom: 2vh;
       color: var(--color-green);
       font-size: 1.3rem;
+
+      @media (min-width: 768px) {
+        font-size: 2rem;
+      }
     }
 
     p {
       font-size: 0.9rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.3rem;
+      }
     }
 
     span {
       display: block;
       margin-top: auto;
       margin-bottom: 1vh;
+
+      @media (min-width: 768px) {
+        font-size: 1.2rem;
+      }
     }
   }
 `;

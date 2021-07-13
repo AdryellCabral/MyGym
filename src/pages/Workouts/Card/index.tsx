@@ -1,5 +1,4 @@
 import { Container } from "./styles";
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 interface Exercice {

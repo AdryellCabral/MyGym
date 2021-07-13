@@ -2,7 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: 4vh;
+  margin-top: 16vh;
+
+  @media (min-width: 768px) {
+    margin-top: 10vh;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 14vh;
+  }
 
   .container--top {
     margin: 0 auto;
@@ -13,6 +21,10 @@ export const Container = styled.div`
 
     h1 {
       font-weight: bolder;
+
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
     }
 
     .container--filter {
@@ -25,6 +37,10 @@ export const Container = styled.div`
       span {
         font-size: 1rem;
         margin-right: 2%;
+
+        @media (min-width: 768px) {
+          font-size: 1.2rem;
+        }
       }
     }
   }
