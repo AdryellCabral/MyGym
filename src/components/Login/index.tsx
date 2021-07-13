@@ -15,11 +15,12 @@ interface UserData {
   password: string;
   nome: string;
   email: string;
+  typeUser: string;
 }
 
 const Login = () => {
   const classes = useStyles();
-  const [typeUser, setTypeUser] = useState("");
+  const [userType, setUserType] = useState("");
 
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
@@ -27,6 +28,7 @@ const Login = () => {
       .string()
       .min(6, "Mínimo de 6 dígitos")
       .required("Campo obrigatório"),
+    typeUser: yup.string().required(),
   });
 
   const {
@@ -38,13 +40,13 @@ const Login = () => {
   });
 
   const onLogin = (data: UserData) => {
-    const newData = { ...data, typeUser };
+    const newData = { ...data, userType };
     console.log(newData);
     apiMyGym.post("login", newData).then((response) => console.log(response));
   };
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setTypeUser(event.target.value as string);
+    setUserType(event.target.value as string);
   };
 
   return (
@@ -60,7 +62,7 @@ const Login = () => {
 
       <FormControl variant="outlined" className={clsx(classes.textField)}>
         <InputLabel>Plano</InputLabel>
-        <Select value={typeUser} onChange={handleChange} label="Usuário">
+        <Select value={userType} onChange={handleChange} label="Usuário">
           <MenuItem value="">
             <em>Tipo de usuário</em>
           </MenuItem>
