@@ -5,22 +5,41 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin: 0 auto;
+  width: 300px;
+
+  div {
+    div {
+      background-color: white;
+      border-radius: 4px;
+    }
+  }
+
+  h1 {
+    font-size: 22px;
+    letter-spacing: 3px;
+    font-family: var(--title-font);
+    margin: 5px 0 0;
+    color: white;
+  }
 
   p {
     font-family: var(--font-roboto); //remover
     height: 6px;
-    /* margin-bottom: 3px; */
+    color: white;
   }
 
   button {
     margin: 0 auto;
+    width: 225px;
+    margin-top: 5px;
   }
 
   @media (min-width: 768px) {
     h1 {
       font-size: var(--font-title-desktop);
     }
-    border: 1px solid white;
+    background-color: var(--color-black);
     padding-bottom: 25px;
   }
 `;

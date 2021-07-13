@@ -1,7 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { Form } from "./styles";
 import GreenButton from "../GreenButton";
 import Input from "../Input";
 import { Store, Lock, MailOutline } from "@material-ui/icons";
@@ -10,7 +9,7 @@ import { useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import clsx from "clsx";
 import { apiMyGym } from "../../services/api";
-import { useStyles } from "./styles";
+import { useStyles, Form } from "./styles";
 
 interface UserData {
   password: string;
@@ -33,7 +32,6 @@ const RegisterUser = () => {
       .oneOf([yup.ref("password")], "Senhas diferentes")
       .required("Campo obrigatório"),
     nome: yup.string().required("Campo obrigatório"),
-    cnpj: yup.number().required("Campo obrigatório"),
   });
 
   const {
@@ -57,8 +55,9 @@ const RegisterUser = () => {
   };
 
   return (
+    
     <Form onSubmit={handleSubmit(onRegister)}>
-
+        <h1>Contrate agora!</h1>
       <Input {...register("email")} label="Email">
         <MailOutline />
       </Input>
@@ -75,11 +74,7 @@ const RegisterUser = () => {
         <Store />
       </Input>
       <p>{errors.nome?.message}</p>
-      <Input {...register("cnpj")} label="CNPJ">
-        <CgGym />
-      </Input>
-      <p>{errors.cnpj?.message}</p>
-
+ 
       <FormControl variant="outlined" className={clsx(classes.textField)}>
         <InputLabel>Plano</InputLabel>
         <Select value={plano} onChange={handleChange} label="Plano">
