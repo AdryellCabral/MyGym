@@ -20,7 +20,9 @@ export const ContainerRegister = styled.div`
     img {
       margin-left: 10%;
     }
+  }
 
+  @media (min-width: 768px) {
     padding-right: 16px;
   }
 `;
