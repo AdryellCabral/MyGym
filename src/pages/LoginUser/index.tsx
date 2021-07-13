@@ -18,7 +18,6 @@ export const LoginUser = () => {
       >
         <ContainerRegister>
           {windowWidth >= 768 && <img src={img} alt="" />}
-          {console.log(windowWidth)}
           <Login />
         </ContainerRegister>
       </motion.div>

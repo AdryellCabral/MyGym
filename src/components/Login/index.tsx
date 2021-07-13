@@ -13,7 +13,6 @@ import { useStyles } from "./styles";
 
 interface UserData {
   password: string;
-  nome: string;
   email: string;
 }
 
@@ -27,7 +26,6 @@ const Login = () => {
       .string()
       .min(6, "Mínimo de 6 dígitos")
       .required("Campo obrigatório"),
-    typeUser: yup.string().required(),
   });
 
   const {
@@ -39,10 +37,12 @@ const Login = () => {
   });
 
   const onLogin = (data: UserData) => {
-    console.log(data);
     apiMyGym.post("login", data).then((response) => {
-      localStorage.setItem("@tokenMyGym", JSON.stringify(response.data.accessToken));
-      localStorage.setItem("@typeUser", JSON.stringify(userType));      
+      localStorage.setItem(
+        "@tokenMyGym",
+        JSON.stringify(response.data.accessToken)
+      );
+      localStorage.setItem("@typeUser", JSON.stringify(userType));
     });
   };
 
@@ -52,6 +52,7 @@ const Login = () => {
 
   return (
     <Form onSubmit={handleSubmit(onLogin)}>
+      <h1>Login</h1>
       <Input {...register("email")} label="Email">
         <MailOutline />
       </Input>
