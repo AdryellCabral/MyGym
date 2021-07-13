@@ -57,3 +57,13 @@ export const Container = styled.div`
     animation: heightUP 0.5s forwards;
   }
 `;
+
+export const ModalContainer = styled.div`
+  width: 50%;
+  background-color: var(--color-red);
+  border: none;
+  height: 50%;
+  margin: 0 auto;
+  margin-top: 50%;
+  outline: none;
+`;
