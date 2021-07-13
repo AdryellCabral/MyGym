@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const ContainerForm = styled.div`
   width: 320px;
   margin: 0 auto;
-  margin-top: 90px;
+  max-height: 525px;
+  padding-top: 10px;
   text-align: center;
   
   div {
@@ -24,6 +25,7 @@ export const ContainerForm = styled.div`
     font-size: var(--font-title-mobile);
     font-family: var(--title-font);
     margin: 5px 0;
+    color: white;
   }
   p {
     height: 16px;
@@ -34,6 +36,8 @@ export const ContainerForm = styled.div`
     h1 {
       font-size: var(--font-title-desktop)
     }
+    border: 1px solid white;
+    padding-bottom: 25px;
   }
 `;
 

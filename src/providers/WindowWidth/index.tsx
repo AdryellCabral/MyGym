@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import { createContext, useState } from 'react';
 
 
@@ -31,3 +31,5 @@ export const WindowWidthProvider = ({children}: WindowWidthProviderProps)=>{
 		</WindowWidthContext.Provider>
 	);
 }
+
+export const useWindowWidth = () => useContext(WindowWidthContext);
