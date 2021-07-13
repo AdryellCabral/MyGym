@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import SettingsIcon from "@material-ui/icons/Settings";
+import CloseIcon from "@material-ui/icons/Close";
 
 export const Container = styled.div`
   background-color: var(--color-black);
@@ -14,16 +16,6 @@ export const Container = styled.div`
     color: white;
     width: 100%;
     list-style: none;
-  }
-
-  img {
-    width: 30px;
-    transition: 0.3s;
-  }
-
-  img:hover {
-    cursor: pointer;
-    filter: brightness(1.2);
   }
 
   div {
@@ -59,11 +51,80 @@ export const Container = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  width: 50%;
-  background-color: var(--color-red);
+  width: 80%;
+  background-color: var(--light-gray);
   border: none;
-  height: 50%;
-  margin: 0 auto;
-  margin-top: 50%;
+  height: 60%;
+  margin: auto;
+  margin-top: 35%;
   outline: none;
+  transition: 0.5s;
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: var(--color-black);
+  }
+
+  header span {
+    color: var(--color-green);
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+    padding: 20px;
+    max-height: 90%;
+  }
+
+  .body img {
+    align-self: center;
+    width: 138px;
+    height: 138px;
+    border-radius: 50%;
+    border: solid 3px var(--color-black);
+  }
+
+  .body span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .body button {
+    background: var(--color-red);
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    font-family: var(--title-font);
+    font-size: var(--font-button-green-mobile);
+    color: var(--btnColor-primary);
+    transition: color 150ms ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    align-self: center;
+  }
+`;
+
+export const SettingsIconStyled = styled(SettingsIcon)`
+  font-size: medium;
+  color: var(--btnColor-primary);
+  cursor: pointer;
+`;
+
+export const CloseIconStyled = styled(CloseIcon)`
+  font-size: medium;
+  cursor: pointer;
+  color: var(--btnColor-primary);
 `;
