@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const HomePageContainer = styled.div`
-  margin-top: 80px;
-  padding: 20px 18px;
+  margin-top: 83px;
+  padding: 0 18px;
+  
 
   h1,
   h2 {
@@ -36,7 +37,7 @@ export const HomePageContainer = styled.div`
 
 export const ContainerLista = styled.div`
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 15px;
 
   width: 100%;
   max-width: 500px;

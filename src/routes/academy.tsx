@@ -9,7 +9,7 @@ const AcademyRoutes = () => {
   return (
     <AnimatePresence>
       <Switch>
-        <Route exact path="/home" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
         <Route  path="/register_coach" component={RegisterCoach} />
         <Route  path="/register_student" component={RegisterStudent} />
       </Switch>

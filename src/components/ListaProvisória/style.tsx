@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: var(--color-black);
   width: 100%;
   max-width: 600px;
-  height: 200px;
+  height: 150px;
   overflow: auto;
   margin: 0 auto;
   font-size: var(--font-list-mobile);
@@ -52,13 +52,18 @@ export const Container = styled.div`
 
 export const ModalContainer = styled.div`
   width: 80%;
+  max-width: 600px;
   background-color: var(--light-gray);
   border: none;
   height: 60%;
-  margin: auto;
-  margin-top: 35%;
+  max-height: 500px;
   outline: none;
   transition: 0.5s;
+
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 
   header {
     display: flex;
