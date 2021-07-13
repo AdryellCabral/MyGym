@@ -147,7 +147,11 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
 
   return (
     <ContainerForm>
-      {user === "coach" ? <h1>Registro de Coach</h1> : <h1>Registro de Aluno</h1>}
+      {user === "coach" ? (
+        <h1>Registro de Coach</h1>
+      ) : (
+        <h1>Registro de Aluno</h1>
+      )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input label="Nome" {...register("name")}>
           <PersonIcon />
