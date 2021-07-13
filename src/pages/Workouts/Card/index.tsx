@@ -24,7 +24,7 @@ const Card = ({ workout }: Workout) => {
   const history = useHistory();
 
   const handleWorkout = () => {
-    history.push(`/workouts/${workout.id}`);
+    history.push(`/workout/${workout.id}`);
   };
   return (
     <Container img={workout.img} onClick={() => handleWorkout()}>
