@@ -15,7 +15,6 @@ interface UserData {
   password: string;
   nome: string;
   email: string;
-  typeUser: string;
 }
 
 const Login = () => {
@@ -40,9 +39,11 @@ const Login = () => {
   });
 
   const onLogin = (data: UserData) => {
-    const newData = { ...data, userType };
-    console.log(newData);
-    apiMyGym.post("login", newData).then((response) => console.log(response));
+    console.log(data);
+    apiMyGym.post("login", data).then((response) => {
+      localStorage.setItem("@tokenMyGym", JSON.stringify(response.data.accessToken));
+      localStorage.setItem("@typeUser", JSON.stringify(userType));      
+    });
   };
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
