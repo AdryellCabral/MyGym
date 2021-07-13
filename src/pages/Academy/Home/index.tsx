@@ -1,8 +1,8 @@
-import Header from "../../components/Header";
-import ListaProvisória from "../../components/ListaProvisória";
+import Header from "../../../components/Header";
+import ListaProvisória from "../../../components/ListaProvisória";
 import { ContainerLista, HomePageContainer } from "./style";
 
-export default function HomePageAdm() {
+export default function HomePage() {
   const objectsArray = {
     /* 
       const academyResume = useAcademy();
@@ -41,15 +41,15 @@ export default function HomePageAdm() {
     <>
       <Header />
       <HomePageContainer>
-        <span>Home</span>
+        <h1>Home</h1>
         <div>
           <ContainerLista>
-            <span>Alunos</span>
+            <h2>Alunos</h2>
             {/* <ListaProvisória objectsArray={academyResume.coaches} /> */}
             <ListaProvisória objectsArray={objectsArray.coaches} />
           </ContainerLista>
           <ContainerLista>
-            <span>Coaches</span>
+            <h2>Coaches</h2>
             {/* <ListaProvisória objectsArray={academyResume.students} /> */}
             <ListaProvisória objectsArray={objectsArray.students} />
           </ContainerLista>
