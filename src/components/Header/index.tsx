@@ -11,7 +11,6 @@ import { WindowWidthContext } from '../../providers/WindowWidth';
 const Header = ()=>{
 	const { windowWidth } = React.useContext(WindowWidthContext);
 
-
 	return (
 		<StyledHeader windowWidth = { windowWidth }>
 			<Container>
