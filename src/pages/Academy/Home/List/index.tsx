@@ -5,7 +5,9 @@ import {
   ModalContainer,
   SettingsIconStyled,
 } from "./style";
-import SimpleModal from "../Modal";
+import SimpleModal from "../../../../components/Modal";
+import { apiMyGym } from "../../../../services/api";
+import { useAcademy } from "../../../../providers/Academy";
 
 interface objectsArrayType {
   name: string;
@@ -19,9 +21,11 @@ interface ListProps {
   objectsArray: Array<objectsArrayType>;
 }
 
-export default function ListaProvisória({ objectsArray }: ListProps) {
+export default function List({ objectsArray }: ListProps) {
   const [open, setOpen] = useState(false);
+  const { loadInfoAcademy,academyAuthInfo } = useAcademy();
 
+  console.log(objectsArray);
   const [person, setPerson] = useState({
     name: "",
     id: 0,
@@ -30,7 +34,7 @@ export default function ListaProvisória({ objectsArray }: ListProps) {
     coachId: 0,
   });
 
-  const { name, id, email, photo, coachId } = person;
+  const { name, id, email, photo } = person;
 
   const handleClose = () => {
     setOpen(false);
@@ -42,29 +46,20 @@ export default function ListaProvisória({ objectsArray }: ListProps) {
   };
 
   const deleteUser = (id: number) => {
-    console.log(`deletar o usuário ${id}`);
-    /* 
-      apiMyGym.delete("coaches", id, {
+    console.log(person);
+    
+      apiMyGym.delete(`coaches/${id}`, {
       headers: {
         Authorization: `Bearer ${academyAuthInfo.token}`,
       },
+    }).then(() => {
+      loadInfoAcademy("1")
+      setOpen(false)
     });
-    */
+    
   };
 
-  const deleteCoach = (id: number) => {
-    console.log(`deletar coach ${id} dos dois luagres`);
-    /* 
-      apiMyGym.delete("coaches", id, {
-      headers: {
-        Authorization: `Bearer ${academyAuthInfo.token}`,
-      },
-    }).then(apiMyGym.delete(id, {
-      headers: {
-        Authorization: `Bearer ${academyAuthInfo.token}`,
-      })
-    */
-  };
+
 
   const noPhoto =
     "https://i.pinimg.com/originals/fd/0c/55/fd0c559856ca991e9e28937dc802f0b0.png";
@@ -91,22 +86,10 @@ export default function ListaProvisória({ objectsArray }: ListProps) {
             )}
             <span>Nome: {name}</span>
             <span>Email: {email}</span>
-            <button
-              onClick={coachId ? () => deleteCoach(id) : () => deleteUser(id)}
-            >
-              Deletar
-            </button>
+            <button onClick={() => deleteUser(id)}>Deletar</button>
           </div>
         </ModalContainer>
       </SimpleModal>
     </Container>
   );
 }
-
-/* 
-pegar as listas do academy resume
-
-coaches precisam sem deletados primeiro de coaches e depois de geral
-
-alunos só sao deletados de alunos
-*/
