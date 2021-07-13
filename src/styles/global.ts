@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 :root {
 	--color-red: #C91111;
 	--color-black: #10172B;
+	/* --color-blacklight: #282F41; */
 	--color-green: #4AD85D;
 
 	--light-green: #71FF80;
@@ -66,6 +67,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
     box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

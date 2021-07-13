@@ -3,9 +3,9 @@ import CoachRoutes from "./routes/coach";
 import StudentRoutes from "./routes/student";
 import DefaultRoutes from "./routes/default";
 import { GlobalStyle } from "./styles/global";
-import RegisterUser from "./pages/RegisterUser";
 
 const App = () => {
+  
   let typeUser = localStorage.getItem("@typeUser") || "";
   if (typeUser !== "") {
     typeUser = JSON.parse(typeUser);
@@ -13,8 +13,7 @@ const App = () => {
 
   return (
     <>
-      <RegisterUser />
-      {/* {typeUser === "" ? (
+      {typeUser === "" ? (
         <DefaultRoutes />
       ) : (
         <>
@@ -22,7 +21,7 @@ const App = () => {
           {typeUser === "coaches" && <CoachRoutes />}
           {typeUser === "students" && <StudentRoutes />}
         </>
-      )} */}
+      )}
       <GlobalStyle />
     </>
   );
