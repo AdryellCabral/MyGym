@@ -2,15 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: 16vh;
-
-  @media (min-width: 768px) {
-    margin-top: 10vh;
-  }
-
-  @media (min-width: 1200px) {
-    margin-top: 14vh;
-  }
+  margin-top: 100px;
 
   .container--top {
     margin: 0 auto;
