@@ -9,6 +9,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import clsx from "clsx";
 import { apiMyGym } from "../../services/api";
 import { useStyles, Form } from "./styles";
+import SimpleModal from "../Modal";
 
 interface UserData {
   password: string;
@@ -19,6 +20,7 @@ interface UserData {
 const RegisterUser = () => {
   const classes = useStyles();
   const [plano, setPlano] = useState("");
+  const [registerOk, setRegisterOk] = useState(false);
 
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
@@ -43,13 +45,20 @@ const RegisterUser = () => {
 
   const onRegister = (data: UserData) => {
     const newData = { ...data, plano };
-    apiMyGym.post("register", newData);
-    //retirei o modal, pq não consegui mexer, vou arrumar
+    apiMyGym.post("register", newData).then(() => setRegisterOk(true));
   };
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setPlano(event.target.value as string);
   };
+
+  const handleClose = () => {
+    console.log("oi");
+  };
+
+  const handleClick = () => {
+    
+  }
 
   return (
     <Form onSubmit={handleSubmit(onRegister)}>
@@ -84,6 +93,12 @@ const RegisterUser = () => {
       </FormControl>
 
       <GreenButton type="submit">Confirmar</GreenButton>
+      <SimpleModal open={registerOk} handleClose={handleClose}>
+        <>
+          <p>Cadastro realizado com sucesso</p>
+          <GreenButton onClick={handleClick}>Confirmar</GreenButton>
+        </>
+      </SimpleModal>
     </Form>
   );
 };
