@@ -4,12 +4,13 @@ import { StyledButton } from "./styles";
 interface Props {
   children: ReactNode;
   small?: boolean;
-  onClick: () => void;
+  type?: any;
+  onClick?: () => void;
 }
 
-const GreenButton = ({ children, small = false, ...rest }: Props) => {
+const GreenButton = ({ children, small = false, type = '', ...rest }: Props) => {
   return (
-    <StyledButton small={small} {...rest}>
+    <StyledButton small={small} {...rest} type={type}>
       <span>{children}</span>
     </StyledButton>
   );

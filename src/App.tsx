@@ -15,7 +15,7 @@ const App = () => {
     <>
 
     <Register/>
-      {typeUser === "" ? (
+      {/* {typeUser === "" ? (
         <DefaultRoutes />
       ) : (
         <>
@@ -23,7 +23,7 @@ const App = () => {
           {typeUser === "coaches" && <CoachRoutes />}
           {typeUser === "students" && <StudentRoutes />}
         </>
-      )}
+      )} */}
       <GlobalStyle />
     </>
   );

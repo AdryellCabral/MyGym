@@ -47,5 +47,6 @@ export const StyledButton = styled.button<sizeButton>`
 
   @media (min-width: 768px) {
     font-size: var(--font-button-purple-desktop);
+    max-width: 200px;
   }
 `;
