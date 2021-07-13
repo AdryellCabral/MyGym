@@ -174,9 +174,9 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
               id="coach"
               select
             >
-              {academyResume.coaches?.map((coach: CoachMapProps) => (
-                <MenuItem key={coach.email} value={coach.id}>
-                  {coach.email}
+              {academyResume?.coaches?.map((coach: CoachMapProps) => (
+                <MenuItem key={coach.name} value={coach.id}>
+                  {coach.name}
                 </MenuItem>
               ))}
             </TextField>
