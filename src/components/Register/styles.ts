@@ -15,6 +15,14 @@ export const Form = styled.form`
   button {
     margin: 0 auto;
   }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: var(--font-title-desktop);
+    }
+    border: 1px solid white;
+    padding-bottom: 25px;
+  }
 `;
 
 export const useStyles = makeStyles((theme: Theme) =>

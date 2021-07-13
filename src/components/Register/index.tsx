@@ -18,7 +18,7 @@ interface UserData {
   email: string;
 }
 
-const Register = () => {
+const RegisterUser = () => {
   const classes = useStyles();
   const [plano, setPlano] = useState("");
 
@@ -96,4 +96,4 @@ const Register = () => {
     </Form>
   );
 };
-export default Register;
+export default RegisterUser;
