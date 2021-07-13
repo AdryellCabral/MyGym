@@ -5,6 +5,7 @@ import DefaultRoutes from "./routes/default";
 import { GlobalStyle } from "./styles/global";
 import Workouts from "./pages/Workouts";
 import Exercices from "./pages/Exercices";
+import Students from "./pages/Students";
 
 const App = () => {
   let typeUser = localStorage.getItem("@typeUser") || "";
@@ -25,6 +26,7 @@ const App = () => {
       )}
       <GlobalStyle />
       <Exercices />
+      <Students />
     </>
   );
 };
