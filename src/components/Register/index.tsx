@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import GreenButton from "../GreenButton";
 import Input from "../Input";
 import { Store, Lock, MailOutline } from "@material-ui/icons";
-import { CgGym } from "react-icons/cg";
 import { useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import clsx from "clsx";
@@ -44,10 +43,8 @@ const RegisterUser = () => {
 
   const onRegister = (data: UserData) => {
     const newData = { ...data, plano };
-    console.log(newData);
-    apiMyGym
-      .post("register", newData)
-      .then((response) => console.log(response));
+    apiMyGym.post("register", newData);
+    //retirei o modal, pq não consegui mexer, vou arrumar
   };
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -55,9 +52,8 @@ const RegisterUser = () => {
   };
 
   return (
-    
     <Form onSubmit={handleSubmit(onRegister)}>
-        <h1>Contrate agora!</h1>
+      <h1>Contrate agora!</h1>
       <Input {...register("email")} label="Email">
         <MailOutline />
       </Input>
@@ -74,7 +70,7 @@ const RegisterUser = () => {
         <Store />
       </Input>
       <p>{errors.nome?.message}</p>
- 
+
       <FormControl variant="outlined" className={clsx(classes.textField)}>
         <InputLabel>Plano</InputLabel>
         <Select value={plano} onChange={handleChange} label="Plano">

@@ -12,7 +12,6 @@ export const RegisterUser = () => {
   return (
     
     <Container>
-      {/* <img src={logo} alt="" /> */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -20,7 +19,6 @@ export const RegisterUser = () => {
       >
         <ContainerRegister>
           {windowWidth >= 768 && <img src={img} alt="" />}
-          {console.log(windowWidth)}
           <Register />
         </ContainerRegister>
       </motion.div>

@@ -7,8 +7,8 @@ export const ContainerRegister = styled.div`
   align-items: center;
 
   img {
-    width: calc(70vw - 400px);
-    max-width: 800px;
+    width: calc(85vw - 400px);
+    max-width: 600px;
     margin-right: 5%;
     margin-top: 100px;
   }
