@@ -3,9 +3,9 @@ import CoachRoutes from "./routes/coach";
 import StudentRoutes from "./routes/student";
 import DefaultRoutes from "./routes/default";
 import { GlobalStyle } from "./styles/global";
+import HomeStudent from "./pages/HomeStudent";
 
 const App = () => {
-  
   let typeUser = localStorage.getItem("@typeUser") || "";
   if (typeUser !== "") {
     typeUser = JSON.parse(typeUser);
@@ -23,6 +23,7 @@ const App = () => {
         </>
       )}
       <GlobalStyle />
+      <HomeStudent />
     </>
   );
 };
