@@ -1,5 +1,6 @@
 import { Container } from "./styles";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 interface CardProps {
   student: {
@@ -11,12 +12,11 @@ interface CardProps {
 }
 const Card = ({ student }: CardProps) => {
   const [openModal, setOpenModal] = useState(false);
+  const history = useHistory();
 
-  const handleModal = (modal: boolean) => {
-    setOpenModal(!modal);
-  };
+  
   return (
-    <Container img={student.img} onClick={() => handleModal(openModal)}>
+    <Container img={student.img} onClick={() => history.push(`/students/${student.id}`)}>
       <div className="image"></div>
       <div className="info">
         <h1>{student.name}</h1>

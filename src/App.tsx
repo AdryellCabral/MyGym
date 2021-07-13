@@ -6,6 +6,7 @@ import { GlobalStyle } from "./styles/global";
 import Workouts from "./pages/Workouts";
 import Exercices from "./pages/Exercices";
 import Students from "./pages/Students";
+import InfoStudent from "./pages/InfoStudent";
 
 const App = () => {
   let typeUser = localStorage.getItem("@typeUser") || "";
@@ -25,8 +26,8 @@ const App = () => {
         </>
       )}
       <GlobalStyle />
-      <Exercices />
-      <Students />
+      <InfoStudent/>
+      <Students/>
     </>
   );
 };
