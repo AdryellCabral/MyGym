@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import SelectFilter from "../../components/SelectFilter";
+import SelectFilter from "../../../components/SelectFilter";
 import CardList from "./CardList";
 import Card from "./Card";
 import { useState } from "react";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container } from "./styles";
-import FigAf from "../../assets/images/FigAf.svg";
+import FigAf from "../../../assets/images/FigAf.svg";
 const PhysicalAssessment = () => {
   const [af] = useState({
     size: 80,

@@ -1,20 +1,20 @@
 import { Switch, Route } from "react-router-dom";
-import HomeStudent from "../pages/HomeStudent";
-import Exercices from "../pages/Exercices";
-import Workouts from "../pages/Workouts";
-import WorkoutStudent from "../pages/WorkoutStudent";
-import PhysicalAssessment from "../pages/PhysicalAssessment";
-import Feed from "../pages/Feed";
+import HomeStudent from "../pages/Student/HomeStudent";
+import Exercices from "../pages/Student/Exercices";
+import Workouts from "../pages/Student/Workouts";
+import WorkoutStudent from "../pages/Student/WorkoutStudent";
+import PhysicalAssessment from "../pages/Student/PhysicalAssessment";
+import Feed from "../pages/Student/Feed";
 
 const StudentRoutes = () => {
   return (
     <Switch>
       <Route exact path="/" component={HomeStudent} />
-      <Route path="/exercices" component={Exercices} />
+      <Route path="/exercises" component={Exercices} />
       <Route path="/workouts" component={Workouts} />
       <Route exact path="/workout/:id" component={WorkoutStudent} />
-      <Route path="/physicalAssessment" component={PhysicalAssessment} />
-      <Route path="/feed" component={Feed} />
+      <Route path="/assessment" component={PhysicalAssessment} />
+      <Route path="/feeding" component={Feed} />
     </Switch>
   );
 };

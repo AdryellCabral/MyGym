@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FigFeed from "../../assets/images/FigFeed.svg";
+import FigFeed from "../../../assets/images/FigFeed.svg";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core";
 

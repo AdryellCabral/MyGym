@@ -4,7 +4,7 @@ import { Container } from "./styles";
 import Card from "./Card";
 import CardList from "./CardList";
 import CardExercice from "./CardExercice";
-import { useWindowWidth } from "../../providers/WindowWidth";
+import { useWindowWidth } from "../../../providers/WindowWidth";
 
 const WorkoutStudent = () => {
   const param = useParams();
