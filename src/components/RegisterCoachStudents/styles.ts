@@ -6,6 +6,7 @@ export const ContainerForm = styled.div`
   max-height: 525px;
   padding-top: 10px;
   text-align: center;
+  background-color: var(--color-black);
   
   div {
     div {
