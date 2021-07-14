@@ -5,9 +5,8 @@
 import "./font.css";
 import "../assets/fonts/postnobillscolombo-extrabold.ttf";
 import { createGlobalStyle } from "styled-components";
-import { ToastContainer, Zoom, Flip } from "react-toastify";
+import { ToastContainer, Flip } from "react-toastify";
 import styled from "styled-components";
-import { FlipToFrontTwoTone } from "@material-ui/icons";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -113,10 +112,10 @@ export const ToastContainerStyled = styled(ToastContainer).attrs({
 	color: white;
 
   }
-   .coach {
+   .register {
 	   background-color: var(--dark-purple);
 	   span {
-		font-size: 1.3rem;	
+		font-size: 1.4rem;	
 		font-family: var(--title-font);
 		color: var(--light-green)
 

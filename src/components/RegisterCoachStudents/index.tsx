@@ -17,7 +17,7 @@ import { useAcademy } from "../../providers/Academy";
 import { apiMyGym } from "../../services/api";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
-import { ToastCoach } from "../Toasts/Coach/Coach";
+import { ToastRegister } from "../Toasts/Register";
 import "react-toastify/dist/ReactToastify.css";
 
 interface Decoded {
@@ -109,11 +109,20 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       userId: parseInt(id),
     };
 
-    apiMyGym.post("students", newData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    apiMyGym
+      .post("students", newData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        toast(
+          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+            agora é um Aluno da sua Academia!
+          </ToastRegister>,
+          { className: "coach" }
+        );
+      });
   };
 
   const postCoach = (data: Data, id: string) => {
@@ -127,27 +136,33 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       academyId: parseInt(sub),
       userId: parseInt(id),
     };
-    apiMyGym.post("coaches", newData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    apiMyGym
+      .post("coaches", newData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        toast(
+          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+            agora é um Coach na sua Academia!
+          </ToastRegister>,
+          { className: "register" }
+        );
+      });
   };
 
   const onSubmit = (data: Data) => {
-    // const { email, password } = data;
-    // const newData = { email, password };
-    // apiMyGym.post("register", newData).then((response) => {
-    //   const { sub } = jwtDecode<Decoded>(response.data.accessToken);
-
-    //   if (user === "coach") {
-    //     postCoach(data, sub);
-    //   } else {
-    //     postStudent(data, sub);
-    //   }
-    // });
-
-    toast(<ToastCoach name={data.name} closeToast={true} toastProps={null} />, {className: "coach"});
+    const { email, password } = data;
+    const newData = { email, password };
+    apiMyGym.post("register", newData).then((response) => {
+      const { sub } = jwtDecode<Decoded>(response.data.accessToken);
+      if (user === "coach") {
+        postCoach(data, sub);
+      } else {
+        postStudent(data, sub);
+      }
+    });       
   };
 
   return (
