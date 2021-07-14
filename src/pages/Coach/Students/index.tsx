@@ -1,18 +1,15 @@
 import { Container } from "./styles";
 import CardList from "./CardList";
 import Card from "./Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchIcon from '@material-ui/icons/Search';
-
-interface Student {
-  id: number;
-  name: string;
-  description: string;
-  img: string;
-}
+import { apiMyGym } from "../../../services/api";
+import { useCoach } from "../../../providers/Coach";
 
 const Students = () => {
-  const [filter, setFilter] = useState("")
+  const [filter, setFilter] = useState("");
+  const {coachAuthInfo} = useCoach();
+  const [students, setStudents] = useState({})
   const [objTest] = useState([
     {
       id: 1,
@@ -29,8 +26,29 @@ const Students = () => {
       
     },
   ]);
-  const filterGroup = (group: string) => {
-    console.log(group);
+
+  const GetStudents = () => {
+    apiMyGym
+      .get(`students?coachId=${coachAuthInfo.id}`, {
+        headers: {
+          Authorization: `Bearer ${coachAuthInfo.token}`,
+        }
+      })
+      .then((response) => setStudents(response))
+  }
+
+  useEffect(() => {
+    GetStudents();
+  },[])
+
+  const filterStudent = () => {
+    apiMyGym
+      .get(`students?name=${filter}&coachId=${coachAuthInfo.id}`, {
+        headers: {
+          Authorization: `Bearer ${coachAuthInfo.token}`,
+        }
+      })
+      .then((response) => setStudents(response))
   };
   return (
     <section className="page--students" style={{ width: "100%" }}>
@@ -39,7 +57,7 @@ const Students = () => {
           <h1>Alunos</h1>
           <div className="container--filter">
             <input type="text" value={filter} onChange={e => setFilter(e.target.value)}/>
-            <button ><SearchIcon/></button>
+            <button onClick={filterStudent}><SearchIcon/></button>
           </div>
         </div>
 

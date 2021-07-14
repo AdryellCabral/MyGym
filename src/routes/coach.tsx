@@ -1,5 +1,12 @@
+import { Route, Switch } from "react-router-dom";
+import Students from "../pages/Coach/Students";
+
 const CoachRoutes = () => {
-    return <div></div>
+    return (
+        <Switch>
+            <Route exact path="/" component={Students} /> 
+        </Switch>
+    );
 }
 
 export default CoachRoutes
