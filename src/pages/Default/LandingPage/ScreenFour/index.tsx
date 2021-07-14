@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import FigScreenFour from "../../../assets/LandingPage/FigScreenFour.svg";
+import FigScreenFour from "../../../../assets/LandingPage/FigScreenFour.svg";
 
 const ScreenFour = () => {
   return (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundFooter from "../../../assets/LandingPage/backgroundFooterScreenFour.svg";
+import backgroundFooter from "../../../../assets/LandingPage/backgroundFooterScreenFour.svg";
 
 export const Container = styled.div`
   width: 100%;
