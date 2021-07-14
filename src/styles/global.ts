@@ -114,7 +114,7 @@ export const ToastContainerStyled = styled(ToastContainer).attrs({
 
   }
    .coach {
-	   background-color: var(--light-purple);
+	   background-color: var(--dark-purple);
 	   span {
 		font-size: 1.3rem;	
 		font-family: var(--title-font);
