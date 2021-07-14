@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const SelectFilterStyled = styled.select`
   font-size: 0.9rem;
-  width: 35%;
+  width: 80%;
   padding: 2px;
   max-width: 120px;
   border: none;
   border-radius: 2px;
-  background-color: var(--light-purple);
+  background-color: var(--light-black);
   color: #fff;
 
   @media (min-width: 1000px) {
