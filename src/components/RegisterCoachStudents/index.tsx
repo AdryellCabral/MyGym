@@ -102,7 +102,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       name,
       email,
       coachId,
-      academyId: parseInt(sub),
+      academyId: academyResume.id,
       userId: parseInt(id),
     };
 
@@ -131,7 +131,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       name,
       email,
       cref,
-      academyId: parseInt(sub),
+      academyId: academyResume.id,
       userId: parseInt(id),
     };
     apiMyGym
