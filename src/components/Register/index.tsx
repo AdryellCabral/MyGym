@@ -10,6 +10,7 @@ import clsx from "clsx";
 import { apiMyGym } from "../../services/api";
 import { useStyles, Form } from "./styles";
 import SimpleModal from "../Modal";
+import { useHistory } from "react-router-dom";
 
 interface UserData {
   password: string;
@@ -21,6 +22,7 @@ const RegisterUser = () => {
   const classes = useStyles();
   const [plano, setPlano] = useState("");
   const [registerOk, setRegisterOk] = useState(false);
+  const history = useHistory();
 
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
@@ -53,12 +55,10 @@ const RegisterUser = () => {
   };
 
   const handleClose = () => {
-    console.log("oi");
+    history.push("/login");
   };
 
-  const handleClick = () => {
-    
-  }
+  const handleClick = () => {};
 
   return (
     <Form onSubmit={handleSubmit(onRegister)}>

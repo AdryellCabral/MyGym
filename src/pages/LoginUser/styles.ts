@@ -2,28 +2,31 @@ import styled from "styled-components";
 
 export const ContainerRegister = styled.div`
   background-color: var(--light-black);
-
-  height: calc(100vh - 80px);
-  margin-top: 80px;
+  height: calc(112vh - 65px);
   display: flex;
   align-items: center;
-  padding-right: 16px;
 
   img {
-    width: calc(100vw - 400px);
-    max-width: 800px;
-    margin-left: 5%;
+    width: calc(85vw - 400px);
+    max-width: 600px;
     margin-right: 5%;
+    margin-top: 100px;
   }
 
   @media (min-width: 1024px) {
     img {
       margin-left: 10%;
     }
+
+    padding-right: 16px;
   }
 
   @media (min-width: 768px) {
-    padding-right: 16px;
+    height: calc(112vh - 65px);
+  }
+
+  @media (min-width: 1366px) {
+    height: calc(112vh - 75px);
   }
 `;
 
