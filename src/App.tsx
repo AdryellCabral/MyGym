@@ -9,10 +9,10 @@ import Students from "./pages/Students";
 import InfoStudent from "./pages/InfoStudent";
 
 const App = () => {
-  let typeUser = localStorage.getItem("@typeUser") || "";
-  if (typeUser !== "") {
-    typeUser = JSON.parse(typeUser);
-  }
+  let typeUser = localStorage.getItem("@typeUser") || "coaches";
+  // if (typeUser !== "") {
+  //   typeUser = JSON.parse(typeUser);
+  // }
 
   return (
     <>
@@ -26,8 +26,7 @@ const App = () => {
         </>
       )}
       <GlobalStyle />
-      <InfoStudent/>
-      <Students/>
+      
     </>
   );
 };

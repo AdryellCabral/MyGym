@@ -1,8 +1,36 @@
 import { Container } from "./styles";
-import userDefault from "../../assets/userDefault.png";
 import PurpleButton from "../../components/PurpleButton";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { apiMyGym } from "../../services/api";
+
+type RoomParams = {
+  id: string;
+}
 
 const InfoStudent = () => {
+  const [info, setInfo] = useState({});
+  const params = useParams<RoomParams>();
+  const Id = params.id;
+  let token = localStorage.getItem("token") || "";
+  if (token !== "") {
+    token = JSON.parse(token);
+  }
+
+  const GetInfo = () => {
+    apiMyGym
+      .get(`students?userId=${Id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      .then((response) => setInfo(response))
+  }
+
+  useEffect(() => {
+    GetInfo();
+  },[])
+
   return (
     <section className="home--Student">
       <Container percentage={(16 / 20) * 100}>
@@ -13,7 +41,7 @@ const InfoStudent = () => {
                 src="http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg"
                 alt="Usuário"
               />
-              <figcaption>Nome Usuário</figcaption>
+              <figcaption>name</figcaption>
             </figure>
 
             <div className="trainingPerformed">
