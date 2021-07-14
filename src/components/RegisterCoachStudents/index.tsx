@@ -46,7 +46,7 @@ interface RegisterCoachStudentsProps {
 }
 
 export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
-  const { academyResume } = useAcademy();
+  const { academyResume, loadInfoAcademy } = useAcademy();
   const [coachValue, setCoachValue] = useState("");
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatório!"),
@@ -110,7 +110,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
+    }).then((response) => loadInfoAcademy());
   };
 
   const postCoach = (data: Data, id: string) => {
@@ -128,7 +128,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
+    }).then((response) => loadInfoAcademy());
   };
 
   const onSubmit = (data: Data) => {
@@ -142,7 +142,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       } else {
         postStudent(data, sub);
       }
-    });
+    }).catch(error => console.log(error));
   };
 
   return (

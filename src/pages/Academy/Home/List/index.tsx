@@ -51,7 +51,7 @@ export default function List({ objectsArray }: ListProps) {
         Authorization: `Bearer ${academyAuthInfo.token}`,
       },
     }).then(() => {
-      loadInfoAcademy("1")
+      loadInfoAcademy()
       setOpen(false)
     });
     
