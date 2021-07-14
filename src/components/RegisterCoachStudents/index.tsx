@@ -120,9 +120,18 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
           <ToastRegister name={data.name} closeToast={true} toastProps={null}>
             agora é um Aluno da sua Academia!
           </ToastRegister>,
-          { className: "coach" }
+          { className: "registerSuccess" }
         );
-      });
+      })
+      .catch(() =>
+        toast(
+          <ToastRegister name={data.email} closeToast={true} toastProps={null}>
+            {" "}
+            já existe cadastro nesse E-mail
+          </ToastRegister>,
+          { className: "registerFail" }
+        )
+      );
   };
 
   const postCoach = (data: Data, id: string) => {
@@ -147,9 +156,17 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
           <ToastRegister name={data.name} closeToast={true} toastProps={null}>
             agora é um Coach na sua Academia!
           </ToastRegister>,
-          { className: "register" }
+          { className: "registerSuccess" }
         );
-      });
+      })
+      .catch(() =>
+        toast(
+          <ToastRegister name={data.email} closeToast={true} toastProps={null}>            
+            já existe cadastro nesse E-mail
+          </ToastRegister>,
+          { className: "registerFail" }
+        )
+      );
   };
 
   const onSubmit = (data: Data) => {
@@ -162,7 +179,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       } else {
         postStudent(data, sub);
       }
-    });       
+    });
   };
 
   return (
