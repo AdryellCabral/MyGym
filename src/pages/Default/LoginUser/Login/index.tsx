@@ -57,7 +57,7 @@ const Login = () => {
         <MailOutline />
       </Input>
       <p>{errors.email?.message}</p>
-      <Input {...register("password")} label="Senha">
+      <Input {...register("password")} label="Senha" type="password">
         <Lock />
       </Input>
       <p>{errors.password?.message}</p>

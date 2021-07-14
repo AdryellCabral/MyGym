@@ -72,11 +72,11 @@ const RegisterUser = () => {
         <MailOutline />
       </Input>
       <p>{errors.email?.message}</p>
-      <Input {...register("password")} label="Senha">
+      <Input {...register("password")} label="Senha" type="password">
         <Lock />
       </Input>
       <p>{errors.password?.message}</p>
-      <Input {...register("passwordConfirm")} label="Confirme a senha">
+      <Input {...register("passwordConfirm")} label="Confirme a senha" type="password">
         <Lock />
       </Input>
       <p>{errors.passwordConfirm?.message}</p>
