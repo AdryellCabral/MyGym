@@ -11,10 +11,10 @@ createStyles({
     },
   },
   margin: {
-    margin: theme.spacing(1),
+    // margin: theme.spacing(1),
   },
   textField: {
-    width: '25ch',
+     width: '25ch',
   },
 }),
 )

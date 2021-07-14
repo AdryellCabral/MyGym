@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import FigPersonalTrainer from "../../../assets/LandingPage/undraw_personal_trainer.svg";
-import BackgroundFooterStart from "../../../assets/LandingPage/backgroundFooterStart.svg";
-import BackgroundFooterStartDesk from "../../../assets/LandingPage/backgroundFooterStartDesk.svg";
-import BackgroundScreenOneDesk from "../../../assets/LandingPage/backgroundScreenOneDesk.svg";
-import BackgroundScreenOneMobile from "../../../assets/LandingPage/backgroundHeaderLandingPage.svg";
-import BackgroundTopMedium from "../../../assets/LandingPage/backgroundTopMedium.svg";
+import FigPersonalTrainer from "../../../../assets/LandingPage/undraw_personal_trainer.svg";
+import BackgroundFooterStart from "../../../../assets/LandingPage/backgroundFooterStart.svg";
+import BackgroundFooterStartDesk from "../../../../assets/LandingPage/backgroundFooterStartDesk.svg";
+import BackgroundScreenOneDesk from "../../../../assets/LandingPage/backgroundScreenOneDesk.svg";
+import BackgroundScreenOneMobile from "../../../../assets/LandingPage/backgroundHeaderLandingPage.svg";
+import BackgroundTopMedium from "../../../../assets/LandingPage/backgroundTopMedium.svg";
 
 export const Container = styled.div`
   width: 100%;

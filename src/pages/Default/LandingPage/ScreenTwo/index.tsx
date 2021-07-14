@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import FigPageTwo from "../../../assets/LandingPage/FigOnePageTwo.svg";
+import FigPageTwo from "../../../../assets/LandingPage/FigOnePageTwo.svg";
 const ScreenTwo = () => {
   return (
     <section className="info--Product" style={{ width: "100%" }}>

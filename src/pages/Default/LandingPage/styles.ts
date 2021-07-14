@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import BackgroundHeaderScreenTwoDesk from "../../assets/LandingPage/backgroundHeaderScreenTwoDesk.svg";
-import BackgroundFooterDesk from "../../assets/LandingPage/backgroundFooterDesk.svg";
+import BackgroundHeaderScreenTwoDesk from "../../../assets/LandingPage/backgroundHeaderScreenTwoDesk.svg";
+import BackgroundFooterDesk from "../../../assets/LandingPage/backgroundFooterDesk.svg";
 
 export const ContainerDesk = styled.div`
   height: 100vh;
