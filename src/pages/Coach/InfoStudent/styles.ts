@@ -133,6 +133,19 @@ export const Container = styled.div<PercentageBarProps>`
       margin-bottom: 2%;
       font-weight: bolder;
     }
+    ul{
+        background-color: var(--color-black);
+        color: var(--light-gray);
+        border-radius: 5px;
+        max-height: 150px;
+        overflow-y: scroll;
+        li{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 8px;
+        }
+    }
     > div {
       height: 35vh;
       width: 100%;
