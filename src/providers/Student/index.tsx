@@ -59,6 +59,7 @@ export const StudentProvider = ({ children }: StudentProps) => {
     if (token !== "") {
       getStudent();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

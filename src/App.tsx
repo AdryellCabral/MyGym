@@ -3,6 +3,13 @@ import CoachRoutes from "./routes/coach";
 import StudentRoutes from "./routes/student";
 import DefaultRoutes from "./routes/default";
 import { GlobalStyle } from "./styles/global";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import Exercices from "./pages/Exercices";
+=======
+>>>>>>> feat/HomeStudent
+>>>>>>> feat/exercices
 import Header from "./components/Header";
 
 const App = () => {
@@ -21,6 +28,7 @@ const App = () => {
         </>
       ) : (
         <>
+          <Header />
           {typeUser === "academys" && <AcademyRoutes />}
           {typeUser === "coaches" && <CoachRoutes />}
           {typeUser === "students" && <StudentRoutes />}

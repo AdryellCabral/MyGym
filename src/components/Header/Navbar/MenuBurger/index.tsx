@@ -13,8 +13,8 @@ const MenuBurger = ()=>{
         <div />
         <div />
       </StyledBurger>
-      <NavMenu isOpen = { isOpen }/>
-      <Backdrop open = { isOpen } onClick = { ()=>setIsOpen(!isOpen) }/>
+      <NavMenu isOpen = { isOpen } setIsOpen = { ()=> setIsOpen(false) }/>
+      <Backdrop open = { isOpen } onClick = { ()=> setIsOpen(!isOpen) }/>
     </>
   );
 }
