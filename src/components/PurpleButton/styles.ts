@@ -5,7 +5,7 @@ interface sizeButton {
 }
 
 export const StyledButton = styled.button<sizeButton>`
-  background: var(--ligth-purple);
+  background: var(--light-purple);
   width: 100%;
   height: 40px;
   border-radius: 5px;

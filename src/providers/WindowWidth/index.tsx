@@ -1,5 +1,5 @@
-import { ReactNode, useContext } from "react";
-import { createContext, useState } from "react";
+import { ReactNode } from "react";
+import { createContext, useState, useContext } from "react";
 
 interface Context {
   windowWidth: number;
