@@ -191,12 +191,12 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
           </>
         )}
 
-        <Input label="Senha" {...register("password")}>
+        <Input label="Senha" {...register("password")} type="password">
           <LockIcon />
         </Input>
         <p>{errors.password?.message}</p>
 
-        <Input label="Confirmar Senha" {...register("passwordConfirm")}>
+        <Input label="Confirmar Senha" {...register("passwordConfirm")} type="password">
           <LockIcon />
         </Input>
         <p>{errors.passwordConfirm?.message}</p>
