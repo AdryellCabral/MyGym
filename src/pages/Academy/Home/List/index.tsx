@@ -8,6 +8,7 @@ import {
 import SimpleModal from "../../../../components/Modal";
 import { apiMyGym } from "../../../../services/api";
 import { useAcademy } from "../../../../providers/Academy";
+import { useUserProvider } from "../../../../providers/User";
 
 interface objectsArrayType {
   name: string;
@@ -23,9 +24,10 @@ interface ListProps {
 
 export default function List({ objectsArray }: ListProps) {
   const [open, setOpen] = useState(false);
-  const { loadInfoAcademy,academyAuthInfo } = useAcademy();
+  const { loadInfoAcademy } = useAcademy();
+  const {userProvider} = useUserProvider()
 
-  console.log(objectsArray);
+
   const [person, setPerson] = useState({
     name: "",
     id: 0,
@@ -46,17 +48,15 @@ export default function List({ objectsArray }: ListProps) {
   };
 
   const deleteUser = (id: number) => {
-    console.log(person);
-    
-      apiMyGym.delete(`coaches/${id}`, {
+    const endpoint = person.coachId ? "students" : "coaches"
+      apiMyGym.delete(`${endpoint}/${id}`, {
       headers: {
-        Authorization: `Bearer ${academyAuthInfo.token}`,
+        Authorization: `Bearer ${userProvider.token}`,
       },
     }).then(() => {
-      loadInfoAcademy("1")
+      loadInfoAcademy()
       setOpen(false)
-    });
-    
+    }).catch(error => console.log(error));
   };
 
 

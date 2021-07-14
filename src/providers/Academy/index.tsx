@@ -32,11 +32,7 @@ interface AcademyInformation {
 }
 
 interface AcademyProviderData {
-  loginAcademy: (info: InfosToLogin) => void;
-  loadInfoAcademy: (idCoach: string) => void;
-  addCoach: (info: Coach) => void;
-  addStudent: (info: Student) => void;
-  getStudent: (idStudent: string) => void;
+  loadInfoAcademy: () => void;
   academyResume: any;
   academyAuthInfo: any;
 }
@@ -46,56 +42,35 @@ const AcademyContext = createContext<AcademyProviderData>(
 );
 
 export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
-  const idAcademy = localStorage.getItem("@idAcademy") || "";
+  let typeUser = localStorage.getItem("@typeUser") || "";
+  let idUser = localStorage.getItem("@idUser") || "";
+  let token = localStorage.getItem("@tokenMyGym") || "";
+
+  if (token !== "") {
+    token = JSON.parse(token);
+    idUser = JSON.parse(idUser);
+  }
 
   const [academyAuthInfo, setAcademyAuthInfo] = useState(
     {} as AcademyInformation
   );
   const [academyResume, setAcademyResume] = useState({});
 
-  const loginAcademy = (info: InfosToLogin) => {
-    apiMyGym.post("login", info).then((response) => {
-      const { accessToken } = response.data;
-      const { sub } = jwtDecode<JwtPayload>(accessToken);
-      setAcademyAuthInfo({ token: accessToken, id: sub });
-      localStorage.setItem("@tokenAcademy", JSON.stringify(accessToken));
-      localStorage.setItem("@idAcademy", JSON.stringify(sub));
-    });
-  };
-
-  const addCoach = (info: Coach) => {
-    apiMyGym.post("coaches", info, {
-      headers: {
-        Authorization: `Bearer ${academyAuthInfo.token}`,
-      },
-    });
-  };
-
-  const addStudent = (info: Student) => {
-    apiMyGym.post("students", info, {
-      headers: {
-        Authorization: `Bearer ${academyAuthInfo.token}`,
-      },
-    });
-  };
-
-  const loadInfoAcademy = (idAcademy: string) => {
+  const loadInfoAcademy = () => {
     apiMyGym
-      .get(`academys?userId=${idAcademy}&_embed=coaches&_embed=students`, {
+      .get(`academys?userId=${idUser}&_embed=coaches&_embed=students`, {
         headers: {
-          Authorization: `Bearer ${academyAuthInfo.token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setAcademyResume(response.data[0]));
+      .then((response) => setAcademyResume(response.data[0])).catch((err) => console.log(err));
   };
 
-  const getStudent = (idStudent: string) => {
-    apiMyGym.get(`/students?userId=${idStudent}`);
-  };
 
   useEffect(() => {
-    if (localStorage.getItem("@idAcademy") !== "") {
-      loadInfoAcademy(idAcademy);
+   
+    if (typeUser !== "academys") {
+      loadInfoAcademy();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -103,11 +78,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   return (
     <AcademyContext.Provider
       value={{
-        loginAcademy,
-        loadInfoAcademy,
-        addCoach,
-        addStudent,
-        getStudent,
+        loadInfoAcademy,     
         academyResume,
         academyAuthInfo,
       }}

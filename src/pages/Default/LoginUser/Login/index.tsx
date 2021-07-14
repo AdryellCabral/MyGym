@@ -8,8 +8,11 @@ import { Lock, MailOutline } from "@material-ui/icons";
 import { useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import clsx from "clsx";
+import jwtDecode, { JwtPayload } from "jwt-decode";
 import { apiMyGym } from "../../../../services/api";
 import { useStyles } from "./styles";
+import { useUserProvider } from "../../../../providers/User";
+import { useHistory } from "react-router-dom";
 
 interface UserData {
   password: string;
@@ -19,6 +22,8 @@ interface UserData {
 const Login = () => {
   const classes = useStyles();
   const [userType, setUserType] = useState("");
+
+  const { setUserProvider } = useUserProvider();
 
   const schema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
@@ -36,13 +41,27 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
+  const history = useHistory();
+
+  const requiredLogin = (response: any) => {
+    localStorage.setItem(
+      "@tokenMyGym",
+      JSON.stringify(response.data.accessToken)
+    );
+    localStorage.setItem("@typeUser", JSON.stringify(userType));
+    const { sub } = jwtDecode<JwtPayload>(response.data.accessToken);
+    localStorage.setItem("@idUser", JSON.stringify(sub));
+    setUserProvider({
+      typeUser: userType,
+      token: response.data.accessToken,
+      idUser: sub,
+    });
+  };
+
   const onLogin = (data: UserData) => {
     apiMyGym.post("login", data).then((response) => {
-      localStorage.setItem(
-        "@tokenMyGym",
-        JSON.stringify(response.data.accessToken)
-      );
-      localStorage.setItem("@typeUser", JSON.stringify(userType));
+      requiredLogin(response);
+      history.push("/");
     });
   };
 
@@ -57,7 +76,7 @@ const Login = () => {
         <MailOutline />
       </Input>
       <p>{errors.email?.message}</p>
-      <Input {...register("password")} label="Senha" type="password">
+      <Input {...register("password")} label="Senha">
         <Lock />
       </Input>
       <p>{errors.password?.message}</p>
