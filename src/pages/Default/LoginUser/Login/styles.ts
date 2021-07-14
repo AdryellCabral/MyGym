@@ -25,8 +25,9 @@ export const Form = styled.form`
 
   p {
     font-family: var(--font-roboto); //remover
-    height: 6px;
+    height: 16px;
     color: white;
+    margin: 3px 0;
   }
 
   button {

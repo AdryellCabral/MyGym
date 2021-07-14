@@ -2,13 +2,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { Form } from "./styles";
-import GreenButton from "../GreenButton";
-import Input from "../Input";
+import GreenButton from "../../../../components/GreenButton";
+import Input from "../../../../components/Input";
 import { Lock, MailOutline } from "@material-ui/icons";
 import { useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import clsx from "clsx";
-import { apiMyGym } from "../../services/api";
+import { apiMyGym } from "../../../../services/api";
 import { useStyles } from "./styles";
 
 interface UserData {

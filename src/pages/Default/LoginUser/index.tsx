@@ -1,9 +1,9 @@
-import Login from "../../components/Login";
+import Login from "./Login";
 import { ContainerRegister, Container } from "./styles";
-import img from "../../assets/images/undraw_personal_trainer.svg";
+import img from "../../../assets/images/undraw_personal_trainer.svg";
 // import logo from "../../assets/images/Logo_halter2-verde_sembordas.png";
 
-import { useWindowWidth } from "../../providers/WindowWidth";
+import { useWindowWidth } from "../../../providers/WindowWidth";
 import { motion } from "framer-motion";
 
 export const LoginUser = () => {

@@ -17,8 +17,8 @@ function Input({children, label, ...rest}: InputProps) {
      <FormControl className={clsx(classes.margin, classes.textField)} >
           <OutlinedInput
             placeholder={label}
-            {...rest}
             startAdornment={<InputAdornment position="start">{children}</InputAdornment>}
+            {...rest}
           />
       </FormControl>
     </div>
