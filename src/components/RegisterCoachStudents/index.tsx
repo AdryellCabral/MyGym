@@ -16,6 +16,9 @@ import { ChangeEvent, useState } from "react";
 import { useAcademy } from "../../providers/Academy";
 import { apiMyGym } from "../../services/api";
 import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
+import { ToastRegister } from "../Toasts/Register";
+import "react-toastify/dist/ReactToastify.css";
 import { useUserProvider } from "../../providers/User";
 
 interface Decoded {
@@ -49,7 +52,7 @@ interface RegisterCoachStudentsProps {
 export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   const { academyResume, loadInfoAcademy } = useAcademy();
   const [coachValue, setCoachValue] = useState("");
-  const {userProvider} = useUserProvider()
+  const { userProvider } = useUserProvider();
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatório!"),
     email: yup.string().required("Campo obrigatório!").email("Email inválido!"),
@@ -103,11 +106,21 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       userId: parseInt(id),
     };
 
-    apiMyGym.post("students", newData, {
-      headers: {
-        Authorization: `Bearer ${userProvider.token}`,
-      },
-    }).then((response) => loadInfoAcademy());
+    apiMyGym
+      .post("students", newData, {
+        headers: {
+          Authorization: `Bearer ${userProvider.token}`,
+        },
+      })
+      .then((response) => {
+        toast(
+          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+            agora é um Aluno da sua Academia!
+          </ToastRegister>,
+          { className: "registerSuccess" }
+        );
+        loadInfoAcademy();
+      });
   };
 
   const postCoach = (data: Data, id: string) => {
@@ -121,25 +134,44 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       academyId: parseInt(sub),
       userId: parseInt(id),
     };
-    apiMyGym.post("coaches", newData, {
-      headers: {
-        Authorization: `Bearer ${userProvider.token}`,
-      },
-    }).then((response) => loadInfoAcademy());
+    apiMyGym
+      .post("coaches", newData, {
+        headers: {
+          Authorization: `Bearer ${userProvider.token}`,
+        },
+      })
+      .then((response) => {
+        toast(
+          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+            agora é um Coach na sua Academia!
+          </ToastRegister>,
+          { className: "registerSuccess" }
+        );
+        loadInfoAcademy();
+      });
   };
 
   const onSubmit = (data: Data) => {
     const { email, password } = data;
     const newData = { email, password };
-    apiMyGym.post("register", newData).then((response) => {
-      const { sub } = jwtDecode<Decoded>(response.data.accessToken);
-
-      if (user === "coach") {
-        postCoach(data, sub);
-      } else {
-        postStudent(data, sub);
-      }
-    }).catch(error => console.log(error));
+    apiMyGym
+      .post("register", newData)
+      .then((response) => {
+        const { sub } = jwtDecode<Decoded>(response.data.accessToken);
+        if (user === "coach") {
+          postCoach(data, sub);
+        } else {
+          postStudent(data, sub);
+        }
+      })
+      .catch((error) =>
+        toast(
+          <ToastRegister name={data.email} closeToast={true} toastProps={null}>
+            E-mail já cadastrado. Tente outro.
+          </ToastRegister>,
+          { className: "registerFail" }
+        )
+      );
   };
 
   return (
@@ -193,7 +225,11 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
         </Input>
         <p>{errors.password?.message}</p>
 
-        <Input label="Confirmar Senha" {...register("passwordConfirm")} type="password">
+        <Input
+          label="Confirmar Senha"
+          {...register("passwordConfirm")}
+          type="password"
+        >
           <LockIcon />
         </Input>
         <p>{errors.passwordConfirm?.message}</p>
