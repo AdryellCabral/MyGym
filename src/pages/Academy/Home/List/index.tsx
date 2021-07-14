@@ -8,6 +8,7 @@ import {
 import SimpleModal from "../../../../components/Modal";
 import { apiMyGym } from "../../../../services/api";
 import { useAcademy } from "../../../../providers/Academy";
+import { useUserProvider } from "../../../../providers/User";
 
 interface objectsArrayType {
   name: string;
@@ -23,17 +24,19 @@ interface ListProps {
 
 export default function List({ objectsArray }: ListProps) {
   const [open, setOpen] = useState(false);
-  const { loadInfoAcademy,academyAuthInfo } = useAcademy();
+  const { loadInfoAcademy } = useAcademy();
+  const {userProvider} = useUserProvider()
+
 
   const [person, setPerson] = useState({
     name: "",
-    id: 0,
+    userId: 0,
     email: "",
     photo: "",
     coachId: 0,
   });
 
-  const { name, id, email, photo } = person;
+  const { name, userId, email, photo } = person;
 
   const handleClose = () => {
     setOpen(false);
@@ -45,15 +48,16 @@ export default function List({ objectsArray }: ListProps) {
   };
 
   const deleteUser = (id: number) => {
-    
-      apiMyGym.delete(`coaches/${id}`, {
-      headers: {
-        Authorization: `Bearer ${academyAuthInfo.token}`,
-      },
-    }).then(() => {
-      loadInfoAcademy()
-      setOpen(false)
-    });
+    console.log(id)
+    console.log(person)
+    //   apiMyGym.delete(`coaches/${id}`, {
+    //   headers: {
+    //     Authorization: `Bearer ${userProvider.token}`,
+    //   },
+    // }).then(() => {
+    //   loadInfoAcademy()
+    //   setOpen(false)
+    // }).catch(error => console.log(error));
     
   };
 
@@ -84,7 +88,7 @@ export default function List({ objectsArray }: ListProps) {
             )}
             <span>Nome: {name}</span>
             <span>Email: {email}</span>
-            <button onClick={() => deleteUser(id)}>Deletar</button>
+            <button onClick={() => deleteUser(userId)}>Deletar</button>
           </div>
         </ModalContainer>
       </SimpleModal>
