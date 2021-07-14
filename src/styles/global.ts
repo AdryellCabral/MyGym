@@ -5,6 +5,9 @@
 import "./font.css";
 import "../assets/fonts/postnobillscolombo-extrabold.ttf";
 import { createGlobalStyle } from "styled-components";
+import { ToastContainer, Zoom, Flip } from "react-toastify";
+import styled from "styled-components";
+import { FlipToFrontTwoTone } from "@material-ui/icons";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -93,3 +96,33 @@ table {
 	border-spacing: 0;
 }
 `;
+
+
+export const ToastContainerStyled = styled(ToastContainer).attrs({
+	position: "top-center",
+	transition: Flip,
+	autoClose: 3000,
+	closeButton: false,
+	hideProgressBar: true,
+  })`
+  .Toastify__toast {
+    width: 250px;
+    height: 150px;
+    font-size: 1.2rem;
+    text-align: center;
+	color: white;
+
+  }
+   .coach {
+	   background-color: var(--light-purple);
+	   span {
+		font-size: 1.3rem;	
+		font-family: var(--title-font);
+		color: var(--light-green)
+
+	   }
+   }
+
+   
+  `;
+  

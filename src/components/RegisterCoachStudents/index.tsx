@@ -16,6 +16,9 @@ import { ChangeEvent, useState } from "react";
 import { useAcademy } from "../../providers/Academy";
 import { apiMyGym } from "../../services/api";
 import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
+import { ToastCoach } from "../Toasts/Coach/Coach";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Decoded {
   email: string;
@@ -132,17 +135,19 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   };
 
   const onSubmit = (data: Data) => {
-    const { email, password } = data;
-    const newData = { email, password };
-    apiMyGym.post("register", newData).then((response) => {
-      const { sub } = jwtDecode<Decoded>(response.data.accessToken);
+    // const { email, password } = data;
+    // const newData = { email, password };
+    // apiMyGym.post("register", newData).then((response) => {
+    //   const { sub } = jwtDecode<Decoded>(response.data.accessToken);
 
-      if (user === "coach") {
-        postCoach(data, sub);
-      } else {
-        postStudent(data, sub);
-      }
-    });
+    //   if (user === "coach") {
+    //     postCoach(data, sub);
+    //   } else {
+    //     postStudent(data, sub);
+    //   }
+    // });
+
+    toast(<ToastCoach name={data.name} closeToast={true} toastProps={null} />, {className: "coach"});
   };
 
   return (
@@ -196,7 +201,11 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
         </Input>
         <p>{errors.password?.message}</p>
 
-        <Input label="Confirmar Senha" {...register("passwordConfirm")} type="password">
+        <Input
+          label="Confirmar Senha"
+          {...register("passwordConfirm")}
+          type="password"
+        >
           <LockIcon />
         </Input>
         <p>{errors.passwordConfirm?.message}</p>
