@@ -3,7 +3,7 @@ import GreenButton from "../GreenButton";
 
 export const Container = styled.form`
   background-color: var(--color-black);
-  width: 285px;
+  width: 90%;
   height: 215px;
   padding: 10px;
   display: flex;
