@@ -25,7 +25,6 @@ export default function List({ objectsArray }: ListProps) {
   const [open, setOpen] = useState(false);
   const { loadInfoAcademy,academyAuthInfo } = useAcademy();
 
-  console.log(objectsArray);
   const [person, setPerson] = useState({
     name: "",
     id: 0,
@@ -46,7 +45,6 @@ export default function List({ objectsArray }: ListProps) {
   };
 
   const deleteUser = (id: number) => {
-    console.log(person);
     
       apiMyGym.delete(`coaches/${id}`, {
       headers: {
