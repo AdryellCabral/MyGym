@@ -7,9 +7,10 @@ import { useStyles } from './styles';
 interface InputProps {
   children: ReactNode;
   label: string;
+  type?:string;
 }
 
-function Input({children, label, ...rest}: InputProps) {
+function Input({children, label, type, ...rest}: InputProps) {
   const classes = useStyles();
   
   return (
@@ -17,8 +18,9 @@ function Input({children, label, ...rest}: InputProps) {
      <FormControl className={clsx(classes.margin, classes.textField)} >
           <OutlinedInput
             placeholder={label}
-            {...rest}
+            type={type}
             startAdornment={<InputAdornment position="start">{children}</InputAdornment>}
+            {...rest}
           />
       </FormControl>
     </div>

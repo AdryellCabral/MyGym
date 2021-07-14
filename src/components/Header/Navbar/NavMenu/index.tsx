@@ -6,10 +6,11 @@ import {Gym, Coach, Student} from './MenuListTypes';
 import { WindowWidthContext } from '../../../../providers/WindowWidth';
 
 interface NavMenuProps{
-  isOpen: boolean
+  isOpen: boolean,
+  setIsOpen: ()=> void,
 }
 
-const NavMenu: React.FC<NavMenuProps> = ({ isOpen })=>{
+const NavMenu: React.FC<NavMenuProps> = ({ isOpen, setIsOpen })=>{
   const {windowWidth, setWindowWidth} = React.useContext(WindowWidthContext);
 
 
@@ -28,7 +29,10 @@ const NavMenu: React.FC<NavMenuProps> = ({ isOpen })=>{
   });
   
   return(
-    <StyledUl isOpen = { isOpen } windowWidth = { windowWidth }>
+    <StyledUl
+      isOpen = { isOpen }
+      onClick = { setIsOpen }
+      windowWidth = { windowWidth }>
       <>
           {typeUser === 'academys' && <Gym />}
           {typeUser === 'coaches' && <Coach />}

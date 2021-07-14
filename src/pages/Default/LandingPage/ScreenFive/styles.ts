@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import BackgroundHeaderScreenFive from "../../../assets/LandingPage/backgroundHeaderScreenTwo.svg";
-import backgroundFooter from "../../../assets/LandingPage/backgroundFooterScreenFour.svg";
-import BackgroundHeaderScreenTwoDesk from "../../../assets/LandingPage/backgroundHeaderScreenTwoDesk.svg";
-import BackgroundFooterDesk from "../../../assets/LandingPage/backgroundFooterDesk.svg";
+import BackgroundHeaderScreenFive from "../../../../assets/LandingPage/backgroundHeaderScreenTwo.svg";
+import backgroundFooter from "../../../../assets/LandingPage/backgroundFooterScreenFour.svg";
+import BackgroundHeaderScreenTwoDesk from "../../../../assets/LandingPage/backgroundHeaderScreenTwoDesk.svg";
+import BackgroundFooterDesk from "../../../../assets/LandingPage/backgroundFooterDesk.svg";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 

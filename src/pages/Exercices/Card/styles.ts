@@ -18,6 +18,11 @@ export const Container = styled.li<ContainerProps>`
   -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.27);
   box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.27);
 
+  @media (min-width: 1200px) {
+    max-width: 700px;
+    height: 25vh;
+  }
+
   .image {
     width: 30%;
     height: 95%;
@@ -28,6 +33,14 @@ export const Container = styled.li<ContainerProps>`
     border-radius: 3px;
     margin-right: 5%;
     margin-left: 1%;
+
+    @media (min-width: 768px) {
+      width: 45%;
+    }
+
+    @media (min-width: 1200px) {
+      width: 55%;
+    }
   }
 
   .info {
@@ -39,10 +52,22 @@ export const Container = styled.li<ContainerProps>`
     h1 {
       margin-bottom: 1vh;
       color: var(--dark-purple);
+
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 1.7rem;
+      }
     }
 
     p {
       font-size: 0.9rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.1rem;
+      }
     }
   }
 `;
