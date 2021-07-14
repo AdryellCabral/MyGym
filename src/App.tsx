@@ -9,7 +9,9 @@ import Header from "./components/Header";
 import { useUserProvider } from "./providers/User";
 
 const App = () => {
-  const { userProvider:{typeUser} } = useUserProvider();
+  const {
+    userProvider: { typeUser },
+  } = useUserProvider();
 
   return (
     <>
