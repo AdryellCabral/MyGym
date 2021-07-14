@@ -4,6 +4,7 @@ import Exercices from "../pages/Exercices";
 import Workouts from "../pages/Workouts";
 import WorkoutStudent from "../pages/WorkoutStudent";
 import PhysicalAssessment from "../pages/PhysicalAssessment";
+import Feed from "../pages/Feed";
 
 const StudentRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const StudentRoutes = () => {
       <Route path="/workouts" component={Workouts} />
       <Route exact path="/workout/:id" component={WorkoutStudent} />
       <Route path="/physicalAssessment" component={PhysicalAssessment} />
+      <Route path="/feed" component={Feed} />
     </Switch>
   );
 };
