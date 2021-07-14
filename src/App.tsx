@@ -14,12 +14,7 @@ const App = () => {
   return (
     <>
       {typeUser === "" ? (
-        // <DefaultRoutes />
-
-        <>
-          <Header />
-          <StudentRoutes />
-        </>
+        <DefaultRoutes />
       ) : (
         <>
           {typeUser === "academys" && <AcademyRoutes />}
