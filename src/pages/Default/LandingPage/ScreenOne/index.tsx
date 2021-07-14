@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import Logo from "../../../assets/logo.png";
+import Logo from "../../../../assets/logo.png";
 import { useHistory } from "react-router-dom";
 
 const ScreenOne = () => {

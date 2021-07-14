@@ -12,6 +12,7 @@ export const Container = styled.div<ContainerProps>`
   margin: 5vh auto;
   border-radius: 3px;
 
+  max-width: 500px;
   header {
     display: flex;
     justify-content: space-between;
@@ -23,6 +24,10 @@ export const Container = styled.div<ContainerProps>`
     h1 {
       color: var(--color-green);
       margin-left: 3%;
+
+      @media (min-width: 768px) {
+        font-size: 1.3rem;
+      }
     }
     button {
       background-color: var(--light-black);
@@ -32,6 +37,11 @@ export const Container = styled.div<ContainerProps>`
         background-color: none;
         color: white;
         font-size: 1rem;
+
+        @media (min-width: 768px) {
+          font-size: 1.3rem;
+          margin-right: 10px;
+        }
       }
     }
   }
@@ -58,6 +68,10 @@ export const Container = styled.div<ContainerProps>`
     margin-bottom: 3vh;
     font-size: 0.9rem;
     padding: 4px;
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
 
   .container--video {

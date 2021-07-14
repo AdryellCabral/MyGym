@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { ReactNode } from "react";
 import { createContext, useState, useContext } from "react";
+=======
+import { ReactNode, useContext } from "react";
+import { createContext, useState } from "react";
+>>>>>>> feat/Workouts
 
 interface Context {
   windowWidth: number;
