@@ -12,7 +12,7 @@ export const Gym = ()=>{
 
     return(
         <>
-            <li onClick={() => handlePath("/home")}>
+            <li onClick={() => handlePath("/")}>
                 Home
             </li>
             <li onClick={() => handlePath("/register_student")}>
@@ -56,7 +56,7 @@ export const Student = ()=>{
 
     return(
         <>
-            <li onClick={() => handlePath("/home")}>
+            <li onClick={() => handlePath("/")}>
                 Home
             </li>
             <li onClick={() => handlePath("/exercises")}>

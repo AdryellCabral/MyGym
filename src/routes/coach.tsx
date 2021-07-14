@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
-import InfoStudent from "../pages/InfoStudent";
-import Students from "../pages/Students";
+import InfoStudent from "../pages/Coach/InfoStudent";
+import Students from "../pages/Coach/Students";
 
 const CoachRoutes = () => {
     return (
