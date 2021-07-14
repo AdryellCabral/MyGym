@@ -3,7 +3,7 @@ import { Modal } from "@material-ui/core";
 interface SimpleModalProps {
   children: JSX.Element;
   open: boolean;
-  handleClose: () => void;
+  handleClose: (modal: boolean) => void;
 }
 
 export default function SimpleModal({
@@ -15,7 +15,7 @@ export default function SimpleModal({
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => handleClose(open)}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
