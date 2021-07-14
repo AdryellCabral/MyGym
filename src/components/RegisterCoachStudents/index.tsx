@@ -167,7 +167,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       .catch((error) =>
         toast(
           <ToastRegister name={data.email} closeToast={true} toastProps={null}>
-            E-mail já cadastrado
+            E-mail já cadastrado. Tente outro.
           </ToastRegister>,
           { className: "registerFail" }
         )

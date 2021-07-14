@@ -122,8 +122,14 @@ export const ToastContainerStyled = styled(ToastContainer).attrs({
    }
 
    .registerFail {
-		background-color: var(--dark-purple);
-	
+		background-color: var(--color-red);
+		color: white;
+
+		span {
+		font-size: 1.4rem;	
+		font-family: var(--title-font);
+		color: var(--light-green)
+
    }
    
   `;
