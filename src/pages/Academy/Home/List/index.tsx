@@ -30,13 +30,13 @@ export default function List({ objectsArray }: ListProps) {
 
   const [person, setPerson] = useState({
     name: "",
-    userId: 0,
+    id: 0,
     email: "",
     photo: "",
     coachId: 0,
   });
 
-  const { name, userId, email, photo } = person;
+  const { name, id, email, photo } = person;
 
   const handleClose = () => {
     setOpen(false);
@@ -48,17 +48,15 @@ export default function List({ objectsArray }: ListProps) {
   };
 
   const deleteUser = (id: number) => {
-    console.log(id)
-    console.log(person)
-    //   apiMyGym.delete(`coaches/${id}`, {
-    //   headers: {
-    //     Authorization: `Bearer ${userProvider.token}`,
-    //   },
-    // }).then(() => {
-    //   loadInfoAcademy()
-    //   setOpen(false)
-    // }).catch(error => console.log(error));
-    
+    const endpoint = person.coachId ? "students" : "coaches"
+      apiMyGym.delete(`${endpoint}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${userProvider.token}`,
+      },
+    }).then(() => {
+      loadInfoAcademy()
+      setOpen(false)
+    }).catch(error => console.log(error));
   };
 
 
@@ -88,7 +86,7 @@ export default function List({ objectsArray }: ListProps) {
             )}
             <span>Nome: {name}</span>
             <span>Email: {email}</span>
-            <button onClick={() => deleteUser(userId)}>Deletar</button>
+            <button onClick={() => deleteUser(id)}>Deletar</button>
           </div>
         </ModalContainer>
       </SimpleModal>

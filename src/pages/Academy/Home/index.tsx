@@ -12,7 +12,6 @@ export default function HomePage() {
         <div>
           <ContainerLista>
             <h2>Alunos</h2>
-            {console.log(academyResume)}
             <List objectsArray={academyResume?.students} />
           </ContainerLista>
           <ContainerLista>
