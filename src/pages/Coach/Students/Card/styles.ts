@@ -14,6 +14,7 @@ export const Container = styled.li<ContainerProps>`
   cursor: pointer;
   padding: 1%;
   border-radius: 3px;
+  
 
 
   -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.27);
@@ -39,11 +40,14 @@ export const Container = styled.li<ContainerProps>`
     width: 60%;
     border-bottom: 2px solid black;
     h1 {
+      font-size: 1.2rem;
       color: var(--dark-purple);
+      font-family: var(--title-font);
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.2rem;
+      font-family: var(--title-font);
     }
   }
 `;

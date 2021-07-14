@@ -51,7 +51,7 @@ const Students = () => {
       .then((response) => setStudents(response))
   };
   return (
-    <section className="page--students" style={{ width: "100%" }}>
+    <section className="page--students" style={{ width: "100%", marginTop: "95px" }}>
       <Container>
         <div className="container--top">
           <h1>Alunos</h1>
