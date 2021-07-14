@@ -16,6 +16,7 @@ import { ChangeEvent, useState } from "react";
 import { useAcademy } from "../../providers/Academy";
 import { apiMyGym } from "../../services/api";
 import jwtDecode from "jwt-decode";
+import { useUserProvider } from "../../providers/User";
 
 interface Decoded {
   email: string;
@@ -46,8 +47,9 @@ interface RegisterCoachStudentsProps {
 }
 
 export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
-  const { academyResume } = useAcademy();
+  const { academyResume, loadInfoAcademy } = useAcademy();
   const [coachValue, setCoachValue] = useState("");
+  const {userProvider} = useUserProvider()
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatório!"),
     email: yup.string().required("Campo obrigatório!").email("Email inválido!"),
@@ -75,11 +77,6 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       .oneOf([yup.ref("password")], "As senhas estão diferentes."),
   });
 
-  let token = localStorage.getItem("@tokenMyGym") || "";
-  if (token !== "") {
-    token = JSON.parse(token);
-  }
-
   const {
     register,
     handleSubmit,
@@ -95,7 +92,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   };
 
   const postStudent = (data: Data, id: string) => {
-    const { sub } = jwtDecode<Decoded>(token);
+    const { sub } = jwtDecode<Decoded>(userProvider.token);
 
     const { name, email, coachId } = data;
     const newData = {
@@ -108,13 +105,13 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
 
     apiMyGym.post("students", newData, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${userProvider.token}`,
       },
-    });
+    }).then((response) => loadInfoAcademy());
   };
 
   const postCoach = (data: Data, id: string) => {
-    const { sub } = jwtDecode<Decoded>(token);
+    const { sub } = jwtDecode<Decoded>(userProvider.token);
 
     const { name, email, cref } = data;
     const newData = {
@@ -126,9 +123,9 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
     };
     apiMyGym.post("coaches", newData, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${userProvider.token}`,
       },
-    });
+    }).then((response) => loadInfoAcademy());
   };
 
   const onSubmit = (data: Data) => {
@@ -142,7 +139,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
       } else {
         postStudent(data, sub);
       }
-    });
+    }).catch(error => console.log(error));
   };
 
   return (
