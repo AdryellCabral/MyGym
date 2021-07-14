@@ -48,6 +48,42 @@ export const Form = styled.form`
   }
 `;
 
+export const ModalContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 1rem;
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+  min-width: 185px;
+  letter-spacing: 1px;
+
+  h1 {
+    font-family: var(--title-font);
+    color: black;
+  }
+
+  .box {
+    width: 90%;
+    background-color: var(--color-black);
+    padding: 10px;
+    margin: 25px auto;
+    p {
+      color: white;
+    }
+  }
+
+  button {
+    color: var(--color-black);
+    span {
+      font-family: var(--title-font);
+    }
+  }
+`;
+
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     margin: {

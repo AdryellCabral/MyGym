@@ -5,11 +5,16 @@ import GreenButton from "../GreenButton";
 import Input from "../Input";
 import { Store, Lock, MailOutline } from "@material-ui/icons";
 import { useState } from "react";
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Modal,
+  Select,
+} from "@material-ui/core";
 import clsx from "clsx";
 import { apiMyGym } from "../../services/api";
-import { useStyles, Form } from "./styles";
-import SimpleModal from "../Modal";
+import { useStyles, Form, ModalContent } from "./styles";
 import { useHistory } from "react-router-dom";
 
 interface UserData {
@@ -54,11 +59,11 @@ const RegisterUser = () => {
     setPlano(event.target.value as string);
   };
 
-  const handleClose = () => {
+  const handleClose = () => {};
+
+  const handleClick = () => {
     history.push("/login");
   };
-
-  const handleClick = () => {};
 
   return (
     <Form onSubmit={handleSubmit(onRegister)}>
@@ -93,12 +98,21 @@ const RegisterUser = () => {
       </FormControl>
 
       <GreenButton type="submit">Confirmar</GreenButton>
-      <SimpleModal open={registerOk} handleClose={handleClose}>
+      <Modal open={registerOk} onClose={handleClose}>
+        <ModalContent>
+          <h1>OBRIGADO POR ESCOLHER NOSSO PRODUTO!</h1>
+          <div className="box">
+            <p>Entraremos em contato via email</p>
+          </div>
+          <GreenButton onClick={handleClick}>Confirmar</GreenButton>
+        </ModalContent>
+      </Modal>
+      {/* <SimpleModal open={registerOk} handleClose={handleClose}>
         <>
           <p>Cadastro realizado com sucesso</p>
           <GreenButton onClick={handleClick}>Confirmar</GreenButton>
         </>
-      </SimpleModal>
+      </SimpleModal> */}
     </Form>
   );
 };
