@@ -131,6 +131,6 @@ export const ToastContainerStyled = styled(ToastContainer).attrs({
 		color: var(--light-green)
 
    }
-   
+}
   `;
   
