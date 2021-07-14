@@ -61,7 +61,7 @@ export const Container = styled.div<ContainerProps>`
 
   p {
     width: 90%;
-    height: 20vh;
+    height: 16vh;
     background-color: var(--light-black);
     border-radius: 3px;
     color: white;
@@ -73,10 +73,14 @@ export const Container = styled.div<ContainerProps>`
 
   .container--video {
     width: 90%;
-    height: 22vh;
-    background-color: var(--light-black);
+    height: 30%;
+    /* background-color: black; */
     border-radius: 3px;
     margin: 0 auto;
     margin-bottom: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
 `;
