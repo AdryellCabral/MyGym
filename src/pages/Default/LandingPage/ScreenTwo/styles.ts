@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BackgroundHeaderScreenTwo from "../../../assets/LandingPage/backgroundHeaderScreenTwo.svg";
+import BackgroundHeaderScreenTwo from "../../../../assets/LandingPage/backgroundHeaderScreenTwo.svg";
 
 export const Container = styled.div`
   width: 100%;

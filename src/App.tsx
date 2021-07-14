@@ -17,6 +17,7 @@ const App = () => {
         <DefaultRoutes />
       ) : (
         <>
+          <Header />
           {typeUser === "academys" && <AcademyRoutes />}
           {typeUser === "coaches" && <CoachRoutes />}
           {typeUser === "students" && <StudentRoutes />}
