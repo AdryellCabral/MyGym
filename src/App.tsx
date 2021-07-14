@@ -3,7 +3,6 @@ import CoachRoutes from "./routes/coach";
 import StudentRoutes from "./routes/student";
 import DefaultRoutes from "./routes/default";
 import { GlobalStyle } from "./styles/global";
-import Exercices from "./pages/Student/Exercices";
 
 import Header from "./components/Header";
 import { useUserProvider } from "./providers/User";
@@ -24,6 +23,7 @@ const App = () => {
         </>
       )}
       <GlobalStyle />
+  
     </>
   );
 };
