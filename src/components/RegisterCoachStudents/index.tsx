@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { TextField, MenuItem } from "@material-ui/core";
-import { ContainerForm } from "./styles";
+import { ContainerForm, StyledTextField } from "./styles";
 import GreenButton from "../GreenButton";
 import Input from "../Input";
 
@@ -88,10 +88,8 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
     resolver: yupResolver(formSchema),
   });
 
-  const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setCoachValue(event.target.value);
+  const handleChange = (event: string) => {
+    setCoachValue(event);
   };
 
   const postStudent = (data: Data, id: string) => {
@@ -176,12 +174,12 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
 
   return (
     <ContainerForm>
-      {user === "coach" ? (
-        <h1>Registro de Coach</h1>
-      ) : (
-        <h1>Registro de Aluno</h1>
-      )}
       <form onSubmit={handleSubmit(onSubmit)}>
+        {user === "coach" ? (
+          <h1>Registro de Coach</h1>
+        ) : (
+          <h1>Registro de Aluno</h1>
+        )}
         <Input label="Nome" {...register("name")}>
           <PersonIcon />
         </Input>
@@ -194,21 +192,18 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
 
         {user === "student" ? (
           <>
-            <TextField
-              variant="outlined"
-              label="Coach"
+            <select
               value={coachValue}
               {...register("coachId")}
-              onChange={handleChange}
+              onChange={(evt) => handleChange(evt.target.value)}
               id="coach"
-              select
             >
               {academyResume?.coaches?.map((coach: CoachMapProps) => (
-                <MenuItem key={coach.name} value={coach.id}>
+                <option key={coach.name} value={coach.id}>
                   {coach.name}
-                </MenuItem>
+                </option>
               ))}
-            </TextField>
+            </select>
             <p>{errors.coachId?.message}</p>
           </>
         ) : (
