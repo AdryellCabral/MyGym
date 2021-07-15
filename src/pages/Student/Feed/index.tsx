@@ -2,16 +2,47 @@ import { useState } from "react";
 import { Container, Icon } from "./styles";
 import ModalNewFeed from "./ModalNewFeed";
 import { useStudent } from "../../../providers/Student";
+import { apiMyGym } from "../../../services/api";
+
+interface FeedMap {
+  food: string;
+  index: number;
+}
 
 const Feed = () => {
   const [openModal, setOpenModal] = useState(false);
-  const {student} = useStudent();
+  const {student, getStudent} = useStudent();
+
+  let token = localStorage.getItem("@tokenMyGym") || "";
+  if (token !== "") {
+    token = JSON.parse(token);   
+  }
+
+
   const handleModal = (modal: boolean) => {
     setOpenModal(!modal);
   };
+  
+  const clearFeeds = () => {
 
-  const [myFeed] = useState([]);
-  console.log(student)
+    const feed = {
+      feeds: []
+    }
+
+    apiMyGym
+      .patch(`students/${student.id}`, feed, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }})
+      .then((response) => {
+        console.log(response);
+        getStudent(student.userId)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <section className="feed">
       <Container>
@@ -19,19 +50,19 @@ const Feed = () => {
 
         <div className="container">
           <div className="student--feed">
-            {myFeed.length > 0 ? (
+            {student?.feeds?.length > 0 ? (
               <>
                 <header>
                   <div>
-                    Refeições: <span>4</span>
+                    Refeições: <span>{student?.feeds?.length}</span>
                   </div>
-                  <Icon />
+                  <Icon onClick={clearFeeds}/>
                 </header>
                 <ul>
                   <>
-                    {myFeed.map((food, index) => (
-                      <li key={index}>
-                        <span>{index + 1}°:</span> {food}
+                    {student?.feeds?.map((food:string) => (
+                      <li key={food}>
+                         {food}
                       </li>
                     ))}
                   </>
