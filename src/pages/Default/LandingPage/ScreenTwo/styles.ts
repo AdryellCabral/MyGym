@@ -34,7 +34,7 @@ export const Container = styled.div`
     h1 {
       color: white;
       font-weight: bolder;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       font-family: "Bill";
 
       @media (min-width: 768px) {

@@ -48,9 +48,14 @@ export const Container = styled.div`
       font-weight: bolder;
       font-size: 1.1rem;
       font-family: "Bill";
+      font-size: 1.5rem;
 
       @media (min-width: 768px) {
         font-size: 2rem;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 2.5rem;
       }
     }
   }

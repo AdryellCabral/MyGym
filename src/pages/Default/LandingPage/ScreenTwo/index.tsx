@@ -5,7 +5,7 @@ const ScreenTwo = () => {
     <section className="info--Product" style={{ width: "100%" }}>
       <Container>
         <header>
-          <h1>Informações sobre o produto</h1>
+          <h1>APLICAÇÃO</h1>
         </header>
         <figure>
           <img src={FigPageTwo} alt="Pessoas malhando" />

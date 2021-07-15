@@ -43,28 +43,52 @@ export const Container = styled.div`
       justify-content: space-between;
 
       @media (min-width: 768px) {
-        margin-top: 2%;
+        margin-top: 4%;
       }
+      .containerLogo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 2px;
+        img {
+          width: 60px;
+          height: 25px;
 
-      img {
-        width: 60px;
-        height: 25px;
+          @media (min-width: 768px) {
+            width: 90px;
+            height: 40px;
+          }
+        }
 
-        @media (min-width: 768px) {
-          width: 90px;
-          height: 40px;
+        h1 {
+          color: var(--color-green);
+          font-family: "Bill";
+          font-size: 1rem;
+          margin-right: auto;
+          margin-left: 5px;
+
+          @media (min-width: 768px) {
+            font-size: 1.5rem;
+          }
         }
       }
+
       button {
         padding: 4px;
-        padding-top: 6px;
-        padding-bottom: 6px;
+        padding-top: 8px;
+        padding-bottom: 8px;
         background-color: var(--light-purple);
         border: none;
         border-radius: 3px;
         width: 80px;
         color: white;
         font-size: 1rem;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(110%);
+        }
 
         @media (min-width: 768px) {
           width: 120px;
@@ -129,7 +153,7 @@ export const Container = styled.div`
       }
       @media (min-width: 1200px) {
         height: 80%;
-        max-width: 600px;
+        max-width: 700px;
         background-size: 65vh;
         align-self: flex-start;
         margin-right: 3%;
@@ -172,7 +196,7 @@ export const Container = styled.div`
 
         a {
           color: var(--color-green);
-          text-decoration: none
+          text-decoration: none;
         }
       }
     }
