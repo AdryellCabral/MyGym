@@ -30,7 +30,7 @@ export const ContainerDesk = styled.div`
       font-family: "Bill";
 
       @media (min-width: 768px) {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     }
   }

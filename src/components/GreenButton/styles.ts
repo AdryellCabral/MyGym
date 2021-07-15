@@ -8,15 +8,27 @@ export const StyledButton = styled.button<sizeButton>`
   background: var(--color-green);
   width: 90%;
   height: 40px;
-  border-radius: 5px;
+  border-radius: 3px;
   border: none;
-  font-family: var(--title-font);
+  /* font-family: "Bill"; */
   font-size: var(--font-button-green-mobile);
   color: var(--btnColor-primary);
   transition: color 150ms ease-in-out;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  padding: 22px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  span {
+    font-family: "Bill", "Big Shoulders Stencil Text", "Roboto";
+    /* font-weight: bold; */
+  }
 
   &:after {
     content: "";
@@ -32,18 +44,18 @@ export const StyledButton = styled.button<sizeButton>`
     transition: width 150ms ease-in-out;
   }
   &:hover {
-    color: #fff;
+    color: var(--light-green);
   }
   &:hover:after {
     width: 110%;
   }
-
+  /* 
   ${(props) =>
     props.small &&
     css`
       color: var(--color-black);
       border: black solid 1px;
-    `};
+    `}; */
 
   @media (min-width: 768px) {
     font-size: var(--font-button-purple-desktop);

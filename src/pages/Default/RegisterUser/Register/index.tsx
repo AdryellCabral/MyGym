@@ -5,16 +5,10 @@ import GreenButton from "../../../../components/GreenButton";
 import Input from "../../../../components/Input";
 import { Store, Lock, MailOutline } from "@material-ui/icons";
 import { useState } from "react";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Modal,
-  Select,
-} from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Modal } from "@material-ui/core";
 import clsx from "clsx";
 import { apiMyGym } from "../../../../services/api";
-import { useStyles, Form, ModalContent } from "./styles";
+import { useStyles, Form, ModalContent, SelectStyled } from "./styles";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
@@ -107,16 +101,16 @@ const RegisterUser = () => {
       </Input>
       <p>{errors.name?.message}</p>
 
-      <FormControl variant="outlined" className={clsx(classes.textField)}>
+      <FormControl variant="outlined">
         <InputLabel>Plano</InputLabel>
-        <Select value={plano} onChange={handleChange} label="Plano">
+        <SelectStyled value={plano} onChange={handleChange} label="Plano">
           <MenuItem value="">
             <em>Escolha o plano</em>
           </MenuItem>
           <MenuItem value="mensal">Mensal</MenuItem>
           <MenuItem value="semestral">Semestral</MenuItem>
           <MenuItem value="anual">Anual</MenuItem>
-        </Select>
+        </SelectStyled>
       </FormControl>
 
       <GreenButton type="submit">Confirmar</GreenButton>

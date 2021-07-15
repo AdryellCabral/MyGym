@@ -1,13 +1,19 @@
 import Login from "./Login";
 import { ContainerRegister, Container } from "./styles";
 import img from "../../../assets/images/undraw_personal_trainer.svg";
-// import logo from "../../assets/images/Logo_halter2-verde_sembordas.png";
 
 import { useWindowWidth } from "../../../providers/WindowWidth";
 import { motion } from "framer-motion";
+import { useHistory } from "react-router-dom";
 
 export const LoginUser = () => {
   const { windowWidth } = useWindowWidth();
+
+  const history = useHistory();
+
+  const handleBack = () => {
+    history.push("/");
+  };
 
   return (
     <Container>
@@ -17,6 +23,7 @@ export const LoginUser = () => {
         transition={{ duration: 0.6 }}
       >
         <ContainerRegister>
+          <div className="btBack" onClick={() => handleBack()}></div>
           {windowWidth >= 768 && <img src={img} alt="" />}
           <Login />
         </ContainerRegister>

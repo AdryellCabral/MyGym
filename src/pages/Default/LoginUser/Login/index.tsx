@@ -10,7 +10,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import clsx from "clsx";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { apiMyGym } from "../../../../services/api";
-import { useStyles } from "./styles";
+import { useStyles, SelectStyled } from "./styles";
 import { useUserProvider } from "../../../../providers/User";
 import { useHistory } from "react-router-dom";
 
@@ -81,16 +81,16 @@ const Login = () => {
       </Input>
       <p>{errors.password?.message}</p>
 
-      <FormControl variant="outlined" className={clsx(classes.textField)}>
+      <FormControl variant="outlined">
         <InputLabel>Plano</InputLabel>
-        <Select value={userType} onChange={handleChange} label="Usuário">
+        <SelectStyled value={userType} onChange={handleChange} label="Usuário">
           <MenuItem value="">
             <em>Tipo de usuário</em>
           </MenuItem>
           <MenuItem value="academys">Academia</MenuItem>
           <MenuItem value="coaches">Coach</MenuItem>
           <MenuItem value="students">Aluno</MenuItem>
-        </Select>
+        </SelectStyled>
       </FormControl>
 
       <GreenButton type="submit">Confirmar</GreenButton>
