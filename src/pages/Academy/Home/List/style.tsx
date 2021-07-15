@@ -3,17 +3,18 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import CloseIcon from "@material-ui/icons/Close";
 
 export const Container = styled.div`
-  background-color: var(--color-black);
+  background-color: #f7f7f7;
   width: 100%;
-  max-width: 600px;
+  /* max-width: 600px; */
   height: 150px;
   overflow: auto;
   margin: 0 auto;
   font-size: var(--font-list-mobile);
+  border: 2px solid var(--color-black);
   border-radius: 3px;
 
   li {
-    color: white;
+    color: black;
     width: 100%;
     list-style: none;
   }
