@@ -4,17 +4,22 @@ import LockIcon from "@material-ui/icons/Lock";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 export default function NewPassword() {
   const schema = yup.object().shape({
-    password: yup.string().required("Campo obrigatório!"),
+    password: yup.string().required("Por favor insira sua senha antiga."),
     newPassword: yup
       .string()
-      .min(5, "No mínimo 5 dígitos")
-      .required("Campo obrigatório!"),
+      .required("Por favor digite uma nova senha.")
+      .min(5, "A nova senha deve ter no mínimo 5 dígitos."),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref("newPassword")], "Senhas diferentes!"),
+      .oneOf(
+        [yup.ref("newPassword")],
+        'As senhas estão diferentes, por favor repita a nova senha no campo "Confirmar senha"'
+      ),
   });
 
   const {
@@ -23,9 +28,30 @@ export default function NewPassword() {
     formState: { errors },
   } = useForm<any>({ resolver: yupResolver(schema) });
 
+  const history = useHistory();
+
   const onSubmit = (data: any) => {
     console.log(data);
+    history.push("/");
+    toast.success("Senha alterada com sucesso!");
   };
+
+  const erros = [
+    errors.password?.message,
+    errors.newPassword?.message,
+    errors.confirmPassword?.message,
+  ];
+
+  const customId = "custom-id-yes";
+
+  // eslint-disable-next-line array-callback-return
+  erros.map((erro) => {
+    if (erro) {
+      toast.error(erro, {
+        toastId: customId,
+      });
+    }
+  });
 
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
@@ -38,7 +64,6 @@ export default function NewPassword() {
           {...register("password")}
         />
       </InputStyled>
-      {errors?.password?.message}
       <div className="aside">
         <InputStyled>
           <LockIcon />
@@ -48,7 +73,6 @@ export default function NewPassword() {
             {...register("newPassword")}
           />
         </InputStyled>
-        {errors?.password?.message}
         <InputStyled>
           <LockIcon />
           <input
@@ -57,7 +81,6 @@ export default function NewPassword() {
             {...register("confirmPassword")}
           />
         </InputStyled>
-        {errors.confirmPassword?.message}
       </div>
       <GreenButtonStyled type="submit">Alterar</GreenButtonStyled>
     </Container>
