@@ -18,7 +18,6 @@ const Exercices = () => {
   const { exercises } = useExercises();
   const [filterList, setFilterList] = useState<Exercice[]>([] as Exercice[]);
 
-  console.log(exercises);
 
   const filterGroup = (group: string) => {
     if (group === "") {
