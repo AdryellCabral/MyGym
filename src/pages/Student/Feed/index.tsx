@@ -18,7 +18,7 @@ const Feed = () => {
 
         <div className="container">
           <div className="student--feed">
-            {myFeed ? (
+            {myFeed.length > 0 ? (
               <>
                 <header>
                   <div>

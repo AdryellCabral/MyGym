@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 110px);
 
   h1 {
     height: 5%;
