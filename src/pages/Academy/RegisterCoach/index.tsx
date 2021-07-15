@@ -1,6 +1,6 @@
 import { RegisterCoachStudents } from "../../../components/RegisterCoachStudents";
 import { ContainerRegister, Container } from "./styles";
-import img from "../../../assets/images/image-register-coach.svg";
+import img from "../../../assets/images/FigRegisterCoach.svg";
 import { useWindowWidth } from "../../../providers/WindowWidth";
 import { motion } from "framer-motion";
 export const RegisterCoach = () => {
