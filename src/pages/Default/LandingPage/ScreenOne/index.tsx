@@ -12,7 +12,11 @@ const ScreenOne = () => {
       <Container>
         <header>
           <div className="containerHeader">
-            <img src={Logo} alt="Logo" />
+            <div className="containerLogo">
+              <img src={Logo} alt="Logo" />
+              <h1>My Gym</h1>
+            </div>
+
             <button onClick={() => handleLogin()}>Login</button>
           </div>
           <p className="apresentationText">

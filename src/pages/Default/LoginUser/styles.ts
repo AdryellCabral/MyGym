@@ -1,32 +1,57 @@
 import styled from "styled-components";
+import logo from "../../../assets/logo.png";
 
 export const ContainerRegister = styled.div`
   background-color: var(--light-black);
-  height: calc(112vh - 65px);
+  height: 100vh;
   display: flex;
   align-items: center;
+  width: 100%;
+  /* max-width: 500px; */
 
   img {
-    width: calc(85vw - 400px);
-    max-width: 600px;
-    margin-right: 5%;
-    margin-top: 100px;
+    width: 40vh;
+    max-width: 800px;
+
+    @media (min-width: 1200px) {
+      width: 70vh;
+    }
   }
 
-  @media (min-width: 1024px) {
-    img {
-      margin-left: 10%;
-    }
+  .btBack {
+    background-image: url(${logo});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
 
-    padding-right: 16px;
+    cursor: pointer;
+
+    @media (min-width: 1200px) {
+      left: 40px;
+      margin: 0;
+      height: 40px;
+    }
   }
 
   @media (min-width: 768px) {
-    height: calc(112vh - 65px);
+    height: 100vh;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 5%;
   }
 
-  @media (min-width: 1366px) {
-    height: calc(112vh - 75px);
+  @media (min-width: 1200px) {
+    height: 100vh;
+    flex-direction: row;
   }
 `;
 
