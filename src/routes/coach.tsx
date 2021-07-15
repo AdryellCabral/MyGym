@@ -6,7 +6,7 @@ const CoachRoutes = () => {
     return (
         <Switch>
             <Route exact path="/" component={Students} />
-            <Route path="/students/:id" component={InfoStudent} />  
+            <Route  path="/students/:id" component={InfoStudent} />
         </Switch>
     );
 }
