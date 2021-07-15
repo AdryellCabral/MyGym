@@ -50,10 +50,11 @@ const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen }: Props) => {
       setPhysicalAssessment(response.data[0].physicalAssessment)
       ).catch(err => console.log(err));
   };
+  
   console.log(physicalAssessment);
   const sendInfo = (data: any) => {
     let newData = {};
-    if (Object.keys(physicalAssessment).length > 0) {
+    if (physicalAssessment?.weight.length > 0) {
       const weight = [...physicalAssessment.weight, data.weight];
       const imc = [...physicalAssessment.imc, data.imc];
       const taxFat = [...physicalAssessment.taxFat, data.taxFat];

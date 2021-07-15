@@ -6,6 +6,8 @@ import { apiMyGym } from "../../../services/api";
 import RegisterWorkout from "../../../components/RegisterWorkout";
 import RegisterPhisicalAssessment from "../../../components/RegisterPhisicalAssessment";
 import Modal from "../../../components/Modal";
+import { useWindowWidth } from "../../../providers/WindowWidth";
+import Chart from "react-apexcharts";
 
 interface RoomParams {
   id: string;
@@ -37,12 +39,72 @@ const InfoStudent = () => {
   const [infoStudent, setInfoStudent] = useState<any>({});
   const [newWorkout, setNewWorkout] = useState(false);
   const [newPhisical, setNewPhisical] = useState(false);
+  const { windowWidth } = useWindowWidth();
   const params = useParams<RoomParams>();
   const Id = params.id;
   let token = localStorage.getItem("@tokenMyGym") || "";
   if (token !== "") {
     token = JSON.parse(token);
   }
+
+  const options = {
+    chart: {
+      id: "basic-bar",
+    },
+    xaxis: {
+      categories: [
+        "Jan",
+        "Fev",
+        "Mar",
+        "Abr",
+        "Mai",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Set",
+        "Out",
+        "Nov",
+        "Dez",
+      ],
+    },
+    yaxis: {
+      show: false,
+    },
+    dataLabels: {
+      enabled: windowWidth >= 768 ? true : false,
+    },
+    grid: {
+      row: {
+        colors: ["#f3f3f3", "transparent"],
+        opacity: 0.5,
+      },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "70",
+      },
+    },
+  };
+
+  const series = [
+    {
+      name: "IMC",
+      data: infoStudent?.physicalAssessment?.imc,
+    },
+    {
+      name: "Peso",
+      data: infoStudent?.physicalAssessment?.weight,
+    },
+    {
+      name: "Gordura",
+      data: infoStudent?.physicalAssessment?.taxFat,
+    },
+    {
+      name: "Massa Magra",
+      data: infoStudent?.physicalAssessment?.leanMass,
+    },
+  ];
 
   const GetInfo = () => {
     apiMyGym
@@ -66,7 +128,7 @@ const InfoStudent = () => {
   useEffect(() => {
     GetInfo();
   }, []);
-
+  console.log(infoStudent);
   return (
     <section className="home--Student">
       <Container percentage={(16 / 20) * 100}>
@@ -100,7 +162,15 @@ const InfoStudent = () => {
           </div>
           <div className="progression--chart">
             <h2>Progressão</h2>
-            <div />
+            <div>
+              <Chart
+                options={options}
+                series={series}
+                type="bar"
+                width="100%"
+                height="90%"
+              />
+            </div>
             <PurpleButton small={false} onClick={OpenPhisical}>
               Nova Avaliação
             </PurpleButton>

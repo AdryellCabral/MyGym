@@ -1,12 +1,30 @@
 import styled from "styled-components";
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  Select,
+  withStyles,
+} from "@material-ui/core";
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   text-align: center;
   margin: 0 auto;
-  width: 300px;
+  width: 70%;
+  max-width: 260px;
+
+  @media (min-width: 768px) {
+    padding: 26px;
+    max-width: 300px;
+    margin: 0;
+    border-radius: 3px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 55px 20px;
+  }
 
   div {
     div {
@@ -16,11 +34,12 @@ export const Form = styled.form`
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 2rem;
     letter-spacing: 3px;
     font-family: var(--title-font);
-    margin: 5px 0 0;
+    margin-bottom: 15px;
     color: white;
+    align-self: flex-start;
   }
 
   p {
@@ -32,8 +51,8 @@ export const Form = styled.form`
 
   button {
     margin: 0 auto;
-    width: 225px;
-    margin-top: 5px;
+    width: 100%;
+    margin-top: 20px;
     span {
       font-family: var(--title-font);
     }
@@ -41,7 +60,7 @@ export const Form = styled.form`
 
   @media (min-width: 768px) {
     h1 {
-      font-size: var(--font-title-desktop);
+      font-size: 2.5rem;
     }
     background-color: var(--color-black);
     padding-bottom: 25px;
@@ -60,3 +79,9 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+
+export const SelectStyled = withStyles({
+  root: {
+    width: "100%",
+  },
+})(Select);
