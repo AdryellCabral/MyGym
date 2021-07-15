@@ -29,9 +29,9 @@ const ScreenFive = () => {
     <section className="getProducts" style={{ width: "100%" }}>
       <Container>
         <header id="getNow">
-          <h1>Informações sobre o produto</h1>
+          <h1>PLANOS</h1>
         </header>
-        <CarouselStyled >
+        <CarouselStyled>
           {plans.map((item) => (
             <CardGetGroup key={item.id} plan={item}></CardGetGroup>
           ))}

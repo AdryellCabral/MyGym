@@ -15,10 +15,12 @@ export const Container = styled.div`
 
   @media (min-width: 1200px) {
     height: 45%;
+    margin-top: 12%;
   }
 
   h1 {
     font-family: "Bill", sans-serif;
+    font-size: 1.3rem;
 
     @media (min-width: 768px) {
       font-size: 2rem;

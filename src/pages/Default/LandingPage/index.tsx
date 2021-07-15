@@ -52,7 +52,7 @@ const LandingPage = () => {
         <ScreenOne />
         <ContainerDesk>
           <header>
-            <h1>Informações sobre o produto</h1>
+            <h1>APLICAÇÃO</h1>
           </header>
           <div className="container--info">
             <ScreenTwo />
