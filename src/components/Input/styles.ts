@@ -29,6 +29,6 @@ export const useStyles = makeStyles((theme: Theme) =>
 export const StyledInput = withStyles({
   root: {
     width: "100%",
-    height: "7vh",
+    height: "7%",
   },
 })(OutlinedInput);

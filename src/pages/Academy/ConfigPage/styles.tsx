@@ -58,7 +58,7 @@ export const PageContainer = styled.div`
   }
 `;
 
-export const AlterarPlano = styled.div`
+export const AlterarPlano = styled.form`
   background-color: var(--color-black);
   width: 90%;
   height: 150px;

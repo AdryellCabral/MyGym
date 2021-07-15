@@ -44,7 +44,7 @@ export const StyledButton = styled.button<sizeButton>`
     transition: width 150ms ease-in-out;
   }
   &:hover {
-    color: #fff;
+    color: var(--light-green);
   }
   &:hover:after {
     width: 110%;
