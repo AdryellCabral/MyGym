@@ -7,11 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { ToastRegister } from "../../../components/Toasts/Register";
 
-interface FeedMap {
-  element: string;
-  index: number;
-  array: Array<string>;
-}
 
 const Feed = () => {
   const [openModal, setOpenModal] = useState(false);
