@@ -10,7 +10,7 @@ interface ModalExerciceProps {
     name: string;
     group: string;
     description: string;
-    img: string;
+    image: string;
     video: string;
   };
 }
@@ -21,7 +21,7 @@ const ModalExercice = ({
 }: ModalExerciceProps) => {
   return (
     <Modal open={openModal} handleClose={handleModal}>
-      <Container img={exercice.img}>
+      <Container img={exercice.image}>
         <header>
           <h1>{exercice.name}</h1>
           <button onClick={() => handleModal(openModal)}>
@@ -34,7 +34,7 @@ const ModalExercice = ({
 
         <div className="container--video">
           <YoutubeContainer
-            videoId="8QXijFlYS74"
+            videoId={exercice.video}
             containerClassName="container--video"
           />
         </div>

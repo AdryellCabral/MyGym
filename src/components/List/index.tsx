@@ -20,7 +20,7 @@ export const List = ({ options, src, funcText, funcIcon }: ListProps) => {
     <Container>
       {options?.map((option, index) => (
         <div key={index}>
-          <li  onClick={funcText}>
+          <li onClick={funcText}>
             {option.coaches?.name}
             {option.students?.name}
             {option?.category}
