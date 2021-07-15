@@ -3,6 +3,9 @@ import PurpleButton from "../../../components/PurpleButton";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { apiMyGym } from "../../../services/api";
+import RegisterWorkout from "../../../components/RegisterWorkout";
+import RegisterPhisicalAssessment from "../../../components/RegisterPhisicalAssessment";
+import Modal from "../../../components/Modal";
 
 interface RoomParams {
   id: string,
@@ -33,6 +36,8 @@ interface Student {
 
 const InfoStudent = () => {
   const [info, setInfo] = useState<any>({});
+  const [newWorkout, setNewWorkout] = useState(false);
+  const [newPhisical, setNewPhisical] = useState(false);
   const params = useParams<RoomParams>();
   const Id = params.id;
   let token = localStorage.getItem("token") || "";
@@ -48,6 +53,14 @@ const InfoStudent = () => {
         }
       })
       .then((response) => setInfo(response))
+  }
+
+  const OpenRegisterWorkout = () => {
+    setNewWorkout(!newWorkout);
+  }
+
+  const OpenPhisical = () => {
+    setNewPhisical(!newPhisical);
   }
 
   useEffect(() => {
@@ -81,15 +94,17 @@ const InfoStudent = () => {
             <h2>Treinos Cadastrados</h2>
             <div/>
             
-            <PurpleButton small={false} onClick={() => console.log("clicou")}>Novo Treino</PurpleButton>
+            <PurpleButton small={false} onClick={OpenRegisterWorkout}>Novo Treino</PurpleButton>
           </div>
           <div className="progression--chart">
             <h2>Progressão</h2>
             <div />
-            <PurpleButton small={false} onClick={() => console.log("clicou")}>Nova Avaliação</PurpleButton>
+            <PurpleButton small={false} onClick={OpenPhisical}>Nova Avaliação</PurpleButton>
           </div>
         </div>
       </Container>
+      {newWorkout && <Modal open={newWorkout} handleClose={OpenRegisterWorkout}><RegisterWorkout name="Maromba" setOpen={OpenRegisterWorkout} /></Modal> }
+      {newPhisical && <Modal open={newPhisical} handleClose={OpenPhisical}><RegisterPhisicalAssessment nome="Grilo" setOpen={OpenPhisical}/></Modal>}
     </section>
   );
 };
