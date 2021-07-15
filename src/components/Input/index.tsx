@@ -1,27 +1,28 @@
-import React, { ReactNode } from 'react';
-import { OutlinedInput, FormControl, InputAdornment } from '@material-ui/core';
-import clsx from 'clsx';
-import { useStyles } from './styles';
-
+import React, { ReactNode } from "react";
+import { OutlinedInput, FormControl, InputAdornment } from "@material-ui/core";
+import clsx from "clsx";
+import { StyledInput, useStyles } from "./styles";
 
 interface InputProps {
   children: ReactNode;
   label: string;
-  type?:string;
+  type?: string;
 }
 
-function Input({children, label, type, ...rest}: InputProps) {
-  const classes = useStyles();
-  
+function Input({ children, label, type, ...rest }: InputProps) {
+  // const classes = useStyles();
+
   return (
     <div>
-     <FormControl className={clsx(classes.margin, classes.textField)} >
-          <OutlinedInput
-            placeholder={label}
-            type={type}
-            startAdornment={<InputAdornment position="start">{children}</InputAdornment>}
-            {...rest}
-          />
+      <FormControl>
+        <StyledInput
+          placeholder={label}
+          type={type}
+          startAdornment={
+            <InputAdornment position="start">{children}</InputAdornment>
+          }
+          {...rest}
+        />
       </FormControl>
     </div>
   );

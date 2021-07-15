@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerRegister = styled.div`
-  background-color: var(--light-black);
+  /* background-color: var(--light-black); */
   height: calc(100vh - 80px);
   margin-top: 80px;
   display: flex;
@@ -26,5 +26,5 @@ export const ContainerRegister = styled.div`
 `;
 
 export const Container = styled.div`
-  background-color: var(--light-black);
+  /* background-color: var(--light-black); */
 `;

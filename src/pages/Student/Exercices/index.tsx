@@ -2,41 +2,37 @@ import { Container } from "./styles";
 import SelectFilter from "../../../components/SelectFilter";
 import CardList from "./CardList";
 import Card from "./Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useExercises } from "../../../providers/Exercises";
 
 interface Exercice {
   id: number;
   name: string;
   group: string;
   description: string;
-  img: string;
+  image: string;
   video: string;
 }
 
 const Exercices = () => {
-  const [objTest] = useState([
-    {
-      id: 1,
-      name: "Supino",
-      group: "Braço",
-      description: "Essa desrição é um test",
-      img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-      video:
-        "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-    },
-    {
-      id: 2,
-      name: "Supino",
-      group: "Braço",
-      description: "Essa desrição é um test",
-      img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-      video:
-        "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-    },
-  ]);
+  const { exercises } = useExercises();
+  const [filterList, setFilterList] = useState<Exercice[]>([] as Exercice[]);
+
+
   const filterGroup = (group: string) => {
-    console.log(group);
+    if (group === "") {
+      setFilterList(exercises);
+    } else {
+      const newlist = exercises.filter(
+        (exercice: Exercice) => exercice.group === group
+      );
+      setFilterList(newlist);
+    }
   };
+
+  useEffect(() => {
+    setFilterList(exercises);
+  }, []);
   return (
     <section className="page--exercices" style={{ width: "100%" }}>
       <Container>
@@ -50,7 +46,7 @@ const Exercices = () => {
 
         <CardList>
           <>
-            {objTest.map((item) => (
+            {filterList?.map((item: Exercice) => (
               <Card key={item.id} exercice={item} />
             ))}
           </>

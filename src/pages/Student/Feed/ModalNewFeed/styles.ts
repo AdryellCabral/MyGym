@@ -89,13 +89,14 @@ export const Container = styled.div`
       font-size: 1rem;
     }
 
-    ul {
-      list-style: none;
+    ol {
       background-color: #f8f8f8;
       border-radius: 3px;
+      padding: 8px;
       height: 70%;
       width: 100%;
-      overflow: scroll;
+      overflow: auto;
+      list-style: lower-alpha;
 
       @media (min-width: 1200px) {
         height: 70%;
@@ -103,6 +104,7 @@ export const Container = styled.div`
 
       li {
         margin-bottom: 1px;
+        list-style: lower-alpha;
 
         @media (min-width: 768px) {
           font-size: 1.4rem;
