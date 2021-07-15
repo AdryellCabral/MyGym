@@ -11,17 +11,14 @@ export const Container = styled.div<PercentageBarProps>`
   flex-direction: column;
   justify-content: space-evenly;
   /* align-items: center; */
-  margin-top: 16vh;
+  margin-top: 80px;
 
-  @media (min-width: 768px) {
-    margin-top: 12vh;
-  }
-
+  
   @media (min-width: 1200px) {
     flex-direction: column;
     width: 90%;
     margin: 0 auto;
-    margin-top: 12vh;
+    margin-top: 80px;
     justify-content: none;
   }
 
