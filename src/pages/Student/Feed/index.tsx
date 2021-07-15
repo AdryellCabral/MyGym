@@ -5,38 +5,38 @@ import { useStudent } from "../../../providers/Student";
 import { apiMyGym } from "../../../services/api";
 
 interface FeedMap {
-  food: string;
+  element: string;
   index: number;
+  array: Array<string>;
 }
 
 const Feed = () => {
   const [openModal, setOpenModal] = useState(false);
-  const {student, getStudent} = useStudent();
+  const { student, getStudent } = useStudent();
 
   let token = localStorage.getItem("@tokenMyGym") || "";
   if (token !== "") {
-    token = JSON.parse(token);   
+    token = JSON.parse(token);
   }
-
 
   const handleModal = (modal: boolean) => {
     setOpenModal(!modal);
   };
-  
-  const clearFeeds = () => {
 
+  const clearFeeds = () => {
     const feed = {
-      feeds: []
-    }
+      feeds: [],
+    };
 
     apiMyGym
       .patch(`students/${student.id}`, feed, {
         headers: {
           Authorization: `Bearer ${token}`,
-        }})
+        },
+      })
       .then((response) => {
         console.log(response);
-        getStudent(student.userId)
+        getStudent();
       })
       .catch((error) => {
         console.log(error);
@@ -56,13 +56,13 @@ const Feed = () => {
                   <div>
                     Refeições: <span>{student?.feeds?.length}</span>
                   </div>
-                  <Icon onClick={clearFeeds}/>
+                  <Icon onClick={clearFeeds} />
                 </header>
                 <ul>
                   <>
-                    {student?.feeds?.map((food:string) => (
-                      <li key={food}>
-                         {food}
+                    {student?.feeds?.map((element: string, index: number) => (
+                      <li key={element}>
+                        <span>{index + 1}°</span> {element}
                       </li>
                     ))}
                   </>

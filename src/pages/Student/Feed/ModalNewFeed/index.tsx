@@ -47,7 +47,7 @@ const ModalNewFeed = ({ handleModal, openModal }: ModalNewFeedProps) => {
         }})
       .then((response) => {
         console.log(response);
-        getStudent(student.userId)
+        getStudent()
       })
       .catch((error) => {
         console.log(error);
@@ -79,11 +79,13 @@ const ModalNewFeed = ({ handleModal, openModal }: ModalNewFeedProps) => {
 
         <div className="feed">
           <h2>Refeições</h2>
-          <ul>
-            {newFeed?.map((feed) => (
-              <li key={feed}>{feed}</li>
+          <ol>
+            {newFeed?.map((feed, index) => (
+              <li key={index}>
+                <span>{index + 1}°</span> {feed}
+              </li>
             ))}
-          </ul>
+          </ol>
           <button onClick={registerFeed}>Cadastrar</button>
         </div>
       </Container>

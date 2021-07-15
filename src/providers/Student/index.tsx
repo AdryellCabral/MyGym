@@ -32,7 +32,7 @@ interface StudentProviderData {
   tokenDecoded: Decoded;
   student?: any;
   setStudent: Dispatch<React.SetStateAction<Student | undefined>>;
-  getStudent: (userId: number) => void;
+  getStudent: () => void;
 }
 
 const StudentContext = createContext<StudentProviderData>(
@@ -44,18 +44,21 @@ export const StudentProvider = ({ children }: StudentProps) => {
   
   let token = localStorage.getItem("@tokenMyGym") || "";
   let typeUser = localStorage.getItem("@typeUser") || "";
+  let idUser = localStorage.getItem("@idUser") || "";
+
 
   const [tokenDecoded, setTokenDecoded] = useState<Decoded>({} as Decoded);
   if (token !== "") {
     token = JSON.parse(token);
     typeUser = JSON.parse(typeUser);
+    idUser = JSON.parse(idUser);
    
   }
   const [student, setStudent] = useState<Student>();
 
   const getStudent = () => {
     apiMyGym
-      .get(`students?userId=${tokenDecoded.sub}`, {
+      .get(`students?userId=${idUser}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         }})
