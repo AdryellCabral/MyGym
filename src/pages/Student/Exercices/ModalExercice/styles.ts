@@ -12,6 +12,10 @@ export const Container = styled.div<ContainerProps>`
   margin: 5vh auto;
   border-radius: 3px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   max-width: 500px;
   header {
     display: flex;
@@ -20,6 +24,7 @@ export const Container = styled.div<ContainerProps>`
     background-color: var(--light-black);
     height: 6vh;
     margin-bottom: 3vh;
+    width: 100%;
 
     h1 {
       color: var(--color-green);
@@ -60,7 +65,7 @@ export const Container = styled.div<ContainerProps>`
 
   p {
     width: 90%;
-    height: 20vh;
+    height: 16vh;
     background-color: var(--light-black);
     border-radius: 3px;
     color: white;
@@ -76,10 +81,14 @@ export const Container = styled.div<ContainerProps>`
 
   .container--video {
     width: 90%;
-    height: 22vh;
-    background-color: var(--light-black);
+    height: 30%;
+    /* background-color: black; */
     border-radius: 3px;
     margin: 0 auto;
     margin-bottom: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
 `;
