@@ -39,13 +39,15 @@ export const Container = styled.div<PercentageBarProps>`
       width: 60%;
       flex-direction: row;
       justify-content: center;
-      padding: 0 0 0 5%;
       gap: 5%;
+      align-items: center;
+      padding: 0 0 0 5%;
+      margin-top: 30px;
     }
 
-    @media (min-width: 1200px) {
-      /* height: 75vh; */
-      /* align-items: flex-end; */
+    @media (min-width: 1024px) {
+      padding: 0 ;
+      margin: 0;
       gap: 5%;
     }
 
@@ -58,14 +60,16 @@ export const Container = styled.div<PercentageBarProps>`
 
       figure {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         flex-direction: row;
-        /* align-items: left; */
-        @media (min-width: 1200px) {
-          /* width: 100%; */
+        width: 100%;
+        
+        @media (min-width: 768px) {
+          width: 90%;
           height: 100%;
           flex-direction: column;
-          /* margin-top: 5vh; */
+          align-items: center;
+          
         }
         img {
           object-fit: cover;
@@ -90,12 +94,12 @@ export const Container = styled.div<PercentageBarProps>`
 
         figcaption {
           font-weight: bolder;
-          /* align-self: center; */
-          margin-left: 15px;
+          align-self: center;
+          /* margin-left: 15px; */
 
           @media (min-width: 768px) {
             margin-top: 1%;
-            font-size: 2rem;
+            font-size: 1rem;
           }
 
           @media (min-width: 1200px) {
@@ -104,162 +108,197 @@ export const Container = styled.div<PercentageBarProps>`
         }
       }
     }
+    
+    .trainingPerformed {
+      width: 90%;
+      height: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content:center;
+      @media (min-width: 768px) {
+        /* margin-top: auto; */
+      }
+      @media (min-width: 1200px) {
+      /* align-self: flex-end; */
+      width: 100%;
+      /* height: auto; */
+      }
 
-      .trainingPerformed {
-        width: 90%;
-        height: 20%;
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
+      h2 {
+        margin-top: 10%;
+        margin-bottom: 2%;
+        font-weight: bolder;
+
         @media (min-width: 768px) {
-          /* margin-top: auto; */
+        font-size: 1rem;
+        margin-top: 0;
         }
+
         @media (min-width: 1200px) {
-        /* align-self: flex-end; */
+          font-size: 1.3rem;
+        }
+      }
+
+      .percentageBar {
+        border: 1px solid var(--light-black);
+        border-radius: 2px;
+        background-color: var(--light-black);
         width: 100%;
-        /* height: auto; */
+        height: 40px;
+        margin-bottom: 5%;
+
+        @media (min-width: 1200px) {
+          height: 60px;
+          margin-bottom: 0;
         }
+        > div {
+          background-color: var(--color-green);
+          height: 100%;
+          width: ${({ percentage }) => percentage}%;
 
-        h2 {
-          margin-top: 10%;
-          margin-bottom: 2%;
-          font-weight: bolder;
+          display: flex;
+          align-items: center;
+          
+          span {
+            color: white;
+            margin-left: 5%;
 
-          @media (min-width: 768px) {
-          font-size: 1.5rem;
-          margin-top: 0;
-          }
-
-          @media (min-width: 1200px) {
-            font-size: 1.3rem;
-          }
-        }
-
-        .percentageBar {
-          border: 1px solid var(--light-black);
-          border-radius: 2px;
-          background-color: var(--light-black);
-          width: 100%;
-          height: 40px;
-          margin-bottom: 5%;
-
-          @media (min-width: 1200px) {
-            height: 60px;
-            margin-bottom: 0;
-          }
-          > div {
-            background-color: var(--color-green);
-            height: 100%;
-            width: ${({ percentage }) => percentage}%;
-
-            display: flex;
-            align-items: center;
-            span {
-              color: white;
-              margin-left: 5%;
-
-              @media (min-width: 768px) {
-                font-size: 1.3rem;
-              }
+            @media (min-width: 768px) {
+              font-size: 1rem;
+            }
+            @media (min-width: 1200px) {
+              font-size: 1.3rem;
             }
           }
         }
       }
     }
   }
-  .workouts--chart {
-    width: 90%;
-    
+  .boxs{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5%;
+    justify-content: space-between;
 
+    @media (min-width: 768px) {
+      flex-direction: row;
+      /* padding: 0; */
+      margin-top: 5%;
+        /* height: 75vh; */
+    }
     @media (min-width: 1200px) {
-      height: 75vh;
+      padding: 0;
     }
-
-    h2 {
-      margin-bottom: 2%;
-      font-weight: bolder;
-      @media (min-width: 768px) {
-        font-size: 1.5rem;
-      }
-
-      @media (min-width: 1200px) {
-        margin-bottom: 0;
-        font-size: 1.5rem;
-        display: block;
-        height: 5vh;
-      }
-    }
-    ul{
-        background-color: var(--color-black);
-        color: var(--light-gray);
-        border-radius: 5px;
-        max-height: 150px;
-        overflow-y: scroll;
-        li{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 8px;
-        }
-    }
-    > div {
-      height: 40vh;
+    .workouts--chart {
       width: 100%;
-      border: 1px solid black;
-      border-radius: 2px;
-      margin-bottom: 5%;
+
+      @media (min-width: 768px) {
+        width: 40vw;
+      }
+      
+      @media (min-width: 1200px) {
+        width: 40vw;
+      }
+  
+      h2 {
+        margin-bottom: 2%;
+        font-weight: bolder;
+        @media (min-width: 768px) {
+          font-size: 1.5rem;
+        }
+  
+        @media (min-width: 1200px) {
+          margin-bottom: 0;
+          font-size: 1.5rem;
+          display: block;
+          height: 5vh;
+        }
+      }
+      ul{
+          background-color: var(--color-black);
+          color: var(--light-gray);
+          border-radius: 5px;
+          max-height: 150px;
+          overflow-y: scroll;
+          li{
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              padding: 8px;
+          }
+      }
+      > div {
+        height: 30vh;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 2px;
+        margin-bottom: 5%;
+        
+        @media (min-width: 768px) {
+        height: 40vh;
+        }
+  
+        @media (min-width: 1200px) {
+          /* height: 45%; */
+          /* width: 45%; */
+        }
+      }
+    }
+    .progression--chart {
+      width: 100%;
+    
+      @media (min-width: 768px) {
+        width: 40vw;
+      }
 
       @media (min-width: 1200px) {
-        height: 100%;
-        height: 70vh;
+        height: 75vh;
+        width: 40vw;
+      }
+  
+      h2 {
+        margin-bottom: 2%;
+        font-weight: bolder;
+        @media (min-width: 768px) {
+          font-size: 1.5rem;
+        }
+  
+        @media (min-width: 1200px) {
+          margin-bottom: 0;
+          font-size: 1.5rem;
+          display: block;
+          height: 5vh;
+        }
+      }
+      ul{
+          background-color: var(--color-black);
+          color: var(--light-gray);
+          border-radius: 5px;
+          max-height: 150px;
+          overflow-y: scroll;
+          li{
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              padding: 8px;
+          }
+      }
+      > div {
+        height: 35vh;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 2px;
+        margin-bottom: 5%;
+
+        @media (min-width: 768px) {
+          height: 40vh;
+        }
+  
+        @media (min-width: 1200px) {
+          /* height: 45%; */
+          /* height: 70vh; */
+        }
       }
     }
   }
-  .progression--chart {
-    width: 90%;
-    
-
-    @media (min-width: 1200px) {
-      height: 75vh;
-    }
-
-    h2 {
-      margin-bottom: 2%;
-      font-weight: bolder;
-      @media (min-width: 768px) {
-        font-size: 1.5rem;
-      }
-
-      @media (min-width: 1200px) {
-        margin-bottom: 0;
-        font-size: 1.5rem;
-        display: block;
-        height: 5vh;
-      }
-    }
-    ul{
-        background-color: var(--color-black);
-        color: var(--light-gray);
-        border-radius: 5px;
-        max-height: 150px;
-        overflow-y: scroll;
-        li{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 8px;
-        }
-    }
-    > div {
-      height: 40vh;
-      width: 100%;
-      border: 1px solid black;
-      border-radius: 2px;
-      margin-bottom: 5%;
-
-      @media (min-width: 1200px) {
-        height: 100%;
-        height: 70vh;
-      }
-    }
 `;
