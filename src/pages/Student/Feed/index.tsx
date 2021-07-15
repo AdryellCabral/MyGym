@@ -9,17 +9,7 @@ const Feed = () => {
     setOpenModal(!modal);
   };
 
-  const [myFeed] = useState([
-    "arroz",
-    "arroz",
-    "arroz",
-    "arroz",
-    "arroz",
-    "arroz",
-    "arroz",
-    "arroz",
-    "arroz",
-  ]);
+  const [myFeed] = useState([]);
 
   return (
     <section className="feed">
@@ -28,7 +18,7 @@ const Feed = () => {
 
         <div className="container">
           <div className="student--feed">
-            {myFeed[20] ? (
+            {myFeed ? (
               <>
                 <header>
                   <div>

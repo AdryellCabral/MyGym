@@ -95,7 +95,7 @@ export const Container = styled.div`
       border-radius: 3px;
       height: 70%;
       width: 100%;
-      overflow: scroll;
+      overflow: auto;
 
       @media (min-width: 1200px) {
         height: 70%;
