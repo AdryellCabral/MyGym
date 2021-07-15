@@ -37,7 +37,7 @@ export const Coach = ()=>{
 
     return(
         <>
-            <li onClick={() => handlePath("/students")}>
+            <li onClick={() => handlePath("/")}>
                 Alunos
             </li>
             <li onClick={() => handlePath("/settings")}>
