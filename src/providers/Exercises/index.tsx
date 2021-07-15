@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext, ReactNode, useContext } from "react";
 import { apiMyGym } from "../../services/api";
 
@@ -19,8 +19,12 @@ export const ExercisesProvider = ({ children }: ExercisesProvidersProps) => {
   const [exercises, setExercises] = useState();
 
   const loadExercises = () => {
-    apiMyGym.get("exercises").then((response) => setExercises(response.data));
+    apiMyGym.get("exercises").then((response) => setExercises(response.data[0]));
   };
+
+  useEffect(() => {
+    loadExercises();
+  },[])
 
   return (
     <ExercisesContext.Provider value={{ loadExercises, exercises }}>
