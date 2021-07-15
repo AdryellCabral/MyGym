@@ -5,7 +5,7 @@ import Workouts from "../pages/Student/Workouts";
 import WorkoutStudent from "../pages/Student/WorkoutStudent";
 import PhysicalAssessment from "../pages/Student/PhysicalAssessment";
 import Feed from "../pages/Student/Feed";
-import { Upload } from "../components/upload";
+import ConfigPage from "../pages/Student/Config";
 
 const StudentRoutes = () => {
   return (
@@ -16,7 +16,7 @@ const StudentRoutes = () => {
       <Route exact path="/workout/:id" component={WorkoutStudent} />
       <Route path="/assessment" component={PhysicalAssessment} />
       <Route path="/feeding" component={Feed} />
-      <Route path="/config" component={Upload} />
+      <Route path="/settings" component={ConfigPage} />
     </Switch>
   );
 };
