@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Container, Icon } from "./styles";
 import ModalNewFeed from "./ModalNewFeed";
+import { useStudent } from "../../../providers/Student";
 
 const Feed = () => {
   const [openModal, setOpenModal] = useState(false);
-
+  const {student} = useStudent();
   const handleModal = (modal: boolean) => {
     setOpenModal(!modal);
   };
 
   const [myFeed] = useState([]);
-
+  console.log(student)
   return (
     <section className="feed">
       <Container>

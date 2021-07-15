@@ -8,6 +8,7 @@ import {
 } from "react";
 import jwt_decode from "jwt-decode";
 import { apiMyGym } from "../../services/api";
+import { useUserProvider } from "../User";
 
 interface StudentProps {
   children: ReactNode;
@@ -39,28 +40,37 @@ const StudentContext = createContext<StudentProviderData>(
 );
 
 export const StudentProvider = ({ children }: StudentProps) => {
-  let token = localStorage.getItem("token") || "";
+  const {userProvider} = useUserProvider()
+  
+  let token = localStorage.getItem("@tokenMyGym") || "";
+  let typeUser = localStorage.getItem("@typeUser") || "";
+
   const [tokenDecoded, setTokenDecoded] = useState<Decoded>({} as Decoded);
   if (token !== "") {
     token = JSON.parse(token);
-    const decoded: Decoded = jwt_decode(token);
-    setTokenDecoded(decoded);
+    typeUser = JSON.parse(typeUser);
+   
   }
-
   const [student, setStudent] = useState<Student>();
 
   const getStudent = () => {
     apiMyGym
-      .get(`students?userId=${tokenDecoded.sub}`)
-      .then((response) => setStudent(response.data));
+      .get(`students?userId=${tokenDecoded.sub}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }})
+      .then((response) => setStudent(response.data[0]));
   };
 
   useEffect(() => {
-    if (token !== "") {
+   
+    if (typeUser === "students") {
+      const decoded: Decoded = jwt_decode(token);
+      setTokenDecoded(decoded);
       getStudent();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userProvider]);
 
   return (
     <StudentContext.Provider
