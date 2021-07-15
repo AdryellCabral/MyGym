@@ -1,12 +1,32 @@
 import styled from "styled-components";
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  Select,
+  withStyles,
+} from "@material-ui/core";
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   text-align: center;
   margin: 0 auto;
+
   width: 300px;
+
+  max-width: 260px;
+
+  @media (min-width: 768px) {
+    padding: 28px 16px;
+    margin: 0;
+    border-radius: 3px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 28px 16px;
+    margin: 0;
+  }
 
   div {
     div {
@@ -16,10 +36,11 @@ export const Form = styled.form`
   }
 
   h1 {
-    font-size: 26px;
+    font-size: 2rem;
     letter-spacing: 3px;
     font-family: var(--title-font);
-    margin: 5px 0 0;
+    margin-bottom: 5%;
+    align-self: flex-start;
     color: white;
   }
 
@@ -32,8 +53,8 @@ export const Form = styled.form`
 
   button {
     margin: 0 auto;
-    width: 225px;
-    margin-top: 5px;
+    width: 100%;
+    margin-top: 10%;
     span {
       font-family: var(--title-font);
     }
@@ -60,6 +81,7 @@ export const ModalContent = styled.div`
   text-align: center;
   min-width: 185px;
   letter-spacing: 1px;
+  border-radius: 3px;
 
   h1 {
     font-family: var(--title-font);
@@ -71,6 +93,7 @@ export const ModalContent = styled.div`
     background-color: var(--color-black);
     padding: 10px;
     margin: 25px auto;
+    border-radius: 3px;
     p {
       color: white;
     }
@@ -78,6 +101,8 @@ export const ModalContent = styled.div`
 
   button {
     color: var(--color-black);
+    /* background-color: var; */
+
     span {
       font-family: var(--title-font);
     }
@@ -96,3 +121,9 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+
+export const SelectStyled = withStyles({
+  root: {
+    width: "100%",
+  },
+})(Select);

@@ -51,6 +51,7 @@ export const Container = styled.div`
         align-items: center;
         justify-content: center;
         row-gap: 2px;
+
         img {
           width: 60px;
           height: 25px;
@@ -65,8 +66,8 @@ export const Container = styled.div`
           color: var(--color-green);
           font-family: "Bill";
           font-size: 1rem;
-          margin-right: auto;
-          margin-left: 5px;
+
+          text-align: center;
 
           @media (min-width: 768px) {
             font-size: 1.5rem;
