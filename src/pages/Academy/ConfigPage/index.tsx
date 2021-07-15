@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import NewPassword from "../../../components/NewPassword";
 import {
   AlterarPlano,
@@ -7,6 +9,19 @@ import {
 } from "./styles";
 
 export default function AcademyConfig() {
+  const history = useHistory();
+
+  const hanldeLogout = () => {
+    history.push("/");
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  const onSubmit = () => {
+    toast.success("Plano alterado com sucesso!");
+    history.push("/");
+  };
+
   return (
     <PageContainer>
       <div className="spans">
@@ -15,17 +30,17 @@ export default function AcademyConfig() {
       </div>
       <div className="components">
         <NewPassword />
-        <AlterarPlano>
+        <AlterarPlano onSubmit={onSubmit}>
           <span>Alterar plano</span>
           <select name="Planos" defaultValue="Anual">
             <option value="Anual">Anual</option>
             <option value="Trimestral">Trimestral</option>
             <option value="Semestral">Semestral</option>
           </select>
-          <GreenButtonStyled2>Confirmar</GreenButtonStyled2>
+          <GreenButtonStyled2 type="submit">Confirmar</GreenButtonStyled2>
         </AlterarPlano>
       </div>
-      <RedButtonStyled>Logout</RedButtonStyled>
+      <RedButtonStyled onClick={hanldeLogout}>Logout</RedButtonStyled>
     </PageContainer>
   );
 }
