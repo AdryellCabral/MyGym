@@ -3,6 +3,7 @@ import { createContext, ReactNode, useContext } from "react";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { apiMyGym } from "../../services/api";
 import { useEffect } from "react";
+import { useUserProvider } from "../User";
 interface AcademyProvidersProps {
   children: ReactNode;
 }
@@ -45,7 +46,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
   let typeUser = localStorage.getItem("@typeUser") || "";
   let idUser = localStorage.getItem("@idUser") || "";
   let token = localStorage.getItem("@tokenMyGym") || "";
-
+  const {userProvider} = useUserProvider()
   if (token !== "") {
     token = JSON.parse(token);
     idUser = JSON.parse(idUser);
@@ -73,7 +74,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
       loadInfoAcademy();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userProvider]);
 
   return (
     <AcademyContext.Provider

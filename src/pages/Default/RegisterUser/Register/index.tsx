@@ -16,11 +16,18 @@ import clsx from "clsx";
 import { apiMyGym } from "../../../../services/api";
 import { useStyles, Form, ModalContent } from "./styles";
 import { useHistory } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 interface UserData {
   password: string;
-  nome: string;
+  name: string;
   email: string;
+}
+interface Decoded {
+  email: string;
+  iat: number;
+  exp: number;
+  sub: string;
 }
 
 const RegisterUser = () => {
@@ -52,7 +59,18 @@ const RegisterUser = () => {
 
   const onRegister = (data: UserData) => {
     const newData = { ...data, plano };
-    apiMyGym.post("register", newData).then(() => setRegisterOk(true));
+    const { name, email } = data;
+    apiMyGym.post("register", newData).then((response) => {
+      const { sub } = jwtDecode<Decoded>(response.data.accessToken);
+      const dataAcademy = { name, email, userId: parseInt(sub) };
+      apiMyGym
+        .post("academys", dataAcademy, {
+          headers: {
+            Authorization: `Bearer ${response.data.accessToken}`,
+          },
+        })
+        .then((response) => setRegisterOk(true));
+    });
   };
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -76,14 +94,18 @@ const RegisterUser = () => {
         <Lock />
       </Input>
       <p>{errors.password?.message}</p>
-      <Input {...register("passwordConfirm")} label="Confirme a senha" type="password">
+      <Input
+        {...register("passwordConfirm")}
+        label="Confirme a senha"
+        type="password"
+      >
         <Lock />
       </Input>
       <p>{errors.passwordConfirm?.message}</p>
       <Input {...register("nome")} label="Nome da academia">
         <Store />
       </Input>
-      <p>{errors.nome?.message}</p>
+      <p>{errors.name?.message}</p>
 
       <FormControl variant="outlined" className={clsx(classes.textField)}>
         <InputLabel>Plano</InputLabel>
