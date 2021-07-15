@@ -1,5 +1,6 @@
 import { Container } from "./styles";
 import Modal from "../../../../components/Modal";
+import YoutubeContainer from "../../../../components/YoutubeContainer";
 
 interface ModalExerciceProps {
   handleModal: (modal: boolean) => void;
@@ -30,7 +31,12 @@ const ModalExercice = ({
 
         <div className="img" />
         <p>{exercice.description}</p>
-        <div className="container--video" />
+        <div className="container--video">
+          <YoutubeContainer
+            videoId="8QXijFlYS74"
+            containerClassName="container--video"
+          />
+        </div>
       </Container>
     </Modal>
   );
