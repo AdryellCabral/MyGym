@@ -14,10 +14,11 @@ import { useUserProvider } from "../../providers/User";
 interface Props {
   setOpen: () => void;
   nome?: string;
+  getInfo: () => void
+  infoStudent: any
 }
 
-const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen }: Props) => {
-  const [physicalAssessment, setPhysicalAssessment] = useState<any>([]);
+const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen, getInfo, infoStudent }: Props) => {
   const {
     userProvider: { token },
   } = useUserProvider();
@@ -39,26 +40,16 @@ const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen }: Props) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const getPhysicalAssessment = () => {
-    apiMyGym
-      .get(`students?id=${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response: any) =>
-      setPhysicalAssessment(response.data[0].physicalAssessment)
-      ).catch(err => console.log(err));
-  };
   
-  console.log(physicalAssessment);
+  
   const sendInfo = (data: any) => {
     let newData = {};
-    if (physicalAssessment?.weight.length > 0) {
-      const weight = [...physicalAssessment.weight, data.weight];
-      const imc = [...physicalAssessment.imc, data.imc];
-      const taxFat = [...physicalAssessment.taxFat, data.taxFat];
-      const leanMass = [...physicalAssessment.leanMass, data.leanMass];
+    console.log(infoStudent)
+    if (infoStudent?.physicalAssessment?.weight.length > 0) {
+      const weight = [...infoStudent.physicalAssessment.weight, data.weight];
+      const imc = [...infoStudent.physicalAssessment.imc, data.imc];
+      const taxFat = [...infoStudent.physicalAssessment.taxFat, data.taxFat];
+      const leanMass = [...infoStudent.physicalAssessment.leanMass, data.leanMass];
       newData = {
         physicalAssessment: {
           weight,
@@ -94,14 +85,12 @@ const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen }: Props) => {
         },
       })
       .then((response) => {
-        getPhysicalAssessment();
+        getInfo()
       })
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    getPhysicalAssessment();
-  }, []);
+ 
 
   return (
     <Body>

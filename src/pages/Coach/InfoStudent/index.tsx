@@ -184,7 +184,7 @@ const InfoStudent = () => {
       )}
       {newPhisical && (
         <Modal open={newPhisical} handleClose={OpenPhisical}>
-          <RegisterPhisicalAssessment nome="Grilo" setOpen={OpenPhisical} />
+          <RegisterPhisicalAssessment nome="Grilo" setOpen={OpenPhisical} getInfo={GetInfo} infoStudent={infoStudent}/>
         </Modal>
       )}
     </section>
