@@ -32,7 +32,7 @@ export const Container = styled.div<PercentageBarProps>`
     padding: 0 5%;
 
     @media (min-width: 768px) {
-      width: 60%;
+      width: 90%;
       flex-direction: row;
       justify-content: center;
       gap: 5%;
@@ -42,6 +42,7 @@ export const Container = styled.div<PercentageBarProps>`
     }
 
     @media (min-width: 1024px) {
+      width: 100%;
       padding: 0;
       margin: 0;
       gap: 5%;
@@ -52,7 +53,7 @@ export const Container = styled.div<PercentageBarProps>`
       justify-content: flex-start;
       flex-direction: row;
 
-      width: 35%;
+      width: 75%;
 
       figure {
         display: flex;
@@ -80,21 +81,28 @@ export const Container = styled.div<PercentageBarProps>`
             border-radius: 100%;
           }
 
-          /* @media (min-width: 1200px) {
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-          } */
+          @media (min-width: 1200px) {
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            /* border-radius: 5px; */
+          }
         }
 
         figcaption {
           font-weight: bolder;
           align-self: center;
+          font-size: 1.1rem;
+          width: 250px;
+          margin-left: 5px;
           /* margin-left: 15px; */
 
           @media (min-width: 768px) {
             margin-top: 1%;
             font-size: 1rem;
+            margin-left: 0;
+            width: 100%;
+            text-align: center;
           }
 
           @media (min-width: 1200px) {
@@ -257,6 +265,7 @@ export const Container = styled.div<PercentageBarProps>`
         font-weight: bolder;
         @media (min-width: 768px) {
           font-size: 1.5rem;
+          margin-top: 0;
         }
 
         @media (min-width: 1200px) {

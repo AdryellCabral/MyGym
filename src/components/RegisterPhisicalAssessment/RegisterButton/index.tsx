@@ -8,12 +8,10 @@ interface Props {
   onClick: () => void;
 }
 
-const PurpleButton = ({ children, small = false, backgroundColor, ...rest }: Props) => {
+const PurpleButton = ({ children, backgroundColor, ...rest }: Props) => {
   return (
-    <StyledButton
-      backgroundColor = { backgroundColor }
-      small={small} {...rest}>
-      <span>{children}</span>
+    <StyledButton backgroundColor={backgroundColor} {...rest}>
+      {children}
     </StyledButton>
   );
 };

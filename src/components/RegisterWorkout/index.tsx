@@ -75,7 +75,7 @@ const RegisterWorkout = ({ name = "Nome", setOpen }: Props) => {
                   backgroundColor="var(--dark-purple)"
                   onClick={() => console.log("click")}
                 >
-                  adicionar
+                  Adicionar
                 </RegisterButton>
               </Container>
             </DivSelect>
@@ -87,13 +87,14 @@ const RegisterWorkout = ({ name = "Nome", setOpen }: Props) => {
                   <span>
                     <FaTrashAlt
                       onClick={() => console.log("click na lixeira")}
+                      style={{ cursor: "pointer" }}
                     />
                   </span>
                 </li>
               ))}
             </ul>
             <RegisterButton onClick={() => console.log("click")}>
-              cadastrar
+              Cadastrar
             </RegisterButton>
           </Container>
         </ModalBody>

@@ -17,6 +17,11 @@ export const StyledButton = styled.button<sizeButton>`
   position: relative;
   overflow: hidden;
   z-index: 1;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   span {
     font-family: "Bill";
