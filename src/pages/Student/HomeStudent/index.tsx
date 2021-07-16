@@ -65,9 +65,10 @@ const HomeStudent = () => {
     },
   ];
 
+  console.log(student?.img);
   const defaultImg =
     "http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg";
-  const imgPerfil = student?.img !== "" ? student?.img : defaultImg;
+  const imgPerfil = student?.img === undefined ? defaultImg : student?.img;
   return (
     <section className="home--Student">
       <Container percentage={(16 / 20) * 100}>
