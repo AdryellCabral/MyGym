@@ -7,7 +7,6 @@ const HomeStudent = () => {
 
   const {windowWidth} = useWindowWidth()
   const {student} = useStudent()
-  console.log(student.physicalAssessment)
   const options = {
     chart: {
       id: "basic-bar",
