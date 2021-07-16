@@ -10,15 +10,22 @@ import { apiMyGym } from "../../services/api";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useUserProvider } from "../../providers/User";
+import { toast } from "react-toastify";
+import { ToastRegister } from "../Toasts/Register";
 
 interface Props {
   setOpen: () => void;
   nome?: string;
-  getInfo: () => void
-  infoStudent: any
+  getInfo: () => void;
+  infoStudent: any;
 }
 
-const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen, getInfo, infoStudent }: Props) => {
+const RegisterPhisicalAssessment = ({
+  nome = "Nome",
+  setOpen,
+  getInfo,
+  infoStudent,
+}: Props) => {
   const {
     userProvider: { token },
   } = useUserProvider();
@@ -40,16 +47,17 @@ const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen, getInfo, infoStude
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  
-  
   const sendInfo = (data: any) => {
     let newData = {};
-    console.log(infoStudent)
+    console.log(infoStudent);
     if (infoStudent?.physicalAssessment?.weight.length > 0) {
       const weight = [...infoStudent.physicalAssessment.weight, data.weight];
       const imc = [...infoStudent.physicalAssessment.imc, data.imc];
       const taxFat = [...infoStudent.physicalAssessment.taxFat, data.taxFat];
-      const leanMass = [...infoStudent.physicalAssessment.leanMass, data.leanMass];
+      const leanMass = [
+        ...infoStudent.physicalAssessment.leanMass,
+        data.leanMass,
+      ];
       newData = {
         physicalAssessment: {
           weight,
@@ -61,7 +69,6 @@ const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen, getInfo, infoStude
         },
       };
     } else {
-
       const weight = [data.weight];
       const imc = [data.imc];
       const taxFat = [data.taxFat];
@@ -76,7 +83,6 @@ const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen, getInfo, infoStude
           metabolicRate: data.metabolicRate,
         },
       };
-
     }
     apiMyGym
       .patch(`students/${id}`, newData, {
@@ -85,12 +91,23 @@ const RegisterPhisicalAssessment = ({ nome = "Nome", setOpen, getInfo, infoStude
         },
       })
       .then((response) => {
-        getInfo()
+        toast(
+          <ToastRegister name={""} closeToast={true} toastProps={null}>
+            Avaliação fisica registrado com sucesso!
+          </ToastRegister>,
+          { className: "registerSuccess" }
+        );
+        getInfo();
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        toast(
+          <ToastRegister name={""} closeToast={true} toastProps={null}>
+            Algo deu errado, tente novamente!
+          </ToastRegister>,
+          { className: "registerFail" }
+        )
+      );
   };
-
- 
 
   return (
     <Body>

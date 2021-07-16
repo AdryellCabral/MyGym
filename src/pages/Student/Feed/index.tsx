@@ -3,12 +3,10 @@ import { Container, Icon } from "./styles";
 import ModalNewFeed from "./ModalNewFeed";
 import { useStudent } from "../../../providers/Student";
 import { apiMyGym } from "../../../services/api";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { ToastRegister } from "../../../components/Toasts/Register";
 
-interface FeedMap {
-  element: string;
-  index: number;
-  array: Array<string>;
-}
 
 const Feed = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -35,11 +33,23 @@ const Feed = () => {
         },
       })
       .then((response) => {
-        console.log(response);
         getStudent();
+
+        toast(
+          <ToastRegister name="" closeToast={true} toastProps={null}>
+            Refeições deletadas!
+          </ToastRegister>,
+          { className: "registerSuccess" }
+        );
+
       })
       .catch((error) => {
-        console.log(error);
+        toast(
+          <ToastRegister name="" closeToast={true} toastProps={null}>
+            Algo deu errado, tente novamente!
+          </ToastRegister>,
+          { className: "registerFail" }
+        );
       });
   };
 

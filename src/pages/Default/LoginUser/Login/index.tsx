@@ -6,13 +6,15 @@ import GreenButton from "../../../../components/GreenButton";
 import Input from "../../../../components/Input";
 import { Lock, MailOutline } from "@material-ui/icons";
 import { useState } from "react";
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
-import clsx from "clsx";
+import { FormControl, InputLabel, MenuItem } from "@material-ui/core";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { apiMyGym } from "../../../../services/api";
-import { useStyles, SelectStyled } from "./styles";
+import { SelectStyled } from "./styles";
 import { useUserProvider } from "../../../../providers/User";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import { ToastRegister } from "../../../../components/Toasts/Register";
+import "react-toastify/dist/ReactToastify.css";
 
 interface UserData {
   password: string;
@@ -20,7 +22,6 @@ interface UserData {
 }
 
 const Login = () => {
-  const classes = useStyles();
   const [userType, setUserType] = useState("");
 
   const { setUserProvider } = useUserProvider();
@@ -59,10 +60,28 @@ const Login = () => {
   };
 
   const onLogin = (data: UserData) => {
-    apiMyGym.post("login", data).then((response) => {
-      requiredLogin(response);
-      history.push("/");
-    });
+    apiMyGym
+      .post("login", data)
+      .then((response) => {
+        requiredLogin(response);
+        history.push("/");
+      })
+      .then((response) =>
+        toast(
+          <ToastRegister name="" closeToast={true} toastProps={null}>
+            Seja bem vindo!
+          </ToastRegister>,
+          { className: "registerSuccess" }
+        )
+      )
+      .catch(() =>
+        toast(
+          <ToastRegister name="" closeToast={true} toastProps={null}>
+            Login ou Senha inválidos!
+          </ToastRegister>,
+          { className: "registerFail" }
+        )
+      );
   };
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -76,13 +95,13 @@ const Login = () => {
         <MailOutline />
       </Input>
       <p>{errors.email?.message}</p>
-      <Input {...register("password")} label="Senha">
+      <Input {...register("password")} label="Senha" type="password">
         <Lock />
       </Input>
       <p>{errors.password?.message}</p>
 
       <FormControl variant="outlined">
-        <InputLabel>Plano</InputLabel>
+        <InputLabel>Tipo de usuário</InputLabel>
         <SelectStyled value={userType} onChange={handleChange} label="Usuário">
           <MenuItem value="">
             <em>Tipo de usuário</em>

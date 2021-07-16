@@ -7,12 +7,11 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { TextField, MenuItem } from "@material-ui/core";
-import { ContainerForm, StyledTextField } from "./styles";
+import { ContainerForm } from "./styles";
 import GreenButton from "../GreenButton";
 import Input from "../Input";
 
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { useAcademy } from "../../providers/Academy";
 import { apiMyGym } from "../../services/api";
 import jwtDecode from "jwt-decode";
@@ -93,7 +92,6 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   };
 
   const postStudent = (data: Data, id: string) => {
-    const { sub } = jwtDecode<Decoded>(userProvider.token);
 
     const { name, email, coachId } = data;
     const newData = {
@@ -122,7 +120,6 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   };
 
   const postCoach = (data: Data, id: string) => {
-    const { sub } = jwtDecode<Decoded>(userProvider.token);
 
     const { name, email, cref } = data;
     const newData = {

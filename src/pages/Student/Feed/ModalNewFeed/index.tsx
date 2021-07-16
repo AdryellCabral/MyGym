@@ -3,6 +3,8 @@ import Modal from "../../../../components/Modal";
 import { useState } from "react";
 import { apiMyGym } from "../../../../services/api";
 import { useStudent } from "../../../../providers/Student";
+import { toast } from "react-toastify";
+import { ToastRegister } from "../../../../components/Toasts/Register";
 
 interface ModalNewFeedProps {
   handleModal: (modal: boolean) => void;
@@ -15,7 +17,7 @@ const ModalNewFeed = ({ handleModal, openModal }: ModalNewFeedProps) => {
   const { student, getStudent } = useStudent();
   let token = localStorage.getItem("@tokenMyGym") || "";
   if (token !== "") {
-    token = JSON.parse(token);   
+    token = JSON.parse(token);
   }
 
   const handleChange = (e: any) => {
@@ -35,23 +37,42 @@ const ModalNewFeed = ({ handleModal, openModal }: ModalNewFeedProps) => {
   };
 
   const registerFeed = () => {
-
     const feed = {
-      feeds: newFeed
-    }
+      feeds: newFeed,
+    };
 
-    apiMyGym
-      .patch(`students/${student.id}`, feed, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }})
-      .then((response) => {
-        console.log(response);
-        getStudent()
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (newFeed.length) {
+      apiMyGym
+        .patch(`students/${student.id}`, feed, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          toast(
+            <ToastRegister name="" closeToast={true} toastProps={null}>
+              Refeições adicionadas com sucesso!
+            </ToastRegister>,
+            { className: "registerSuccess" }
+          );
+          getStudent();
+        })
+        .catch((error) => {
+          toast(
+            <ToastRegister name="" closeToast={true} toastProps={null}>
+              Ocorreu algum erro, tente novamente!
+            </ToastRegister>,
+            { className: "registerFail" }
+          );
+        });
+    } else {
+      toast(
+        <ToastRegister name="" closeToast={true} toastProps={null}>
+          Adicione algumas refeições primeiro!
+        </ToastRegister>,
+        { className: "registerFail" }
+      );
+    }
   };
 
   return (
