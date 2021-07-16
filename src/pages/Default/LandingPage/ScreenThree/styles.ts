@@ -34,7 +34,7 @@ export const Container = styled.div`
 `;
 
 export const CarouselStyled = styled(Carousel)`
-  height: 80vh;
+  height: 100vh;
   width: 80%;
   max-width: 350px;
   margin: 0 auto;

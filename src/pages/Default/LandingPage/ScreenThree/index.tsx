@@ -1,16 +1,21 @@
 import { Container, CarouselStyled } from "./styles";
 import { useState } from "react";
 import CardImageApp from "../CardImageApp";
+import { carrouselImages } from "../../../../assets/images/info";
 
 const ScreenThree = () => {
   const [imgList] = useState([
     {
       id: 1,
-      img: "https://cdn.pixabay.com/photo/2015/06/08/15/02/pug-801826_960_720.jpg",
+      img: carrouselImages[0].img,
     },
     {
       id: 2,
-      img: "https://i.pinimg.com/originals/b5/31/c7/b531c76caaea2955ca25d644450d3bed.jpg",
+      img: carrouselImages[1].img,
+    },
+    {
+      id: 3,
+      img: carrouselImages[2].img,
     },
   ]);
   return (

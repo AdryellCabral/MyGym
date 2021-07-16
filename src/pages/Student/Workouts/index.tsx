@@ -3,11 +3,16 @@ import SelectFilter from "../../../components/SelectFilter";
 import CardList from "./CardList";
 import Card from "./Card";
 import { useState } from "react";
+import { useStudent } from "../../../providers/Student";
 const Workouts = () => {
   const filterGroup = (group: string) => {
     console.log(group);
   };
 
+
+  const { student } = useStudent();
+  // console.log(student?.workouts[0].exercices)
+  console.log(student);
   const [test] = useState([
     {
       id: 1,
@@ -60,7 +65,7 @@ const Workouts = () => {
 
         <CardList>
           <>
-            {test.map((treino) => (
+            {student?.workouts?.map((treino:any) => (
               <Card key={treino.id} workout={treino} />
             ))}
           </>

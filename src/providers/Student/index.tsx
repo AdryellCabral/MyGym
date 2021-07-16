@@ -58,7 +58,7 @@ export const StudentProvider = ({ children }: StudentProps) => {
 
   const getStudent = () => {
     apiMyGym
-      .get(`students?userId=${idUser}`, {
+      .get(`students?userId=${idUser}&_embed=workouts`, {
         headers: {
           Authorization: `Bearer ${token}`,
         }})
