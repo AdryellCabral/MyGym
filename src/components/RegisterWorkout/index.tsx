@@ -16,6 +16,8 @@ import * as yup from "yup";
 import { useParams } from "react-router-dom";
 import { apiMyGym } from "../../services/api";
 import { useUserProvider } from "../../providers/User";
+import { toast } from "react-toastify";
+import { ToastRegister } from "../Toasts/Register";
 
 const prototipo = [
   {
@@ -128,8 +130,20 @@ const RegisterWorkout = ({ infoStudent, getInfo, setOpen }: Props) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => getInfo())
-      .catch(console.error);
+      .then((response) =>{ 
+        toast(
+          <ToastRegister name={""} closeToast={true} toastProps={null}>
+            Treino registrado com sucesso!
+          </ToastRegister>,
+          { className: "registerSuccess" }
+        )
+        getInfo()})
+      .catch( () => toast(
+        <ToastRegister name={""} closeToast={true} toastProps={null}>
+          Algo deu errado, tente novamente!
+        </ToastRegister>,
+        { className: "registerFail" }
+      ));
   };
 
   useEffect(() => {
