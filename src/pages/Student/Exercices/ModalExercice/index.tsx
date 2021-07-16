@@ -11,6 +11,7 @@ interface ModalExerciceProps {
     group: string;
     description: string;
     image: string;
+    gif: string;
     video: string;
   };
 }
@@ -19,9 +20,10 @@ const ModalExercice = ({
   openModal,
   exercice,
 }: ModalExerciceProps) => {
+  console.log(exercice)
   return (
     <Modal open={openModal} handleClose={handleModal}>
-      <Container img={exercice.image}>
+      <Container img={exercice.gif}>
         <header>
           <h1>{exercice.name}</h1>
           <button onClick={() => handleModal(openModal)}>

@@ -53,7 +53,7 @@ export const Container = styled.div<ContainerProps>`
     background-repeat: no-repeat;
     border: 2px solid black;
     border-radius: 3px;
-    width: 90%;
+    width: 50%;
     height: 30vh;
     margin: 0 auto;
     margin-bottom: 3vh;

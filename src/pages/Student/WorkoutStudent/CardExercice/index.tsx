@@ -8,6 +8,7 @@ interface CardProps {
     name: string;
     group: string;
     description: string;
+    gif:string;
     image: string;
     video: string;
   };

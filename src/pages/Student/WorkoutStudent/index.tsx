@@ -110,7 +110,7 @@ const WorkoutStudent = () => {
           <h1 className="title">Exercícios</h1>
           <CardList>
             <>
-              {objTest.map((exercice:any) => (
+              {workout?.exercices?.map((exercice:any) => (
                 <CardExercice exercice={exercice} />
               ))}
             </>

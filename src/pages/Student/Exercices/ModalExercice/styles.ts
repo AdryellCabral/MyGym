@@ -57,8 +57,8 @@ export const Container = styled.div<ContainerProps>`
     background-repeat: no-repeat;
     border: 2px solid black;
     border-radius: 3px;
-    width: 90%;
-    height: 30vh;
+    width: 50%;
+    height: 35vh;
     margin: 0 auto;
     margin-bottom: 3vh;
   }
