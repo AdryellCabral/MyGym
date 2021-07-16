@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 interface sizeButton {
   small?: boolean;
   backgroundColor?: string;
+  type?: string;
 }
 
 export const StyledButton = styled.button<sizeButton>`

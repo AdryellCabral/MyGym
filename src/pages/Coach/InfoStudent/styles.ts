@@ -217,18 +217,18 @@ export const Container = styled.div<PercentageBarProps>`
           height: 5vh;
         }
       }
-      ul {
-        background-color: var(--color-black);
-        color: var(--light-gray);
-        border-radius: 5px;
-        max-height: 150px;
-        overflow-y: scroll;
-        li {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          padding: 8px;
-        }
+      ul{
+          background-color: var(--color-black);
+          color: var(--light-gray);
+          border-radius: 5px;
+          max-height: 150px;
+          overflow-y: auto;
+          li{
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              padding: 8px;
+          }
       }
       > div {
         height: 30vh;
@@ -275,18 +275,18 @@ export const Container = styled.div<PercentageBarProps>`
           height: 5vh;
         }
       }
-      ul {
-        background-color: var(--color-black);
-        color: var(--light-gray);
-        border-radius: 5px;
-        max-height: 150px;
-        overflow-y: scroll;
-        li {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          padding: 8px;
-        }
+      ul{
+          background-color: var(--color-black);
+          color: var(--light-gray);
+          border-radius: 5px;
+          max-height: 150px;
+          overflow-y: auto;
+          li{
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              padding: 8px;
+          }
       }
       > div {
         height: 35vh;

@@ -5,13 +5,25 @@ interface Props {
   children: ReactNode;
   small?: boolean;
   backgroundColor?: string;
-  onClick: () => void;
+  type?: any;
+  onClick?: () => void;
 }
 
-const PurpleButton = ({ children, backgroundColor, ...rest }: Props) => {
+const PurpleButton = ({
+  children,
+  small = false,
+  backgroundColor,
+  type = "",
+  ...rest
+}: Props) => {
   return (
-    <StyledButton backgroundColor={backgroundColor} {...rest}>
-      {children}
+    <StyledButton
+      backgroundColor={backgroundColor}
+      small={small}
+      type={type}
+      {...rest}
+    >
+      <span>{children}</span>
     </StyledButton>
   );
 };

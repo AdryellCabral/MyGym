@@ -36,13 +36,13 @@ interface Student {
 }
 
 const InfoStudent = () => {
-  const [info, setInfo] = useState<any>({});
+  const [infoStudent, setInfoStudent] = useState<any>({});
   const [newWorkout, setNewWorkout] = useState(false);
   const [newPhisical, setNewPhisical] = useState(false);
   const { windowWidth } = useWindowWidth();
   const params = useParams<RoomParams>();
   const Id = params.id;
-  let token = localStorage.getItem("token") || "";
+  let token = localStorage.getItem("@tokenMyGym") || "";
   if (token !== "") {
     token = JSON.parse(token);
   }
@@ -90,30 +90,31 @@ const InfoStudent = () => {
   const series = [
     {
       name: "IMC",
-      data: [24, 25, 27, 33, 44, 46, 50, 52, 55],
+      data: infoStudent?.physicalAssessment?.imc,
     },
     {
       name: "Peso",
-      data: [80, 90, 100, 95, 93, 90, 88, 85, 80],
+      data: infoStudent?.physicalAssessment?.weight,
     },
     {
       name: "Gordura",
-      data: [15, 25, 30],
+      data: infoStudent?.physicalAssessment?.taxFat,
     },
     {
       name: "Massa Magra",
-      data: [34, 40, 45],
+      data: infoStudent?.physicalAssessment?.leanMass,
     },
   ];
 
   const GetInfo = () => {
     apiMyGym
-      .get(`students?userId=${Id}`, {
+      .get(`students?id=${Id}&_embed=workouts`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setInfo(response));
+      .then((response) => setInfoStudent(response.data[0]))
+      .catch((err) => console.log(err));
   };
 
   const OpenRegisterWorkout = () => {
@@ -123,11 +124,11 @@ const InfoStudent = () => {
   const OpenPhisical = () => {
     setNewPhisical(!newPhisical);
   };
+  console.log(infoStudent);
 
   useEffect(() => {
     GetInfo();
   }, []);
-
   return (
     <section className="home--Student">
       <Container percentage={(16 / 20) * 100}>
@@ -138,7 +139,7 @@ const InfoStudent = () => {
                 src="http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg"
                 alt="Usuário"
               />
-              <figcaption>Nome user</figcaption>
+              <figcaption>{infoStudent.name}</figcaption>
             </figure>
           </div>
           <div className="trainingPerformed">
@@ -153,7 +154,13 @@ const InfoStudent = () => {
         <div className="boxs">
           <div className="workouts--chart">
             <h2>Treinos Cadastrados</h2>
-            <div />
+            <div>
+              <ul>
+                {infoStudent?.workouts?.map((workout: any) => (
+                  <li key={workout.group}>{workout.group}</li>
+                ))}
+              </ul>
+            </div>
 
             <PurpleButton small={false} onClick={OpenRegisterWorkout}>
               Novo Treino
@@ -178,12 +185,20 @@ const InfoStudent = () => {
       </Container>
       {newWorkout && (
         <Modal open={newWorkout} handleClose={OpenRegisterWorkout}>
-          <RegisterWorkout name="Maromba" setOpen={OpenRegisterWorkout} />
+          <RegisterWorkout
+            setOpen={OpenRegisterWorkout}
+            getInfo={GetInfo}
+            infoStudent={infoStudent}
+          />
         </Modal>
       )}
       {newPhisical && (
         <Modal open={newPhisical} handleClose={OpenPhisical}>
-          <RegisterPhisicalAssessment nome="Grilo" setOpen={OpenPhisical} />
+          <RegisterPhisicalAssessment
+            setOpen={OpenPhisical}
+            getInfo={GetInfo}
+            infoStudent={infoStudent}
+          />
         </Modal>
       )}
     </section>

@@ -71,8 +71,8 @@ export const ModalBody = styled.div`
     background-color: var(--color-black);
     color: var(--light-gray);
     border-radius: 3px;
-    max-height: 150px;
-    overflow-y: scroll;
+    height: 150px;
+    overflow-y: auto;
 
     li {
       display: flex;
