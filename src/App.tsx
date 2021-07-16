@@ -15,10 +15,8 @@ const App = () => {
   return (
     <>
       {!typeUser ? (
-        // <DefaultRoutes />
         <>
-          <Header />
-          <CoachRoutes />
+          <DefaultRoutes />
         </>
       ) : (
         <>
