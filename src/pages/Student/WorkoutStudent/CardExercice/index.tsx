@@ -8,18 +8,18 @@ interface CardProps {
     name: string;
     group: string;
     description: string;
-    img: string;
+    image: string;
     video: string;
   };
 }
 const CardExercice = ({ exercice }: CardProps) => {
   const [openModal, setOpenModal] = useState(false);
-
+  console.log(exercice)
   const handleModal = (modal: boolean) => {
     setOpenModal(!modal);
   };
   return (
-    <Container img={exercice.img} onClick={() => handleModal(openModal)}>
+    <Container img={exercice.image} onClick={() => handleModal(openModal)}>
       <div className="image"></div>
       <div className="info">
         <h1>{exercice.name}</h1>
