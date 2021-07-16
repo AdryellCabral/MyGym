@@ -92,6 +92,7 @@ export const ContainerFoto = styled.div`
         height: 105px;
         border-radius: 50%;
         border: solid 3px var(--color-black);
+        object-fit: cover;
       }
 
       img:nth-child(2) {

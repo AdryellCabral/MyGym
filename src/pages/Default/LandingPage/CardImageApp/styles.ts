@@ -9,7 +9,6 @@ export const Container = styled.div<ContainerProps>`
   border: 1px solid black;
   border-radius: 2px;
   max-width: 500px;
-
   background-image: url(${(props) => props.backgroundUrl});
   background-size: contain;
   background-repeat: no-repeat;

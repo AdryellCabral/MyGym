@@ -33,7 +33,7 @@ export default function AcademyConfig() {
           <div className="foto">
             <div>
               <img
-                src="https://i.pinimg.com/originals/c7/8f/9c/c78f9c888554a3633e0fcba4f8201027.png"
+                src="https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png"
                 alt="imagem maior"
               />
               <img
