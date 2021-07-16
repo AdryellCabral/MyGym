@@ -55,9 +55,11 @@ const LandingPage = () => {
             <h1>APLICAÇÃO</h1>
           </header>
           <div className="container--info">
-            <ScreenTwo />
-            <ScreenThree />
-            <ScreenFour />
+            <div style ={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
+              <ScreenTwo />
+              <ScreenThree />
+              <ScreenFour />
+            </div>
           </div>
           <div className="backgroundFooter" />
         </ContainerDesk>
