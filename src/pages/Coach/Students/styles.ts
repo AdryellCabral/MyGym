@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: 4vh;
+  /* margin-top: 4vh; */
 
   .container--top {
     margin: 0 auto;
@@ -13,6 +13,10 @@ export const Container = styled.div`
 
     h1 {
       font-weight: bolder;
+
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
     }
 
     .container--filter {
@@ -26,15 +30,30 @@ export const Container = styled.div`
         font-size: 1rem;
         width: 80%;
         height: 25px;
-        border: 0;
+        border: 1px solid black;
+        border-radius: 3px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        max-width: 400px;
+
+        @media (min-width: 768px) {
+          height: 30px;
+        }
       }
       button {
-        border: 0;
+        border: none;
         border-radius: 3px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
         padding: 0 3px;
         height: 29px;
         width: 37px;
-        background-color: var(--light-purple);
+        background-color: var(--color-black);
+
+        @media (min-width: 768px) {
+          height: 34px;
+          border: 1px solid black;
+        }
       }
     }
   }

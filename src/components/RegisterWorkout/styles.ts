@@ -17,6 +17,7 @@ export const Body = styled.div`
 
   h4 {
     margin-bottom: 10px;
+    font-size: 1.2rem;
   }
 `;
 
@@ -61,7 +62,7 @@ export const ModalBody = styled.div`
     background-color: var(--color-black);
     color: var(--light-gray);
     height: 40px;
-    border-radius: 5px;
+    border-radius: 3px;
     padding-left: 15px;
     font-size: var(--font-title-mobile);
   }
@@ -69,8 +70,7 @@ export const ModalBody = styled.div`
   ul {
     background-color: var(--color-black);
     color: var(--light-gray);
-    border-radius: 5px;
-
+    border-radius: 3px;
     height: 150px;
     overflow-y: auto;
 
@@ -85,22 +85,13 @@ export const ModalBody = styled.div`
 
   button {
     margin: 10px 0;
+    cursor: pointer;
   }
 `;
 
 export const Container = styled.div`
   width: 90%;
   margin: 0 auto;
-
-  display: inherit;
-  flex-direction: inherit;
-  justify-content: inherit;
-`;
-
-export const FormStyled = styled.form`
-  width: 90%;
-  margin: 0 auto;
-
   display: inherit;
   flex-direction: inherit;
   justify-content: inherit;
@@ -111,6 +102,7 @@ export const DivSelect = styled.div`
   flex-direction: column;
 
   border: 1px solid black;
+  border-radius: 3px;
   padding: 15px 0;
   margin: 10px 0;
 `;

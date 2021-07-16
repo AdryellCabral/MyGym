@@ -11,7 +11,7 @@ export const Container = styled.div<ContainerProps>`
   max-width: 500px;
 
   background-image: url(${(props) => props.backgroundUrl});
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 

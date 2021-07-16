@@ -69,7 +69,7 @@ const Students = () => {
   return (
     <section
       className="page--students"
-      style={{ width: "100%", marginTop: "95px" }}
+      style={{ width: "100%", marginTop: "90px" }}
     >
       <Container>
         <div className="container--top">
@@ -80,8 +80,8 @@ const Students = () => {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             />
-            <button /*onClick={filterStudent}*/>
-              <SearchIcon />
+            <button /* onClick={filterStudent} */>
+              <SearchIcon style={{ color: "var(--color-green)" }} />
             </button>
           </div>
         </div>

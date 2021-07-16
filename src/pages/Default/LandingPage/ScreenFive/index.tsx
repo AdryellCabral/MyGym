@@ -5,24 +5,24 @@ const ScreenFive = () => {
   const [plans] = useState([
     {
       id: 1,
-      title: "Plano Birl",
+      title: "Plano Fit",
       description:
-        "Plano para academias pequenas, comporta 80 alunos ativos e 4 coachs. Adiquira agora e já comece a usar!",
-      price: 200,
+        "Plano para academias de pequeno porte: comporta até 80 alunos ativos e 4 coaches. Adiquira agora e já comece a usar!",
+      price: 100,
     },
     {
       id: 1,
       title: "Plano Birl",
       description:
-        "Plano para academias pequenas, comporta 80 alunos ativos e 4 coachs. Adiquira agora e já comece a usar!",
+        "Plano para academias de médio porte: comporta até 140 alunos ativos e 8 coaches. Adiquira agora e já comece a usar!",
       price: 200,
     },
     {
       id: 1,
-      title: "Plano Birl",
+      title: "Plano Olympia",
       description:
-        "Plano para academias pequenas, comporta 80 alunos ativos e 4 coachs. Adiquira agora e já comece a usar!",
-      price: 200,
+        "Plano para academias de grande porte: comporta 140+ alunos ativos e 8+ coaches. Adiquira agora e já comece a usar!",
+      price: 500,
     },
   ]);
   return (

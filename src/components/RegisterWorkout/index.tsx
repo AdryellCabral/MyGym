@@ -5,8 +5,7 @@ import { useExercises } from "../../providers/Exercises";
 import RegisterButton from "./RegisterButton";
 import {
   Body,
-  ModalHeader,
-  FormStyled,
+  ModalHeader,  
   Container,
   ModalBody,
   DivSelect,
