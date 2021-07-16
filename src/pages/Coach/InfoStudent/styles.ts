@@ -216,7 +216,7 @@ export const Container = styled.div<PercentageBarProps>`
           color: var(--light-gray);
           border-radius: 5px;
           max-height: 150px;
-          overflow-y: scroll;
+          overflow-y: auto;
           li{
               display: flex;
               flex-direction: row;
@@ -272,7 +272,7 @@ export const Container = styled.div<PercentageBarProps>`
           color: var(--light-gray);
           border-radius: 5px;
           max-height: 150px;
-          overflow-y: scroll;
+          overflow-y: auto;
           li{
               display: flex;
               flex-direction: row;

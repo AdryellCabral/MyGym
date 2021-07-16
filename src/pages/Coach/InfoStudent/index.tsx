@@ -108,7 +108,7 @@ const InfoStudent = () => {
 
   const GetInfo = () => {
     apiMyGym
-      .get(`students?id=${Id}`, {
+      .get(`students?id=${Id}&_embed=workouts`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -124,11 +124,11 @@ const InfoStudent = () => {
   const OpenPhisical = () => {
     setNewPhisical(!newPhisical);
   };
+  console.log(infoStudent);
 
   useEffect(() => {
     GetInfo();
   }, []);
-  console.log(infoStudent);
   return (
     <section className="home--Student">
       <Container percentage={(16 / 20) * 100}>
@@ -154,7 +154,13 @@ const InfoStudent = () => {
         <div className="boxs">
           <div className="workouts--chart">
             <h2>Treinos Cadastrados</h2>
-            <div />
+            <div>
+              <ul>
+                {infoStudent?.workouts?.map((workout: any) => (
+                  <li key={workout.group}>{workout.group}</li>
+                ))}
+              </ul>
+            </div>
 
             <PurpleButton small={false} onClick={OpenRegisterWorkout}>
               Novo Treino
@@ -179,12 +185,20 @@ const InfoStudent = () => {
       </Container>
       {newWorkout && (
         <Modal open={newWorkout} handleClose={OpenRegisterWorkout}>
-          <RegisterWorkout name="Maromba" setOpen={OpenRegisterWorkout} />
+          <RegisterWorkout
+            setOpen={OpenRegisterWorkout}
+            getInfo={GetInfo}
+            infoStudent={infoStudent}
+          />
         </Modal>
       )}
       {newPhisical && (
         <Modal open={newPhisical} handleClose={OpenPhisical}>
-          <RegisterPhisicalAssessment nome="Grilo" setOpen={OpenPhisical} getInfo={GetInfo} infoStudent={infoStudent}/>
+          <RegisterPhisicalAssessment
+            setOpen={OpenPhisical}
+            getInfo={GetInfo}
+            infoStudent={infoStudent}
+          />
         </Modal>
       )}
     </section>
