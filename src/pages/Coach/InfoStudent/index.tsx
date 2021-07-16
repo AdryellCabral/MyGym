@@ -138,7 +138,7 @@ const InfoStudent = () => {
                 src="http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg"
                 alt="Usuário"
               />
-              <figcaption>name</figcaption>
+              <figcaption>Nome user</figcaption>
             </figure>
           </div>
           <div className="trainingPerformed">
@@ -160,7 +160,7 @@ const InfoStudent = () => {
             </PurpleButton>
           </div>
           <div className="progression--chart">
-              <h2>Progressão</h2>
+            <h2>Progressão</h2>
             <div>
               <Chart
                 options={options}
