@@ -20,6 +20,13 @@ export const Container = styled.li<ContainerProps>`
 
   @media (min-width: 1200px) {
     max-width: 42%;
+
+    &:hover {
+      -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.8);
+      box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.8);
+      transform: perspective(1);
+      transition-duration: 0.7s;
+    }
   }
 
   .image {
@@ -52,6 +59,7 @@ export const Container = styled.li<ContainerProps>`
 
     p {
       font-size: 0.9rem;
+      overflow: scroll;
 
       @media (min-width: 768px) {
         font-size: 1.3rem;

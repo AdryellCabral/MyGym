@@ -16,9 +16,9 @@ const SelectFilter = ({ onChangeOption }: SelectProps) => {
       <option value="Braços">Braços</option>
       <option value="Peito">Peito</option>
       <option value="Pernas">Pernas</option>
-      <option value="Panturrilha">Panturrilha</option>
-      <option value="Força">Força</option>
-      <option value="Cárdio">Cárdio</option>
+      <option value="Ombro">Ombro</option>
+      <option value="Abdomen/Core">Abdomen/Core</option>
+      <option value="Costas">Costas</option>
     </SelectFilterStyled>
   );
 };
