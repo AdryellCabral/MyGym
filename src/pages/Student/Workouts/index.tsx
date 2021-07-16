@@ -9,8 +9,10 @@ const Workouts = () => {
     console.log(group);
   };
 
-  const {student} = useStudent()
-  console.log(student)
+
+  const { student } = useStudent();
+  // console.log(student?.workouts[0].exercices)
+  console.log(student);
   const [test] = useState([
     {
       id: 1,
@@ -63,7 +65,7 @@ const Workouts = () => {
 
         <CardList>
           <>
-            {test.map((treino) => (
+            {student?.workouts?.map((treino:any) => (
               <Card key={treino.id} workout={treino} />
             ))}
           </>

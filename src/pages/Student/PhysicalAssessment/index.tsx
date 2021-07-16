@@ -5,15 +5,8 @@ import { useStudent } from "../../../providers/Student";
 const PhysicalAssessment = () => {
 
   const {student} = useStudent()
-  console.log(student)
-  const [af] = useState({
-    size: 80,
-    height: 70,
-    imc: 10,
-    fatPercentage: 10,
-    leanMass: 10,
-    basalMetabolicRate: 10,
-  });
+ 
+  
   return (
     <section className="physicalAssessment" style={{ maxWidth: "2000px" }}>
       <Container img={FigAf}>
