@@ -16,7 +16,7 @@ const CardGetProduct = ({ plan }: CardGetProductProps) => {
       <p>{plan.description}</p>
       <span>R$ {plan.price}</span>
       <Button onClick={() => handleClick()}>
-        <span>GET</span>
+        <span>CONTRATAR</span>
       </Button>
     </Container>
   );

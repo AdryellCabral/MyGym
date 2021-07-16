@@ -11,6 +11,8 @@ interface Exercice {
   group: string;
   description: string;
   image: string;
+  gif: string;
+
   video: string;
 }
 
