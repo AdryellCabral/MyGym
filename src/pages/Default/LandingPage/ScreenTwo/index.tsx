@@ -11,13 +11,10 @@ const ScreenTwo = () => {
           <img src={FigPageTwo} alt="Pessoas malhando" />
         </figure>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa maxime
-          impedit nulla cupiditate similique delectus labore velit enim odio
-          assumenda alias officia cum itaque reprehenderit, accusamus est,
-          soluta excepturi illo? <br /> Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Ipsa maxime impedit nulla cupiditate similique
-          delectus labore velit enim odio assumenda alias officia cum itaque
-          reprehenderit, accusamus est, soluta excepturi illo?
+          Faça a gestão dos alunos e dos coaches diretamente pela plataforma, de qualquer lugar, até mesmo do seu smartphone!
+        </p>
+        <p>
+          Esqueça as fichas de papel, os alunos poderão ter seus treinos na palma de suas mãos, através de seus telefones. Os treinos podem ser atualizados pelos coaches a qualquer momento.
         </p>
       </Container>
     </section>

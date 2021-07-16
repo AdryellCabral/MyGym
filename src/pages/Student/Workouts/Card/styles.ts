@@ -32,7 +32,7 @@ export const Container = styled.li<ContainerProps>`
   .image {
     width: 65%;
     height: 95%;
-    background-image: url(${({ img }) => img});
+    background-image: url(${( {img} ) => img});
     background-size: cover;
     background-repeat: no-repeat;
     border: 2px solid black;

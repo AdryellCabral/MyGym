@@ -2,9 +2,11 @@ import { Container } from "./styles";
 import userDefault from "../../assets/userDefault.png";
 import Chart from "react-apexcharts";
 import { useWindowWidth } from "../../../providers/WindowWidth";
+import { useStudent } from "../../../providers/Student";
 const HomeStudent = () => {
 
   const {windowWidth} = useWindowWidth()
+  const {student} = useStudent()
   const options = {
     chart: {
       id: "basic-bar",
@@ -48,19 +50,19 @@ const HomeStudent = () => {
   const series = [
     {
       name: "IMC",
-      data: [24, 25, 27, 33, 44, 46, 50, 52, 55],
+      data: student?.physicalAssessment?.imc,
     },
     {
       name: "Peso",
-      data: [80, 90, 100, 95, 93, 90, 88, 85, 80],
+      data: student?.physicalAssessment?.weigth,
     },
     {
       name: "Gordura",
-      data: [15, 25, 30],
+      data: student?.physicalAssessment?.taxFat,
     },
     {
       name: "Massa Magra",
-      data: [34, 40, 45],
+      data: student?.physicalAssessment?.leanMass,
     },
   ];
 

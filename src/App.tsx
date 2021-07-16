@@ -15,7 +15,9 @@ const App = () => {
   return (
     <>
       {!typeUser ? (
-        <DefaultRoutes />
+        <>
+          <DefaultRoutes />
+        </>
       ) : (
         <>
           <Header />
@@ -25,7 +27,6 @@ const App = () => {
         </>
       )}
       <GlobalStyle />
-  
     </>
   );
 };

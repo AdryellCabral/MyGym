@@ -14,6 +14,19 @@ export const Container = styled.div`
   align-items: center;
 
   max-width: 400px;
+
+  input#file {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
   header {
     display: flex;
     justify-content: space-between;

@@ -12,8 +12,8 @@ export const Container = styled.div<PercentageBarProps>`
   justify-content: space-evenly;
   /* align-items: center; */
   margin-top: 80px;
+  margin-bottom: 2vh;
 
-  
   @media (min-width: 1200px) {
     flex-direction: column;
     width: 90%;
@@ -22,7 +22,6 @@ export const Container = styled.div<PercentageBarProps>`
     justify-content: none;
   }
 
-  
   .container--user {
     width: 100%;
 
@@ -33,7 +32,7 @@ export const Container = styled.div<PercentageBarProps>`
     padding: 0 5%;
 
     @media (min-width: 768px) {
-      width: 60%;
+      width: 90%;
       flex-direction: row;
       justify-content: center;
       gap: 5%;
@@ -43,7 +42,8 @@ export const Container = styled.div<PercentageBarProps>`
     }
 
     @media (min-width: 1024px) {
-      padding: 0 ;
+      width: 100%;
+      padding: 0;
       margin: 0;
       gap: 5%;
     }
@@ -53,20 +53,19 @@ export const Container = styled.div<PercentageBarProps>`
       justify-content: flex-start;
       flex-direction: row;
 
-      width: 35%;
+      width: 75%;
 
       figure {
         display: flex;
         justify-content: space-between;
         flex-direction: row;
         width: 100%;
-        
+
         @media (min-width: 768px) {
           width: 90%;
           height: 100%;
           flex-direction: column;
           align-items: center;
-          
         }
         img {
           object-fit: cover;
@@ -82,21 +81,28 @@ export const Container = styled.div<PercentageBarProps>`
             border-radius: 100%;
           }
 
-          /* @media (min-width: 1200px) {
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-          } */
+          @media (min-width: 1200px) {
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            /* border-radius: 5px; */
+          }
         }
 
         figcaption {
           font-weight: bolder;
           align-self: center;
+          font-size: 1.1rem;
+          width: 250px;
+          margin-left: 5px;
           /* margin-left: 15px; */
 
           @media (min-width: 768px) {
             margin-top: 1%;
             font-size: 1rem;
+            margin-left: 0;
+            width: 100%;
+            text-align: center;
           }
 
           @media (min-width: 1200px) {
@@ -105,20 +111,20 @@ export const Container = styled.div<PercentageBarProps>`
         }
       }
     }
-    
+
     .trainingPerformed {
       width: 90%;
       height: 20%;
       display: flex;
       flex-direction: column;
-      justify-content:center;
+      justify-content: center;
       @media (min-width: 768px) {
         /* margin-top: auto; */
       }
       @media (min-width: 1200px) {
-      /* align-self: flex-end; */
-      width: 100%;
-      /* height: auto; */
+        /* align-self: flex-end; */
+        width: 100%;
+        /* height: auto; */
       }
 
       h2 {
@@ -127,8 +133,8 @@ export const Container = styled.div<PercentageBarProps>`
         font-weight: bolder;
 
         @media (min-width: 768px) {
-        font-size: 1rem;
-        margin-top: 0;
+          font-size: 1rem;
+          margin-top: 0;
         }
 
         @media (min-width: 1200px) {
@@ -155,7 +161,7 @@ export const Container = styled.div<PercentageBarProps>`
 
           display: flex;
           align-items: center;
-          
+
           span {
             color: white;
             margin-left: 5%;
@@ -171,7 +177,7 @@ export const Container = styled.div<PercentageBarProps>`
       }
     }
   }
-  .boxs{
+  .boxs {
     display: flex;
     flex-direction: column;
     padding: 0 5%;
@@ -181,7 +187,7 @@ export const Container = styled.div<PercentageBarProps>`
       flex-direction: row;
       /* padding: 0; */
       margin-top: 5%;
-        /* height: 75vh; */
+      /* height: 75vh; */
     }
     @media (min-width: 1200px) {
       padding: 0;
@@ -192,18 +198,18 @@ export const Container = styled.div<PercentageBarProps>`
       @media (min-width: 768px) {
         width: 40vw;
       }
-      
+
       @media (min-width: 1200px) {
         width: 40vw;
       }
-  
+
       h2 {
         margin-bottom: 2%;
         font-weight: bolder;
         @media (min-width: 768px) {
           font-size: 1.5rem;
         }
-  
+
         @media (min-width: 1200px) {
           margin-bottom: 0;
           font-size: 1.5rem;
@@ -216,7 +222,7 @@ export const Container = styled.div<PercentageBarProps>`
           color: var(--light-gray);
           border-radius: 5px;
           max-height: 150px;
-          overflow-y: scroll;
+          overflow-y: auto;
           li{
               display: flex;
               flex-direction: row;
@@ -230,11 +236,11 @@ export const Container = styled.div<PercentageBarProps>`
         border: 1px solid black;
         border-radius: 2px;
         margin-bottom: 5%;
-        
+
         @media (min-width: 768px) {
-        height: 40vh;
+          height: 40vh;
         }
-  
+
         @media (min-width: 1200px) {
           /* height: 45%; */
           /* width: 45%; */
@@ -243,7 +249,7 @@ export const Container = styled.div<PercentageBarProps>`
     }
     .progression--chart {
       width: 100%;
-    
+
       @media (min-width: 768px) {
         width: 40vw;
       }
@@ -252,14 +258,16 @@ export const Container = styled.div<PercentageBarProps>`
         height: 75vh;
         width: 40vw;
       }
-  
+
       h2 {
+        margin-top: 4%;
         margin-bottom: 2%;
         font-weight: bolder;
         @media (min-width: 768px) {
           font-size: 1.5rem;
+          margin-top: 0;
         }
-  
+
         @media (min-width: 1200px) {
           margin-bottom: 0;
           font-size: 1.5rem;
@@ -272,7 +280,7 @@ export const Container = styled.div<PercentageBarProps>`
           color: var(--light-gray);
           border-radius: 5px;
           max-height: 150px;
-          overflow-y: scroll;
+          overflow-y: auto;
           li{
               display: flex;
               flex-direction: row;
@@ -290,7 +298,7 @@ export const Container = styled.div<PercentageBarProps>`
         @media (min-width: 768px) {
           height: 40vh;
         }
-  
+
         @media (min-width: 1200px) {
           /* height: 45%; */
           /* height: 70vh; */

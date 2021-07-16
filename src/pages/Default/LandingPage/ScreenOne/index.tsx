@@ -20,10 +20,7 @@ const ScreenOne = () => {
             <button onClick={() => handleLogin()}>Login</button>
           </div>
           <p className="apresentationText">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
-            repellat hic eveniet harum eius id qui praesentium natus aut alias.
-            Eveniet vel rem omnis natus veniam blanditiis? Tempore, ad debitis.
-            Lorem ipsum dolor sit amet, consectetur.
+          Conheça o My Gym, um serviço de gestão completo para impulsionar os resultados dos negócios de sua academia.
           </p>
         </header>
 
@@ -31,10 +28,7 @@ const ScreenOne = () => {
           <div className="figPersonal"></div>
           <div className="container--text">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
-              repellat hic eveniet harum eius id qui praesentium natus aut
-              alias. Eveniet vel rem omnis natus veniam blanditiis? Tempore, ad
-              debitis.
+              MygyM é um serviço baseado na web que visa transformar sua academia num negócio moderno, fácil de acessar e o melhor, contando com uma série de recursos que ajudam e facilitam a vida tanto dos alunos como dos coaches.
               <a href="#getNow"> Get now!</a>
             </p>
           </div>

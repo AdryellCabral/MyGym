@@ -44,11 +44,12 @@ export const Upload = ({ handleClose, open }) => {
       },
     })
       .then((response) => {
+        console.log(response)
         apiMyGym
           .patch(
             `students/${student.id}`,
             {
-              img: response.url,
+              img: response.data.link,
             },
             {
               headers: {
@@ -88,7 +89,8 @@ export const Upload = ({ handleClose, open }) => {
           </button>
         </header>
         <form onSubmit={uploadImage}>
-          <input type="file" />
+          <label htmlFor="file">Clique aqui para adicionar sua foto!</label>
+          <input type="file" id="file"/>
           <button>Upload</button>
         </form>
       </Container>
