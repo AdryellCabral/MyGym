@@ -11,14 +11,15 @@ import { ContainerForm } from "./styles";
 import GreenButton from "../GreenButton";
 import Input from "../Input";
 
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useAcademy } from "../../providers/Academy";
 import { apiMyGym } from "../../services/api";
 import jwtDecode from "jwt-decode";
-import { toast } from "react-toastify";
+import { toast, Zoom, Slide, Flip } from "react-toastify";
 import { ToastRegister } from "../Toasts/Register";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserProvider } from "../../providers/User";
+import { ToastLoading } from "./toasts";
 
 interface Decoded {
   email: string;
@@ -92,7 +93,6 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   };
 
   const postStudent = (data: Data, id: string) => {
-
     const { name, email, coachId } = data;
     const newData = {
       name,
@@ -120,7 +120,6 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   };
 
   const postCoach = (data: Data, id: string) => {
-
     const { name, email, cref } = data;
     const newData = {
       name,
@@ -145,28 +144,47 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
         loadInfoAcademy();
       });
   };
+  const toastId = React.useRef<string | number>("");
 
   const onSubmit = (data: Data) => {
     const { email, password } = data;
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const newData = { email, password };
-    apiMyGym
-      .post("register", newData)
-      .then((response) => {
-        const { sub } = jwtDecode<Decoded>(response.data.accessToken);
-        if (user === "coach") {
-          postCoach(data, sub);
-        } else {
-          postStudent(data, sub);
-        }
-      })
-      .catch((error) =>
-        toast(
-          <ToastRegister name={data.email} closeToast={true} toastProps={null}>
-            E-mail já cadastrado. Tente outro.
-          </ToastRegister>,
-          { className: "registerFail" }
-        )
-      );
+
+    toastId.current = toast(<ToastLoading/>, {className: "loadingToast"})
+      
+    
+
+    setTimeout(() => {
+      toast.update(toastId.current, {
+        render: (
+          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+            agora é um Coach na sua Academia!
+          </ToastRegister>
+        ),
+        className: "registerSuccess",
+        transition: Flip,
+      });
+    }, 2000);
+    // apiMyGym
+    //   .post("register", newData)
+    //   .then((response) => {
+    //     const { sub } = jwtDecode<Decoded>(response.data.accessToken);
+    //     if (user === "coach") {
+    //       postCoach(data, sub);
+    //     } else {
+    //       postStudent(data, sub);
+    //     }
+    //   })
+    //   .catch((error) =>
+    //     toast(
+    //       <ToastRegister name={data.email} closeToast={true} toastProps={null}>
+    //         E-mail já cadastrado. Tente outro.
+    //       </ToastRegister>,
+    //       { className: "registerFail" }
+    //     )
+    //   );
   };
 
   return (
