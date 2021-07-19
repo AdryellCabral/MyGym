@@ -9,7 +9,6 @@ const Workouts = () => {
     console.log(group);
   };
 
-
   const { student } = useStudent();
   // console.log(student?.workouts[0].exercices)
   console.log(student);
@@ -65,9 +64,15 @@ const Workouts = () => {
 
         <CardList>
           <>
-            {student?.workouts?.map((treino:any) => (
-              <Card key={treino.id} workout={treino} />
-            ))}
+            {student && student.workouts[0] ? (
+              student?.workouts?.map((treino: any) => (
+                <Card key={treino.id} workout={treino} />
+              ))
+            ) : (
+              <div style={{ marginTop: "100px" }}>
+                Nenhum treino cadastrado, fale com seu coach!
+              </div>
+            )}
           </>
         </CardList>
       </Container>

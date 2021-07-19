@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-  min-height: 568px;
+  min-height: 400px;
   position: relative;
 
   display: flex;
@@ -37,12 +37,13 @@ export const CarouselStyled = styled(Carousel)`
   height: 100vh;
   width: 80%;
   max-width: 350px;
+
   margin: 0 auto;
   margin-top: 5vh;
   border-radius: 3px;
 
   @media (min-width: 768px) {
-    max-width: 500px;
+    max-width: 300px;
   }
   @media (min-width: 1200px) {
     height: 60vh;
