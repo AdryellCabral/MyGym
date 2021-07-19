@@ -44,9 +44,6 @@ export default function AcademyConfig() {
             </div>
             <span>Nome do aluno</span>
           </div>
-          <span>
-            <b>Coach:</b> nome do coach
-          </span>
         </ContainerFoto>
         <NewPassword />
       </div>

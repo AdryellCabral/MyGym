@@ -3,7 +3,7 @@ import GreenButton from "../GreenButton";
 
 export const Container = styled.form`
   background-color: var(--color-black);
-  width: 90%;
+  width: 80%;
   height: 215px;
   padding: 10px;
   display: flex;
@@ -11,6 +11,14 @@ export const Container = styled.form`
   justify-content: space-around;
   border: none;
   border-radius: 3px;
+
+  @media (min-width: 768px) {
+    width: 70%;
+    max-width: 450px;
+
+    height: 400px;
+    padding: 20px;
+  }
 
   span {
     color: var(--light-gray);
@@ -34,12 +42,6 @@ export const Container = styled.form`
 
   button {
     max-width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    width: 47%;
-    height: 400px;
-    padding: 20px;
   }
 `;
 
