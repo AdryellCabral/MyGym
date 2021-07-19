@@ -28,9 +28,6 @@ export default function AcademyConfig() {
 
   return (
     <PageContainer>
-      <div className="spans">
-        <span>Configurações</span>
-      </div>
       <div className="components">
         <ContainerFoto>
           <div className="foto">

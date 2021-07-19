@@ -73,12 +73,22 @@ export const GreenButtonStyled = styled(GreenButton)`
   background-color: var(--color-green);
   width: 100%;
   align-items: center;
-  font: var(--title-font);
+
+  font-family: "Bill";
   color: var(--btncolor-primary);
   cursor: pointer;
 
+  span {
+    font-family: "Bill";
+    font-size: 1.5rem;
+  }
+
   @media (min-width: 768px) {
     height: 76px;
-    font-size: 50px;
+    font-size: 2rem;
+
+    span {
+      font-size: 2rem;
+    }
   }
 `;

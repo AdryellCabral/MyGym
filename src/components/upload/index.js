@@ -70,7 +70,6 @@ export const Upload = ({ handleClose, open }) => {
               >
                 Foto Atualizada!
               </ToastRegister>
-              // { className: "registerSuccess" }
             );
           })
           .catch((error) => {

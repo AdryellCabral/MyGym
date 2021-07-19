@@ -55,7 +55,7 @@ export const RedButtonStyled = styled(GreenButtonStyled)`
   background-color: var(--color-red);
   width: 80%;
   align-self: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: var(--btnColor-secondary);
   font-family: var(--title-font);
 
@@ -66,7 +66,7 @@ export const RedButtonStyled = styled(GreenButtonStyled)`
   @media (min-width: 768px) {
     width: 470px;
     height: 76px;
-    font-size: 50px;
+    font-size: 2rem;
     width: 90%;
     max-width: 450px;
   }
@@ -136,6 +136,7 @@ export const ContainerFoto = styled.div`
     .foto div img:nth-child(1) {
       width: 200px;
       height: 200px;
+      background-color: black;
     }
 
     .foto div img:nth-child(2) {
@@ -144,7 +145,7 @@ export const ContainerFoto = styled.div`
     }
 
     .foto span {
-      font-size: 45px;
+      font-size: 2rem;
     }
 
     > span {
