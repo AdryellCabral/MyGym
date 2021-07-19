@@ -29,7 +29,7 @@ const ScreenOne = () => {
           <div className="container--text">
             <p>
               MygyM é um serviço baseado na web que visa transformar sua academia num negócio moderno, fácil de acessar e o melhor, contando com uma série de recursos que ajudam e facilitam a vida tanto dos alunos como dos coaches.
-              <a href="#getNow"> Get now!</a>
+              <a href="#getNow">Contrate Agora!</a>
             </p>
           </div>
         </div>

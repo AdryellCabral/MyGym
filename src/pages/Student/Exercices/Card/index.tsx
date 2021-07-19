@@ -11,6 +11,8 @@ interface CardProps {
     description: string;
     image: string;
     video: string;
+    gif: string;
+
   };
 }
 const Card = ({ exercice }: CardProps) => {

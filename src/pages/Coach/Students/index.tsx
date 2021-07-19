@@ -88,7 +88,7 @@ const Students = () => {
 
         <CardList>
           <>
-            {students.map((item: any) => (
+            {students?.map((item: any) => (
               <Card key={item.id} student={item} />
             ))}
           </>
