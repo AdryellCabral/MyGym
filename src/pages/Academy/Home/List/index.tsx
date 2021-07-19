@@ -25,8 +25,7 @@ interface ListProps {
 export default function List({ objectsArray }: ListProps) {
   const [open, setOpen] = useState(false);
   const { loadInfoAcademy } = useAcademy();
-  const {userProvider} = useUserProvider()
-
+  const { userProvider } = useUserProvider();
 
   const [person, setPerson] = useState({
     name: "",
@@ -48,30 +47,38 @@ export default function List({ objectsArray }: ListProps) {
   };
 
   const deleteUser = (id: number) => {
-    const endpoint = person.coachId ? "students" : "coaches"
-      apiMyGym.delete(`${endpoint}/${id}`, {
-      headers: {
-        Authorization: `Bearer ${userProvider.token}`,
-      },
-    }).then(() => {
-      loadInfoAcademy()
-      setOpen(false)
-    }).catch(error => console.log(error));
+    const endpoint = person.coachId ? "students" : "coaches";
+    apiMyGym
+      .delete(`${endpoint}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${userProvider.token}`,
+        },
+      })
+      .then(() => {
+        loadInfoAcademy();
+        setOpen(false);
+      })
+      .catch((error) => console.log(error));
   };
-
-
 
   const noPhoto =
     "https://i.pinimg.com/originals/fd/0c/55/fd0c559856ca991e9e28937dc802f0b0.png";
 
   return (
     <Container>
-      {objectsArray?.map((option, index) => (
-        <div key={index}>
-          <li onClick={() => handleOpen(option)}>{option.name}</li>
-          <SettingsIconStyled onClick={() => handleOpen(option)} />
-        </div>
-      ))}
+      {objectsArray && objectsArray[0] ? (
+        objectsArray?.map((option, index) => (
+          <div key={index} className="item">
+            <li onClick={() => handleOpen(option)}>{option.name}</li>
+            <SettingsIconStyled
+              onClick={() => handleOpen(option)}
+              style={{ color: "black" }}
+            />
+          </div>
+        ))
+      ) : (
+        <div>Nenhum usuário cadastrado!</div>
+      )}
       <SimpleModal open={open} handleClose={handleClose}>
         <ModalContainer>
           <header>

@@ -46,6 +46,16 @@ export const GlobalStyle = createGlobalStyle`
 
 }
 
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #808080a8;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
 
 
 html, body, div, span, applet, object, iframe,
@@ -95,42 +105,37 @@ table {
 }
 `;
 
-
 export const ToastContainerStyled = styled(ToastContainer).attrs({
-	position: "top-center",
-	transition: Flip,
-	autoClose: 3000,
-	closeButton: false,
-	hideProgressBar: true,
-  })`
+  position: "top-center",
+  transition: Flip,
+  autoClose: 3000,
+  closeButton: false,
+  hideProgressBar: true,
+})`
   .Toastify__toast {
     width: 250px;
     height: 150px;
     font-size: 1.2rem;
     text-align: center;
-	color: white;
-
+    color: white;
   }
-   .registerSuccess {
-	   background-color: var(--dark-purple);
-	   span {
-		font-size: 1.4rem;	
-		font-family: var(--title-font);
-		color: var(--light-green)
+  .registerSuccess {
+    background-color: var(--dark-purple);
+    span {
+      font-size: 1.4rem;
+      font-family: var(--title-font);
+      color: var(--light-green);
+    }
+  }
 
-	   }
-   }
+  .registerFail {
+    background-color: var(--color-red);
+    color: white;
 
-   .registerFail {
-		background-color: var(--color-red);
-		color: white;
-
-		span {
-		font-size: 1.4rem;	
-		font-family: var(--title-font);
-		color: var(--light-green)
-
-   }
-}
-  `;
-  
+    span {
+      font-size: 1.4rem;
+      font-family: var(--title-font);
+      color: var(--light-green);
+    }
+  }
+`;

@@ -18,6 +18,12 @@ export const Container = styled.li<ContainerProps>`
   -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.27);
   box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.27);
 
+  &:hover {
+    -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.8);
+    box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.8);
+    transform: perspective(1);
+    transition-duration: 0.7s;
+  }
   @media (min-width: 1200px) {
     max-width: 700px;
     height: 25vh;
@@ -48,7 +54,7 @@ export const Container = styled.li<ContainerProps>`
     flex-direction: column;
     height: 95%;
     width: 60%;
-    border-bottom: 2px solid black;
+
     h1 {
       margin-bottom: 1vh;
       color: var(--dark-purple);
@@ -64,10 +70,19 @@ export const Container = styled.li<ContainerProps>`
 
     p {
       font-size: 0.9rem;
+      overflow: auto;
+      height: 100%;
 
       @media (min-width: 768px) {
         font-size: 1.1rem;
       }
+    }
+
+    hr {
+      width: 100%;
+      border: 1px solid black;
+      margin: 0;
+      margin-top: 6px;
     }
   }
 `;
