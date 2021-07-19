@@ -4,6 +4,7 @@ import { Upload } from "../../../components/upload";
 import { ContainerFoto, PageContainer, RedButtonStyled } from "./styles";
 import Modal from "../../../components/Modal";
 import { useState } from "react";
+import { useStudent } from "../../../providers/Student";
 
 export default function AcademyConfig() {
   const [openModal, setOpenModal] = useState(false);
@@ -16,6 +17,8 @@ export default function AcademyConfig() {
   };
 
   const history = useHistory();
+
+  const { student } = useStudent();
 
   const hanldeLogout = async () => {
     await localStorage.clear();
@@ -33,7 +36,11 @@ export default function AcademyConfig() {
           <div className="foto">
             <div>
               <img
-                src="https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png"
+                src={
+                  student.img
+                    ? student.img
+                    : "https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png"
+                }
                 alt="imagem maior"
               />
               <img
