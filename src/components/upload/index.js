@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useStudent } from "../../providers/Student";
 import { Container } from "./styles";
 import { apiMyGym } from "../../services/api";
+import { ToastRegister } from "../Toasts/Register";
+import { toast } from "react-toastify";
 
 export const Upload = ({ handleClose, open }) => {
   const CLIENT_ID = "47a9a629d77841b";
@@ -44,7 +46,7 @@ export const Upload = ({ handleClose, open }) => {
       },
     })
       .then((response) => {
-        console.log(response)
+        console.log(response);
         apiMyGym
           .patch(
             `students/${student.id}`,
@@ -60,6 +62,15 @@ export const Upload = ({ handleClose, open }) => {
           .then((response) => {
             console.log(response);
             getStudent();
+            toast(
+              <ToastRegister
+                name={data.name}
+                closeToast={true}
+                toastProps={null}
+              >
+                Foto Atualizada!
+              </ToastRegister>
+            );
           })
           .catch((error) => {
             console.log(error);
@@ -90,7 +101,7 @@ export const Upload = ({ handleClose, open }) => {
         </header>
         <form onSubmit={uploadImage}>
           <label htmlFor="file">Clique aqui para adicionar sua foto!</label>
-          <input type="file" id="file"/>
+          <input type="file" id="file" />
           <button>Upload</button>
         </form>
       </Container>

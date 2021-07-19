@@ -13,10 +13,19 @@ export const Container = styled.div`
   border: 2px solid var(--color-black);
   border-radius: 3px;
 
+  .item {
+    border-bottom: 1px solid var(--color-black);
+    padding: 2% 5%;
+  }
   li {
     color: black;
     width: 100%;
     list-style: none;
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.3rem;
+    }
   }
 
   div {

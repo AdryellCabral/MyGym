@@ -45,6 +45,16 @@ export const GlobalStyle = createGlobalStyle`
 
 }
 
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #808080a8;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
 
 
 html, body, div, span, applet, object, iframe,

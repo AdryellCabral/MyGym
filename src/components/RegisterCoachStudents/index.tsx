@@ -109,12 +109,15 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
         },
       })
       .then((response) => {
-        toast(
-          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
-            agora é um Aluno da sua Academia!
-          </ToastRegister>,
-          { className: "registerSuccess" }
-        );
+        toast.update(toastId.current, {
+          render: (
+            <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+              agora é um Aluno da sua Academia!
+            </ToastRegister>
+          ),
+          className: "registerSuccess",
+          transition: Flip,
+        });
         loadInfoAcademy();
       });
   };
@@ -135,12 +138,15 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
         },
       })
       .then((response) => {
-        toast(
-          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
-            agora é um Coach na sua Academia!
-          </ToastRegister>,
-          { className: "registerSuccess" }
-        );
+        toast.update(toastId.current, {
+          render: (
+            <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+              agora é um Coach na sua Academia!
+            </ToastRegister>
+          ),
+          className: "registerSuccess",
+          transition: Flip,
+        });
         loadInfoAcademy();
       });
   };
@@ -149,42 +155,29 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   const onSubmit = (data: Data) => {
     const { email, password } = data;
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const newData = { email, password };
 
     toastId.current = toast(<ToastLoading/>, {className: "loadingToast"})
       
-    
-
-    setTimeout(() => {
-      toast.update(toastId.current, {
-        render: (
-          <ToastRegister name={data.name} closeToast={true} toastProps={null}>
-            agora é um Coach na sua Academia!
-          </ToastRegister>
-        ),
-        className: "registerSuccess",
-        transition: Flip,
-      });
-    }, 2000);
-    // apiMyGym
-    //   .post("register", newData)
-    //   .then((response) => {
-    //     const { sub } = jwtDecode<Decoded>(response.data.accessToken);
-    //     if (user === "coach") {
-    //       postCoach(data, sub);
-    //     } else {
-    //       postStudent(data, sub);
-    //     }
-    //   })
-    //   .catch((error) =>
-    //     toast(
-    //       <ToastRegister name={data.email} closeToast={true} toastProps={null}>
-    //         E-mail já cadastrado. Tente outro.
-    //       </ToastRegister>,
-    //       { className: "registerFail" }
-    //     )
-    //   );
+  
+    apiMyGym
+      .post("register", newData)
+      .then((response) => {
+        const { sub } = jwtDecode<Decoded>(response.data.accessToken);
+        if (user === "coach") {
+          postCoach(data, sub);
+        } else {
+          postStudent(data, sub);
+        }
+      })
+      .catch((error) =>
+        toast(
+          <ToastRegister name={data.email} closeToast={true} toastProps={null}>
+            E-mail já cadastrado. Tente outro.
+          </ToastRegister>,
+          { className: "registerFail" }
+        )
+      );
   };
 
   return (
