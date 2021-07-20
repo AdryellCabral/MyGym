@@ -2,6 +2,7 @@ import styled from "styled-components";
 import FigFeed from "../../../assets/images/FigFeed.svg";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core";
+import "../../../styles/animations.css"
 
 export const Container = styled.div`
   width: 100%;
@@ -34,7 +35,7 @@ export const Container = styled.div`
     .student--feed {
       height: 40%;
       width: 100%;
-
+      animation: scaleUp 0.5s ease-in-out;
       background-color: #f8f8f8;
       border-radius: 3px;
 

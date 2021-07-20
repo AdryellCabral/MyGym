@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { useUserProvider } from "../../providers/User";
 import { toast } from "react-toastify";
 import { ToastRegister } from "../Toasts/Register";
+import { motion } from "framer-motion";
 
 interface Props {
   setOpen: () => void;
@@ -40,10 +41,7 @@ const RegisterPhisicalAssessment = ({
 
   const { id } = useParams<{ id?: string }>();
 
-  const {
-    register,
-    handleSubmit,    
-  } = useForm({ resolver: yupResolver(schema) });
+  const { register, handleSubmit } = useForm({ resolver: yupResolver(schema) });
 
   const sendInfo = (data: any) => {
     let newData = {};
@@ -108,44 +106,54 @@ const RegisterPhisicalAssessment = ({
   };
 
   return (
-    <Body>
-      <div>
-        <ModalHeader>
-          <Container>
-            <h3>{nome}</h3>
-            <span onClick={setOpen}>
-              <FaTimes />
-            </span>
-          </Container>
-        </ModalHeader>
-        <ModalBody>
-          <Container>
-            <h4>Cadastro de Avaliação Física</h4>
-            <form onSubmit={handleSubmit(sendInfo)}>
-              <input placeholder="Peso" {...register("weight")} />
-              <input type="text" placeholder="Altura" {...register("height")} />
-              <input type="text" placeholder="IMC" {...register("imc")} />
-              <input
-                type="text"
-                placeholder="% de Gordura"
-                {...register("taxFat")}
-              />
-              <input
-                type="text"
-                placeholder="Massa magra"
-                {...register("leanMass")}
-              />
-              <input
-                type="text"
-                placeholder="Taxa Metabólica Basal"
-                {...register("metabolicRate")}
-              />
-              <RegisterButton type="submit">Cadastrar</RegisterButton>
-            </form>
-          </Container>
-        </ModalBody>
-      </div>
-    </Body>
+    <motion.div
+      initial={{ opacity: 0.5 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Body>
+        <div>
+          <ModalHeader>
+            <Container>
+              <h3>{nome}</h3>
+              <span onClick={setOpen}>
+                <FaTimes />
+              </span>
+            </Container>
+          </ModalHeader>
+          <ModalBody>
+            <Container>
+              <h4>Cadastro de Avaliação Física</h4>
+              <form onSubmit={handleSubmit(sendInfo)}>
+                <input placeholder="Peso" {...register("weight")} />
+                <input
+                  type="text"
+                  placeholder="Altura"
+                  {...register("height")}
+                />
+                <input type="text" placeholder="IMC" {...register("imc")} />
+                <input
+                  type="text"
+                  placeholder="% de Gordura"
+                  {...register("taxFat")}
+                />
+                <input
+                  type="text"
+                  placeholder="Massa magra"
+                  {...register("leanMass")}
+                />
+                <input
+                  type="text"
+                  placeholder="Taxa Metabólica Basal"
+                  {...register("metabolicRate")}
+                />
+                <RegisterButton type="submit">Cadastrar</RegisterButton>
+              </form>
+            </Container>
+          </ModalBody>
+        </div>
+      </Body>
+    </motion.div>
   );
 };
 

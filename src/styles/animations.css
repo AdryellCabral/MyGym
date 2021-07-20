@@ -1,0 +1,54 @@
+@keyframes scaleUp {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes translateXLeft {
+    from {
+      transform: translateX(70%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+
+  @keyframes translateYUp {
+    from {
+      transform: translateY(50%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes translateYDown {
+    from {
+      transform: translateY(-50%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heightDown {
+    from {
+      height: 430px;
+    }
+    to {
+      height: 200px;
+    }
+  }
+
+  @keyframes heightUP {
+      from {
+        height: 170px;
+      }
+      to {
+        height: 430px;
+      }
+    }
