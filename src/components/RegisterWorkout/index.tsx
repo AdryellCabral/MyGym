@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { FaTrashAlt, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { useExercises } from "../../providers/Exercises";
 import RegisterButton from "./RegisterButton";
 import {
@@ -10,32 +10,12 @@ import {
   ModalBody,
   DivSelect,
 } from "./styles";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
+
 import { useParams } from "react-router-dom";
 import { apiMyGym } from "../../services/api";
 import { useUserProvider } from "../../providers/User";
 import { toast } from "react-toastify";
 import { ToastRegister } from "../Toasts/Register";
-
-const prototipo = [
-  {
-    nome: "supino",
-  },
-  {
-    nome: "flexão",
-  },
-  {
-    nome: "barra fixa",
-  },
-  {
-    nome: "levantamento terra",
-  },
-  {
-    nome: "agachamento",
-  },
-];
 
 const grupoMuscular = [
   "Peito",
@@ -46,15 +26,6 @@ const grupoMuscular = [
   "Ombros",
 ];
 
-const exercicios = [
-  "Supino",
-  "Agachamento",
-  "Rosca biceps",
-  "Remada unilateral",
-  "abdominal",
-];
-
-const aluno = "Zé do alho";
 
 interface Props {
   setOpen: () => void;
@@ -94,13 +65,7 @@ const RegisterWorkout = ({ infoStudent, getInfo, setOpen }: Props) => {
     setInputValue(value);
   };
   const submitWorkout = () => {
-    if (inputValue !== "" && selectValue !== "") {
-      const newData = {
-        workout: {
-          exercice: selectValue,
-          seriesDuration: inputValue,
-        },
-      };
+    if (inputValue !== "" && selectValue !== "") {   
 
       const item = exercises.filter(
         (exercice: any) => exercice.name === selectValue
@@ -149,6 +114,7 @@ const RegisterWorkout = ({ infoStudent, getInfo, setOpen }: Props) => {
   useEffect(() => {
     const newList = exercises.filter((value: any) => value.group === "Peito");
     setFilterExercises(newList);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

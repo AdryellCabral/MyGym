@@ -34,6 +34,7 @@ const Exercices = () => {
 
   useEffect(() => {
     setFilterList(exercises);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section className="page--exercices" style={{ width: "100%" }}>

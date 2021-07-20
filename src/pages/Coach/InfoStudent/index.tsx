@@ -13,28 +13,6 @@ interface RoomParams {
   id: string;
 }
 
-interface Treino {
-  treino: string;
-  peso?: string;
-}
-
-interface Snack {
-  snack: string;
-  peso?: number;
-}
-
-interface Student {
-  name: string;
-  email: string;
-  coachId: number;
-  academyId: number;
-  userId: number;
-  id: number;
-  workouts: Treino[];
-  physicalAssessment?: { peso: number; imc: number };
-  snacks?: Snack[];
-}
-
 const InfoStudent = () => {
   const [infoStudent, setInfoStudent] = useState<any>({});
   const [newWorkout, setNewWorkout] = useState(false);
@@ -124,10 +102,10 @@ const InfoStudent = () => {
   const OpenPhisical = () => {
     setNewPhisical(!newPhisical);
   };
-  console.log(infoStudent);
 
   useEffect(() => {
     GetInfo();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section className="home--Student">

@@ -1,30 +1,10 @@
 import { useState } from "react";
 import { createContext, ReactNode, useContext } from "react";
-import jwtDecode, { JwtPayload } from "jwt-decode";
 import { apiMyGym } from "../../services/api";
 import { useEffect } from "react";
 import { useUserProvider } from "../User";
 interface AcademyProvidersProps {
   children: ReactNode;
-}
-interface Coach {
-  email: string;
-  academyId: number;
-  userId: number;
-  id?: number;
-}
-
-interface Student {
-  email: string;
-  academyId: number;
-  coachId: number;
-  userId: number;
-  id?: number;
-}
-
-interface InfosToLogin {
-  email: string;
-  password: string;
 }
 
 interface AcademyInformation {
@@ -52,7 +32,7 @@ export const AcademyProvider = ({ children }: AcademyProvidersProps) => {
     idUser = JSON.parse(idUser);
   }
 
-  const [academyAuthInfo, setAcademyAuthInfo] = useState(
+  const [academyAuthInfo] = useState(
     {} as AcademyInformation
   );
   const [academyResume, setAcademyResume] = useState({});
