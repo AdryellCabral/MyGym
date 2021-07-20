@@ -7,7 +7,14 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   margin-top: 100px;
   width: 100%;
-
+  @keyframes translateXLeft {
+    from {
+      transform: translateX(70%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
   display: flex;
   flex-direction: column;
 
@@ -46,6 +53,7 @@ export const Container = styled.div<ContainerProps>`
       list-style: none;
       height: 35%;
       margin-left: 5%;
+      animation: scaleUp 0.5s ease-in-out;
       width: 90%;
       margin-bottom: 3%;
       display: flex;
@@ -81,6 +89,7 @@ export const Container = styled.div<ContainerProps>`
     }
 
     .figure {
+      animation: translateXLeft 0.5s ease-in-out;
       background-image: url(${({ img }) => img});
       background-size: contain;
       background-repeat: no-repeat;

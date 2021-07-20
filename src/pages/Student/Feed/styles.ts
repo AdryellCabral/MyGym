@@ -7,6 +7,15 @@ export const Container = styled.div`
   width: 100%;
   height: calc(100vh - 110px);
 
+  @keyframes scaleUp {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
   h1 {
     height: 5%;
     margin-top: 100px;
@@ -34,7 +43,7 @@ export const Container = styled.div`
     .student--feed {
       height: 40%;
       width: 100%;
-
+      animation: scaleUp 0.5s ease-in-out;
       background-color: #f8f8f8;
       border-radius: 3px;
 
