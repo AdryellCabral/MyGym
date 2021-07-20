@@ -8,6 +8,7 @@ import RegisterPhisicalAssessment from "../../../components/RegisterPhisicalAsse
 import Modal from "../../../components/Modal";
 import { useWindowWidth } from "../../../providers/WindowWidth";
 import Chart from "react-apexcharts";
+import { motion } from "framer-motion";
 
 interface RoomParams {
   id: string;
@@ -105,81 +106,87 @@ const InfoStudent = () => {
 
   useEffect(() => {
     GetInfo();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <section className="home--Student">
-      <Container percentage={(16 / 20) * 100}>
-        <div className="container--user">
-          <div className="status">
-            <figure>
-              <img
-                src="http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg"
-                alt="Usuário"
-              />
-              <figcaption>{infoStudent.name}</figcaption>
-            </figure>
-          </div>
-          <div className="trainingPerformed">
-            <h2>Treinos Realizados: 16/18</h2>
-            <div className="percentageBar">
-              <div>
-                <span>16/20</span>
+    <motion.div
+      initial={{ opacity: 0.5 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <section className="home--Student">
+        <Container percentage={(16 / 20) * 100}>
+          <div className="container--user">
+            <div className="status">
+              <figure>
+                <img
+                  src="http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg"
+                  alt="Usuário"
+                />
+                <figcaption>{infoStudent.name}</figcaption>
+              </figure>
+            </div>
+            <div className="trainingPerformed">
+              <h2>Treinos Realizados: 16/18</h2>
+              <div className="percentageBar">
+                <div>
+                  <span>16/20</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="boxs">
-          <div className="workouts--chart">
-            <h2>Treinos Cadastrados</h2>
-            <div>
-              <ul>
-                {infoStudent?.workouts?.map((workout: any) => (
-                  <li key={workout.group}>{workout.group}</li>
-                ))}
-              </ul>
-            </div>
+          <div className="boxs">
+            <div className="workouts--chart">
+              <h2>Treinos Cadastrados</h2>
+              <div>
+                <ul>
+                  {infoStudent?.workouts?.map((workout: any) => (
+                    <li key={workout.group}>{workout.group}</li>
+                  ))}
+                </ul>
+              </div>
 
-            <PurpleButton small={false} onClick={OpenRegisterWorkout}>
-              Novo Treino
-            </PurpleButton>
-          </div>
-          <div className="progression--chart">
-            <h2>Progressão</h2>
-            <div>
-              <Chart
-                options={options}
-                series={series}
-                type="bar"
-                width="100%"
-                height="90%"
-              />
+              <PurpleButton small={false} onClick={OpenRegisterWorkout}>
+                Novo Treino
+              </PurpleButton>
             </div>
-            <PurpleButton small={false} onClick={OpenPhisical}>
-              Nova Avaliação
-            </PurpleButton>
+            <div className="progression--chart">
+              <h2>Progressão</h2>
+              <div>
+                <Chart
+                  options={options}
+                  series={series}
+                  type="bar"
+                  width="100%"
+                  height="90%"
+                />
+              </div>
+              <PurpleButton small={false} onClick={OpenPhisical}>
+                Nova Avaliação
+              </PurpleButton>
+            </div>
           </div>
-        </div>
-      </Container>
-      {newWorkout && (
-        <Modal open={newWorkout} handleClose={OpenRegisterWorkout}>
-          <RegisterWorkout
-            setOpen={OpenRegisterWorkout}
-            getInfo={GetInfo}
-            infoStudent={infoStudent}
-          />
-        </Modal>
-      )}
-      {newPhisical && (
-        <Modal open={newPhisical} handleClose={OpenPhisical}>
-          <RegisterPhisicalAssessment
-            setOpen={OpenPhisical}
-            getInfo={GetInfo}
-            infoStudent={infoStudent}
-          />
-        </Modal>
-      )}
-    </section>
+        </Container>
+        {newWorkout && (
+          <Modal open={newWorkout} handleClose={OpenRegisterWorkout}>
+            <RegisterWorkout
+              setOpen={OpenRegisterWorkout}
+              getInfo={GetInfo}
+              infoStudent={infoStudent}
+            />
+          </Modal>
+        )}
+        {newPhisical && (
+          <Modal open={newPhisical} handleClose={OpenPhisical}>
+            <RegisterPhisicalAssessment
+              setOpen={OpenPhisical}
+              getInfo={GetInfo}
+              infoStudent={infoStudent}
+            />
+          </Modal>
+        )}
+      </section>
+    </motion.div>
   );
 };
 

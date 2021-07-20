@@ -14,6 +14,24 @@ export const Container = styled.div<PercentageBarProps>`
   margin-top: 80px;
   margin-bottom: 2vh;
 
+  @keyframes translateYUp {
+    from {
+      transform: translateY(50%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes translateYDown {
+    from {
+      transform: translateY(-50%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
   @media (min-width: 1200px) {
     flex-direction: column;
     width: 90%;
@@ -24,7 +42,7 @@ export const Container = styled.div<PercentageBarProps>`
 
   .container--user {
     width: 100%;
-
+    animation: translateYDown 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -194,6 +212,7 @@ export const Container = styled.div<PercentageBarProps>`
     }
     .workouts--chart {
       width: 100%;
+      animation: translateYUp 0.5s ease-in-out;
 
       @media (min-width: 768px) {
         width: 40vw;
@@ -217,18 +236,18 @@ export const Container = styled.div<PercentageBarProps>`
           height: 5vh;
         }
       }
-      ul{
-          background-color: var(--color-black);
-          color: var(--light-gray);
-          border-radius: 5px;
-          max-height: 150px;
-          overflow-y: auto;
-          li{
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              padding: 8px;
-          }
+      ul {
+        background-color: var(--color-black);
+        color: var(--light-gray);
+        border-radius: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        li {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 8px;
+        }
       }
       > div {
         height: 30vh;
@@ -249,6 +268,7 @@ export const Container = styled.div<PercentageBarProps>`
     }
     .progression--chart {
       width: 100%;
+      animation: translateYUp 0.5s ease-in-out;
 
       @media (min-width: 768px) {
         width: 40vw;
@@ -275,18 +295,18 @@ export const Container = styled.div<PercentageBarProps>`
           height: 5vh;
         }
       }
-      ul{
-          background-color: var(--color-black);
-          color: var(--light-gray);
-          border-radius: 5px;
-          max-height: 150px;
-          overflow-y: auto;
-          li{
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              padding: 8px;
-          }
+      ul {
+        background-color: var(--color-black);
+        color: var(--light-gray);
+        border-radius: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        li {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 8px;
+        }
       }
       > div {
         height: 35vh;

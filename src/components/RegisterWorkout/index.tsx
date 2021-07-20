@@ -16,6 +16,7 @@ import { apiMyGym } from "../../services/api";
 import { useUserProvider } from "../../providers/User";
 import { toast } from "react-toastify";
 import { ToastRegister } from "../Toasts/Register";
+import { motion } from "framer-motion";
 
 const grupoMuscular = [
   "Peito",
@@ -118,6 +119,11 @@ const RegisterWorkout = ({ infoStudent, getInfo, setOpen }: Props) => {
   }, []);
 
   return (
+    <motion.div
+    initial={{ opacity: 0.5 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+  >
     <Body>
       <div>
         <ModalHeader>
@@ -165,12 +171,7 @@ const RegisterWorkout = ({ infoStudent, getInfo, setOpen }: Props) => {
             <ul>
               {workouts?.map((item, index) => (
                 <li key={index}>
-                  {item.name}
-                  {/* <span>
-                    <FaTrashAlt
-                      onClick={() => console.log("click na lixeira")}
-                    />
-                  </span> */}
+                  {item.name}                
                 </li>
               ))}
             </ul>
@@ -179,6 +180,8 @@ const RegisterWorkout = ({ infoStudent, getInfo, setOpen }: Props) => {
         </ModalBody>
       </div>
     </Body>
+    </motion.div>
+
   );
 };
 
