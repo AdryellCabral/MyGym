@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "../../../styles/animations.css"
 
 interface PercentageBarProps {
   percentage: number;
@@ -14,23 +15,6 @@ export const Container = styled.div<PercentageBarProps>`
   margin-top: 80px;
   margin-bottom: 2vh;
 
-  @keyframes translateYUp {
-    from {
-      transform: translateY(50%);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes translateYDown {
-    from {
-      transform: translateY(-50%);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
 
   @media (min-width: 1200px) {
     flex-direction: column;

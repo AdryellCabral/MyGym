@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "../../../styles/animations.css"
 
 interface ContainerProps {
   img: string;
@@ -7,14 +8,7 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   margin-top: 100px;
   width: 100%;
-  @keyframes translateXLeft {
-    from {
-      transform: translateX(70%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
+ 
   display: flex;
   flex-direction: column;
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { withStyles, TextField } from "@material-ui/core";
+import "../../styles/animations.css"
 
 export const ContainerForm = styled.div`
   width: 90%;
@@ -8,14 +9,8 @@ export const ContainerForm = styled.div`
 
   max-width: 400px;
 
-  @keyframes translateX {
-    from {
-      transform: translateX(110%)
-    } to {
-      transform: translateX(0)
-    }
-  }
-  animation: translateX 0.6s ease-out;
+
+  animation: translateXLeft 0.6s ease-out;
 
   div {
     div {

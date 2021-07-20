@@ -2,19 +2,11 @@ import styled from "styled-components";
 import FigFeed from "../../../assets/images/FigFeed.svg";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core";
+import "../../../styles/animations.css"
 
 export const Container = styled.div`
   width: 100%;
   height: calc(100vh - 110px);
-
-  @keyframes scaleUp {
-    from {
-      transform: scale(0.5);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
 
   h1 {
     height: 5%;
