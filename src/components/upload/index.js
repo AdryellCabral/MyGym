@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useState } from "react";
+
 import { useStudent } from "../../providers/Student";
 import { Container } from "./styles";
 import { apiMyGym } from "../../services/api";
@@ -15,12 +14,6 @@ export const Upload = ({ handleClose, open }) => {
   if (token !== "") {
     token = JSON.parse(token);
   }
-
-  //   const [selectedFile, setSelectedFile] = useState(null);
-  //   const fileSelectedHandles = (event) => {
-  //     setSelectedFile(event.target.files[0]);
-  //   };
-  // a
 
   const doUpload = (url, options) => {
     const promiseCallback = (resolve, reject) => {
@@ -78,17 +71,6 @@ export const Upload = ({ handleClose, open }) => {
       })
       .catch((err) => console.log(err));
   };
-
-  //   const fileUploadHandler = () => {
-  //     axios
-  //       .post("https://api.imgur.com/3/image", setSelectedFile, {
-  //         headers: {
-  //           Authorization: `Client-Id ${CLIENT_ID}`,
-  //         },
-  //       })
-  //       .then((response) => console.log(response))
-  //       .catch((err) => console.log(err));
-  //   };
 
   return (
     <>

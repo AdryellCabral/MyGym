@@ -6,9 +6,8 @@ import Input from "../../../../components/Input";
 import { Store, Lock, MailOutline } from "@material-ui/icons";
 import { useState } from "react";
 import { FormControl, InputLabel, MenuItem, Modal } from "@material-ui/core";
-import clsx from "clsx";
 import { apiMyGym } from "../../../../services/api";
-import { useStyles, Form, ModalContent, SelectStyled } from "./styles";
+import { Form, ModalContent, SelectStyled } from "./styles";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
@@ -25,7 +24,6 @@ interface Decoded {
 }
 
 const RegisterUser = () => {
-  const classes = useStyles();
   const [plano, setPlano] = useState("");
   const [registerOk, setRegisterOk] = useState(false);
   const history = useHistory();

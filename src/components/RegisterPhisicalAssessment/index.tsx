@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { FaTimes } from "react-icons/fa";
 import RegisterButton from "./RegisterButton";
@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { apiMyGym } from "../../services/api";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import { useUserProvider } from "../../providers/User";
 import { toast } from "react-toastify";
 import { ToastRegister } from "../Toasts/Register";
@@ -43,8 +42,7 @@ const RegisterPhisicalAssessment = ({
 
   const {
     register,
-    handleSubmit,
-    formState: { errors },
+    handleSubmit,    
   } = useForm({ resolver: yupResolver(schema) });
 
   const sendInfo = (data: any) => {

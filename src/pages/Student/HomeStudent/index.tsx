@@ -1,5 +1,4 @@
 import { Container } from "./styles";
-import userDefault from "../../assets/userDefault.png";
 import Chart from "react-apexcharts";
 import { useWindowWidth } from "../../../providers/WindowWidth";
 import { useStudent } from "../../../providers/Student";
