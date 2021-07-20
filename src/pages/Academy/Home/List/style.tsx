@@ -10,7 +10,7 @@ export const Container = styled.div`
   overflow: auto;
   margin: 0 auto;
   font-size: var(--font-list-mobile);
-  border: 2px solid var(--dark-purple);
+  border: 2px solid var(--color-black);
   border-radius: 3px;
 
   .item {
@@ -20,6 +20,7 @@ export const Container = styled.div`
     margin: 2% 2%;
     background-color: #d5d5d5;
     border-left: 5px solid var(--light-purple);
+    cursor: pointer;
 
     &:hover{
       -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.2);
