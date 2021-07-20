@@ -8,6 +8,15 @@ export const ContainerForm = styled.div`
 
   max-width: 400px;
 
+  @keyframes translateX {
+    from {
+      transform: translateX(110%)
+    } to {
+      transform: translateX(0)
+    }
+  }
+  animation: translateX 0.6s ease-out;
+
   div {
     div {
       background-color: white;
