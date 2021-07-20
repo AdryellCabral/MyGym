@@ -72,7 +72,7 @@ export default function List({ objectsArray }: ListProps) {
             <li onClick={() => handleOpen(option)}>{option.name}</li>
             <SettingsIconStyled
               onClick={() => handleOpen(option)}
-              style={{ color: "black" }}
+              style={{ color: "var(--dark-purple)" }}
             />
           </div>
         ))

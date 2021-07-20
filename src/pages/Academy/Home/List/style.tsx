@@ -10,18 +10,28 @@ export const Container = styled.div`
   overflow: auto;
   margin: 0 auto;
   font-size: var(--font-list-mobile);
-  border: 2px solid var(--color-black);
+  border: 2px solid var(--dark-purple);
   border-radius: 3px;
 
   .item {
-    border-bottom: 1px solid var(--color-black);
+    border: 1px solid black;
+    border-radius: 2px;
     padding: 2% 5%;
+    margin: 2% 2%;
+    background-color: #d5d5d5;
+    border-left: 5px solid var(--light-purple);
+
+    &:hover{
+      -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.2);
+    }
   }
   li {
     color: black;
     width: 100%;
     list-style: none;
     font-size: 1rem;
+    
 
     @media (min-width: 768px) {
       font-size: 1.3rem;
