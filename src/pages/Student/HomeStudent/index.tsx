@@ -53,7 +53,7 @@ const HomeStudent = () => {
     },
     {
       name: "Peso",
-      data: student?.physicalAssessment?.weigth,
+      data: student?.physicalAssessment?.weight,
     },
     {
       name: "Gordura",
