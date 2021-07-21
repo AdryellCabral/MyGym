@@ -32,6 +32,7 @@ const Login = () => {
       .string()
       .min(6, "Mínimo de 6 dígitos")
       .required("Campo obrigatório"),
+      typeUser: yup.string().required("Campo obrigatório")
   });
 
   const {
@@ -102,7 +103,7 @@ const Login = () => {
 
       <FormControl variant="outlined">
         <InputLabel>Tipo de usuário</InputLabel>
-        <SelectStyled value={userType} onChange={handleChange} label="Usuário">
+        <SelectStyled value={userType}  {...register("typeUser")} onChange={handleChange} label="Usuário">
           <MenuItem value="">
             <em>Tipo de usuário</em>
           </MenuItem>
@@ -111,6 +112,7 @@ const Login = () => {
           <MenuItem value="students">Aluno</MenuItem>
         </SelectStyled>
       </FormControl>
+      <p>{errors.typeUser?.message}</p>
 
       <GreenButton type="submit">Confirmar</GreenButton>
     </Form>
