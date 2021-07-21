@@ -6,9 +6,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import jwt_decode from "jwt-decode";
-import { apiMyGym } from "../../services/api";
-import jwtDecode, { JwtPayload } from "jwt-decode";
 
 interface UserProps {
   children: ReactNode;

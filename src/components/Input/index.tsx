@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
-import { OutlinedInput, FormControl, InputAdornment } from "@material-ui/core";
-import clsx from "clsx";
-import { StyledInput, useStyles } from "./styles";
+import {  FormControl, InputAdornment } from "@material-ui/core";
+import { StyledInput } from "./styles";
 
 interface InputProps {
   children: ReactNode;
@@ -10,7 +9,6 @@ interface InputProps {
 }
 
 function Input({ children, label, type, ...rest }: InputProps) {
-  // const classes = useStyles();
 
   return (
     <div>

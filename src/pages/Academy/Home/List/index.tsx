@@ -70,10 +70,7 @@ export default function List({ objectsArray }: ListProps) {
         objectsArray?.map((option, index) => (
           <div key={index} className="item">
             <li onClick={() => handleOpen(option)}>{option.name}</li>
-            <SettingsIconStyled
-              onClick={() => handleOpen(option)}
-              style={{ color: "black" }}
-            />
+           
           </div>
         ))
       ) : (

@@ -8,35 +8,12 @@ import { useWindowWidth } from "../../../providers/WindowWidth";
 import { useStudent } from "../../../providers/Student";
 
 const WorkoutStudent = () => {
-  const param = useParams();
   const { id } = useParams<{ id?: any }>();
 
   const { windowWidth } = useWindowWidth();
   const { student} = useStudent();
   const [workout, setWorkout] = useState<any>({})
-  const [test] = useState([
-    {
-      id: 1,
-      img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-      group: "Braço",
-      description:
-        "Essa desrição é um test, talvez ela fique bem maior, é bom testar com um texto bem grande",
-      repetition: 2,
-      exercices: [
-        {
-          id: 1,
-          name: "Supino",
-          group: "Braço",
-          description:
-            "Essa desrição é um test, talvez ela fique bem maior, é bom testar com um texto bem grande",
-          img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-          video:
-            "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-        },
-      ],
-    },
-  ]);
-
+  
   const GroupDescription:any = {
     Peito: {
       img: "https://s6.gifyu.com/images/peito.jpg",
@@ -75,29 +52,10 @@ const WorkoutStudent = () => {
       const currentWorkout = student?.workouts.filter((workoutFilter:any) => workoutFilter.id === parseInt(id))
       console.log(currentWorkout)
       setWorkout(currentWorkout[0])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  const [objTest] = useState([
-    {
-      id: 1,
-      name: "Supino",
-      group: "Braço",
-      description: "Essa desrição é um test",
-      img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-      video:
-        "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-    },
-    {
-      id: 2,
-      name: "Supino",
-      group: "Braço",
-      description: "Essa desrição é um test",
-      img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-      video:
-        "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-    },
-  ]);
-
+  
   if (windowWidth < 1200) {
     return (
       <section className="workout">
