@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const ContainerRegister = styled.div`
-  /* background-color: var(--light-black); */
   height: calc(100vh - 90px);
   margin-top: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 2vh;
+  overflow: hidden;
 
   img {
     width: calc(100vw - 400px);
@@ -28,6 +28,3 @@ export const ContainerRegister = styled.div`
   }
 `;
 
-export const Container = styled.div`
-  /* background-color: var(--light-black); */
-`;

@@ -7,6 +7,7 @@ export const ContainerRegister = styled.div`
   justify-content: center;
   width: 100%;
   height: calc(100vh - 80px);
+  overflow: hidden;
 
   img {
     width: calc(100vw - 400px);
@@ -26,6 +27,3 @@ export const ContainerRegister = styled.div`
   }
 `;
 
-export const Container = styled.div`
-  /* background-color: var(--light-black); */
-`;

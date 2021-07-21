@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import SettingsIcon from "@material-ui/icons/Settings";
 import CloseIcon from "@material-ui/icons/Close";
+import "../../../../styles/animations.css"
 
 export const Container = styled.div`
   background-color: #f7f7f7;
   width: 100%;
-  /* max-width: 600px; */
   height: 150px;
   overflow: auto;
   margin: 0 auto;
@@ -35,26 +35,11 @@ export const Container = styled.div`
     margin: 10px 0;
   }
 
-  @keyframes heightDown {
-    from {
-      height: 430px;
-    }
-    to {
-      height: 200px;
-    }
-  }
+
 
   animation: heightDown 0.5s forwards;
 
   @media (min-width: 768px) {
-    @keyframes heightUP {
-      from {
-        height: 170px;
-      }
-      to {
-        height: 430px;
-      }
-    }
 
     animation: heightUP 0.5s forwards;
   }

@@ -3,6 +3,7 @@ import SelectFilter from "../../../components/SelectFilter";
 import CardList from "./CardList";
 import Card from "./Card";
 import { useStudent } from "../../../providers/Student";
+import { motion } from "framer-motion";
 
 const Workouts = () => {
   const filterGroup = (group: string) => {
@@ -12,6 +13,11 @@ const Workouts = () => {
   const { student } = useStudent();
   
   return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
     <section className="workouts">
       <Container>
         <div className="container--top">
@@ -37,6 +43,7 @@ const Workouts = () => {
         </CardList>
       </Container>
     </section>
+    </motion.div>
   );
 };
 
