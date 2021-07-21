@@ -5,8 +5,7 @@
 import "./font.css";
 import "../assets/fonts/postnobillscolombo-extrabold.ttf";
 import { createGlobalStyle } from "styled-components";
-import { ToastContainer, Flip } from "react-toastify";
-import styled from "styled-components";
+
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -103,39 +102,4 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-`;
-
-export const ToastContainerStyled = styled(ToastContainer).attrs({
-  position: "top-center",
-  transition: Flip,
-  autoClose: 3000,
-  closeButton: false,
-  hideProgressBar: true,
-})`
-  .Toastify__toast {
-    width: 250px;
-    height: 150px;
-    font-size: 1.2rem;
-    text-align: center;
-    color: white;
-  }
-  .registerSuccess {
-    background-color: var(--dark-purple);
-    span {
-      font-size: 1.4rem;
-      font-family: var(--title-font);
-      color: var(--light-green);
-    }
-  }
-
-  .registerFail {
-    background-color: var(--color-red);
-    color: white;
-
-    span {
-      font-size: 1.4rem;
-      font-family: var(--title-font);
-      color: var(--light-green);
-    }
-  }
 `;

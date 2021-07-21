@@ -1,14 +1,17 @@
-
 import { useStudent } from "../../providers/Student";
 import { Container } from "./styles";
 import { apiMyGym } from "../../services/api";
 import { ToastRegister } from "../Toasts/Register";
-import { toast } from "react-toastify";
+import { Flip, toast } from "react-toastify";
+import { ToastLoading } from "../Toasts/Loading";
+import { useRef } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Upload = ({ handleClose, open }) => {
   const CLIENT_ID = "47a9a629d77841b";
 
   const { getStudent, student } = useStudent();
+  const toastId = useRef("");
 
   let token = localStorage.getItem("@tokenMyGym") || "";
   if (token !== "") {
@@ -30,6 +33,11 @@ export const Upload = ({ handleClose, open }) => {
     e.preventDefault();
     const data = new FormData();
     data.append("image", e.target[0].files[0]);
+
+    toastId.current = toast(
+      <ToastLoading>Aguarde enquanto armazenamos sua foto. </ToastLoading>,
+      { className: "loadingToast" }
+    );
 
     doUpload("https://api.imgur.com/3/image", {
       method: "POST",
@@ -55,21 +63,50 @@ export const Upload = ({ handleClose, open }) => {
           .then((response) => {
             console.log(response);
             getStudent();
-            toast(
-              <ToastRegister
-                name={data.name}
-                closeToast={true}
-                toastProps={null}
-              >
-                Foto Atualizada!
-              </ToastRegister>
-            );
+            toast.update(toastId.current, {
+              render: (
+                <ToastRegister
+                  name={data.name}
+                  closeToast={true}
+                  toastProps={null}
+                >
+                  Foto Atualizada!
+                </ToastRegister>
+              ),
+              className: "registerSuccess",
+              transition: Flip,
+            });
           })
           .catch((error) => {
             console.log(error);
+            toast.update(toastId.current, {
+              render: (
+                <ToastRegister
+                  name={data.name}
+                  closeToast={true}
+                  toastProps={null}
+                >
+                  Ocorreu um problema, tente novamente mais tarde.
+                </ToastRegister>
+              ),
+              className: "registerFail",
+              transition: Flip,
+            });
           });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+
+        toast.update(toastId.current, {
+          render: (
+            <ToastRegister name={data.name} closeToast={true} toastProps={null}>
+              Ocorreu um problema, tente novamente mais tarde.
+            </ToastRegister>
+          ),
+          className: "registerFail",
+          transition: Flip,
+        });
+      });
   };
 
   return (
