@@ -19,7 +19,7 @@ import { toast, Zoom, Slide, Flip } from "react-toastify";
 import { ToastRegister } from "../Toasts/Register";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserProvider } from "../../providers/User";
-import { ToastLoading } from "./toasts";
+import { ToastLoading } from "../Toasts/Loading";
 
 interface Decoded {
   email: string;
@@ -91,6 +91,7 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
   const handleChange = (event: string) => {
     setCoachValue(event);
   };
+  const toastId = React.useRef<string | number>("");
 
   const postStudent = (data: Data, id: string) => {
     const { name, email, coachId } = data;
@@ -150,16 +151,14 @@ export const RegisterCoachStudents = ({ user }: RegisterCoachStudentsProps) => {
         loadInfoAcademy();
       });
   };
-  const toastId = React.useRef<string | number>("");
 
   const onSubmit = (data: Data) => {
     const { email, password } = data;
 
     const newData = { email, password };
 
-    toastId.current = toast(<ToastLoading/>, {className: "loadingToast"})
-      
-  
+    toastId.current = toast(<ToastLoading >Aguarde enquanto criamos a conta.</ToastLoading>, { className: "loadingToast" });
+
     apiMyGym
       .post("register", newData)
       .then((response) => {
