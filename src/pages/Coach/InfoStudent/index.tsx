@@ -103,6 +103,10 @@ const InfoStudent = () => {
   const OpenPhisical = () => {
     setNewPhisical(!newPhisical);
   };
+  
+  const defaultImg =
+    "http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg";
+  const imgPerfil = infoStudent?.img || defaultImg;
 
   useEffect(() => {
     GetInfo();
@@ -119,10 +123,7 @@ const InfoStudent = () => {
           <div className="container--user">
             <div className="status">
               <figure>
-                <img
-                  src="http://s2.glbimg.com/c-WVrLcmkvQbU_7kolZlss_kZ3k=/e.glbimg.com/og/ed/f/original/2015/06/09/thinkstockphotos-478000165.jpg"
-                  alt="Usuário"
-                />
+                <img src={imgPerfil} alt="Usuário" />
                 <figcaption>{infoStudent.name}</figcaption>
               </figure>
             </div>

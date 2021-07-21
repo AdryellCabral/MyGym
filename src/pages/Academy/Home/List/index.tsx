@@ -31,11 +31,11 @@ export default function List({ objectsArray }: ListProps) {
     name: "",
     id: 0,
     email: "",
-    photo: "",
+    img: "",
     coachId: 0,
   });
 
-  const { name, id, email, photo } = person;
+  const { name, id, email, img } = person;
 
   const handleClose = () => {
     setOpen(false);
@@ -60,9 +60,10 @@ export default function List({ objectsArray }: ListProps) {
       })
       .catch((error) => console.log(error));
   };
-
-  const noPhoto =
+console.log(objectsArray)
+  const defaultImg =
     "https://i.pinimg.com/originals/fd/0c/55/fd0c559856ca991e9e28937dc802f0b0.png";
+  const imgPerfil = person?.img || defaultImg;
 
   return (
     <Container>
@@ -85,12 +86,9 @@ export default function List({ objectsArray }: ListProps) {
             <span>{name}</span>
             <CloseIconStyled onClick={handleClose} />
           </header>
-          <div className="body">
-            {photo ? (
-              <img src={photo} alt={`Foto de ${name}`} />
-            ) : (
-              <img src={noPhoto} alt={"sem foto de usuário"} />
-            )}
+          <div className="body">            
+              <img src={imgPerfil} alt={`Foto de ${name}`} />
+           
             <span>Nome: {name}</span>
             <span>Email: {email}</span>
             <button onClick={() => deleteUser(id)}>Deletar</button>
