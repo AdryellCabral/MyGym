@@ -3,10 +3,7 @@ import NewPassword from "../../../components/NewPassword";
 import { ContainerFoto, PageContainer, RedButtonStyled } from "./styles";
 
 export default function CoachConfig() {
-  const hanldePhoto = () => {
-    console.log("cliquei no adicionar foto");
-  };
-
+ 
   const history = useHistory();
 
   const hanldeLogout = async () => {
@@ -29,7 +26,6 @@ export default function CoachConfig() {
               <img
                 src="https://image.flaticon.com/icons/png/512/189/189689.png"
                 alt="imagem menor"
-                onClick={hanldePhoto}
               />
             </div>
           </div>

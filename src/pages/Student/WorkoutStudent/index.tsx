@@ -50,7 +50,6 @@ const WorkoutStudent = () => {
   useEffect(() => {
     
       const currentWorkout = student?.workouts.filter((workoutFilter:any) => workoutFilter.id === parseInt(id))
-      console.log(currentWorkout)
       setWorkout(currentWorkout[0])
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])

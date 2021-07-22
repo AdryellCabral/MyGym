@@ -1,29 +1,18 @@
 import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
 
-interface Exercice {
-  id: number;
-  name: string;
-  group: string;
-  description: string;
-  img: string;
-  video: string;
-}
 
-interface Workout {
+interface WorkoutProps {
   workout: {
-    id: number;
-    img: string;
     group: string;
-    description: string;
-    repetition: number;
-    exercices: Exercice[];
+    id: number;
+    studentId: number;
   };
 }
-const Card = ({ workout }: Workout) => {
+const Card = ({ workout }: WorkoutProps) => {
   const history = useHistory();
 
-  const GroupDescription:any = {
+  const GroupDescription: any = {
     Peito: {
       img: "https://s6.gifyu.com/images/peito.jpg",
       description:
@@ -55,14 +44,16 @@ const Card = ({ workout }: Workout) => {
         "As costas desempenham um papel importante na forma como todo o corpo funciona. Em virtude de suas inserções à coluna vertebral, as costas integram a atividade dos membros inferiores, membros superiores, coluna vertebral e pelve.",
     },
   };
-  
-  console.log(workout)
+
   const handleWorkout = () => {
     history.push(`/workout/${workout.id}`);
   };
-  const group = workout.group
+  const group = workout.group;
   return (
-    <Container img={GroupDescription[group].img} onClick={() => handleWorkout()}>
+    <Container
+      img={GroupDescription[group].img}
+      onClick={() => handleWorkout()}
+    >
       <div className="image"></div>
       <div className="info">
         <h1>{workout.group}</h1>
