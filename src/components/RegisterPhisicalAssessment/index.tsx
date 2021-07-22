@@ -45,7 +45,6 @@ const RegisterPhisicalAssessment = ({
 
   const sendInfo = (data: any) => {
     let newData = {};
-    console.log(infoStudent);
     if (infoStudent?.physicalAssessment?.weight.length > 0) {
       const weight = [...infoStudent.physicalAssessment.weight, data.weight];
       const imc = [...infoStudent.physicalAssessment.imc, data.imc];

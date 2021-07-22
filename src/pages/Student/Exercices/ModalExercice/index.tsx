@@ -20,7 +20,6 @@ const ModalExercice = ({
   openModal,
   exercice,
 }: ModalExerciceProps) => {
-  console.log(exercice)
   return (
     <Modal open={openModal} handleClose={handleModal}>
       <Container img={exercice.gif}>
