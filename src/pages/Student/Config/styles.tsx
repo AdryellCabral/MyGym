@@ -29,7 +29,7 @@ export const PageContainer = styled.div`
       margin-left: 5%;
 
       span {
-        font-size: 57px;
+        font-size: 30px;
       }
     }
   }
@@ -38,11 +38,11 @@ export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100wh;
-    height: 375px;
+    width: 100%;
+    height: 80vh;
+    margin-bottom: 2vh;
 
     @media (min-width: 768px) {
-      flex-direction: row;
       width: 90%;
       align-self: center;
       align-items: center;
@@ -53,9 +53,9 @@ export const PageContainer = styled.div`
 
 export const RedButtonStyled = styled(GreenButtonStyled)`
   background-color: var(--color-red);
-  width: 90%;
+  width: 80%;
   align-self: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: var(--btnColor-secondary);
   font-family: var(--title-font);
 
@@ -66,7 +66,9 @@ export const RedButtonStyled = styled(GreenButtonStyled)`
   @media (min-width: 768px) {
     width: 470px;
     height: 76px;
-    font-size: 50px;
+    font-size: 2rem;
+    width: 90%;
+    max-width: 450px;
   }
 `;
 
@@ -80,8 +82,13 @@ export const ContainerFoto = styled.div`
     flex-direction: column;
     align-self: center;
     margin-bottom: 30px;
-    margin-right: 20px;
+
     display: flex;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     div {
       display: flex;
@@ -92,6 +99,7 @@ export const ContainerFoto = styled.div`
         height: 105px;
         border-radius: 50%;
         border: solid 3px var(--color-black);
+        object-fit: cover;
       }
 
       img:nth-child(2) {
@@ -120,23 +128,24 @@ export const ContainerFoto = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 47%;
+    width: 100%;
     height: 400px;
     margin: 10px;
     padding: 20px;
 
     .foto div img:nth-child(1) {
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 200px;
+      background-color: black;
     }
 
     .foto div img:nth-child(2) {
-      width: 100px;
-      height: 100px;
+      width: 50px;
+      height: 50px;
     }
 
     .foto span {
-      font-size: 45px;
+      font-size: 2rem;
     }
 
     > span {

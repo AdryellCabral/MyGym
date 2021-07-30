@@ -2,76 +2,83 @@ import { Container } from "./styles";
 import SelectFilter from "../../../components/SelectFilter";
 import CardList from "./CardList";
 import Card from "./Card";
-import { useState } from "react";
 import { useStudent } from "../../../providers/Student";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+interface Exercice {
+  description: string,
+  gif: string,
+  group: string
+  id: number,
+  image: string,
+  name: string,
+  seriesDuration: string,
+  video: string,
+}
+
+interface WorkoutProps {
+  exercice: Array<Exercice>,
+  group: string,
+  id: number,
+  studentId: number,
+}
+
+
 const Workouts = () => {
+  const [workoutsFiltred, setWorkoutsFiltred] = useState<Array<WorkoutProps>>([] as WorkoutProps[]);
+
   const filterGroup = (group: string) => {
-    console.log(group);
+
+    if (group === "") {
+      setWorkoutsFiltred(student.workouts);
+    } else {
+      const newList = student.workouts.filter(
+        (workout: WorkoutProps) => workout.group === group
+      );
+      setWorkoutsFiltred(newList);
+    }
   };
 
-
   const { student } = useStudent();
-  // console.log(student?.workouts[0].exercices)
-  console.log(student);
-  const [test] = useState([
-    {
-      id: 1,
-      img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-      group: "Braço",
-      description: "Essa descrição é um test",
-      repetition: 2,
-      exercices: [
-        {
-          id: 1,
-          name: "Supino",
-          group: "Braço",
-          description: "Essa desrição é um test",
-          img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-          video:
-            "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-        },
-      ],
-    },
-    {
-      id: 2,
-      img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-      group: "Braço",
-      description: "Essa descrição é um test",
-      repetition: 2,
-      exercices: [
-        {
-          id: 1,
-          name: "Supino",
-          group: "Braço",
-          description: "Essa desrição é um test",
-          img: "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-          video:
-            "https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg",
-        },
-      ],
-    },
-  ]);
+
+  useEffect(() => {
+    setWorkoutsFiltred(student?.workouts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <section className="workouts">
-      <Container>
-        <div className="container--top">
-          <h1>Treinos</h1>
-          <div className="container--filter">
-            <span>Filtrar:</span>
-            <SelectFilter onChangeOption={filterGroup} />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
+      <section className="workouts">
+        <Container>
+          <div className="container--top">
+            <h1>Treinos</h1>
+            <div className="container--filter">
+              <span>Filtrar:</span>
+              <SelectFilter onChangeOption={filterGroup} />
+            </div>
           </div>
-        </div>
 
-        <CardList>
-          <>
-            {student?.workouts?.map((treino:any) => (
-              <Card key={treino.id} workout={treino} />
-            ))}
-          </>
-        </CardList>
-      </Container>
-    </section>
+          <CardList>
+            <>
+              {workoutsFiltred ? (
+                workoutsFiltred?.map((treino) => (
+                  <Card key={treino.id} workout={treino} />
+                ))
+              ) : (
+                <div style={{ marginTop: "100px" }}>
+                  Nenhum treino cadastrado, fale com seu coach!
+                </div>
+              )}
+            </>
+          </CardList>
+        </Container>
+      </section>
+    </motion.div>
   );
 };
 

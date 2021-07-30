@@ -6,7 +6,6 @@ interface PercentageBarProps {
 
 export const Container = styled.div<PercentageBarProps>`
   width: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -117,7 +116,6 @@ export const Container = styled.div<PercentageBarProps>`
         margin-top: 10%;
         margin-bottom: 2%;
         font-weight: bolder;
-
         @media (min-width: 768px) {
           font-size: 1.5rem;
           margin-top: 0;

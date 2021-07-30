@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Container } from "./styles";
 import FigAf from "../../../assets/images/FigAf.svg";
 import { useStudent } from "../../../providers/Student";

@@ -15,7 +15,6 @@ interface CardProps {
 }
 const CardExercice = ({ exercice }: CardProps) => {
   const [openModal, setOpenModal] = useState(false);
-  console.log(exercice)
   const handleModal = (modal: boolean) => {
     setOpenModal(!modal);
   };

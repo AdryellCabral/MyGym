@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import SettingsIcon from "@material-ui/icons/Settings";
 import CloseIcon from "@material-ui/icons/Close";
+import "../../../../styles/animations.css"
 
 export const Container = styled.div`
   background-color: #f7f7f7;
   width: 100%;
-  /* max-width: 600px; */
   height: 150px;
   overflow: auto;
   margin: 0 auto;
@@ -13,10 +13,30 @@ export const Container = styled.div`
   border: 2px solid var(--color-black);
   border-radius: 3px;
 
+  .item {
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 2% 5%;
+    margin: 2% 2%;
+    background-color: #d5d5d5;
+    border-left: 5px solid var(--light-purple);
+    cursor: pointer;
+
+    &:hover{
+      -webkit-box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 3px 9px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
   li {
     color: black;
     width: 100%;
     list-style: none;
+    font-size: 1rem;
+    
+
+    @media (min-width: 768px) {
+      font-size: 1.3rem;
+    }
   }
 
   div {
@@ -26,26 +46,11 @@ export const Container = styled.div`
     margin: 10px 0;
   }
 
-  @keyframes heightDown {
-    from {
-      height: 430px;
-    }
-    to {
-      height: 200px;
-    }
-  }
+
 
   animation: heightDown 0.5s forwards;
 
   @media (min-width: 768px) {
-    @keyframes heightUP {
-      from {
-        height: 170px;
-      }
-      to {
-        height: 430px;
-      }
-    }
 
     animation: heightUP 0.5s forwards;
   }

@@ -31,7 +31,6 @@ export default function NewPassword() {
   const history = useHistory();
 
   const onSubmit = (data: any) => {
-    console.log(data);
     history.push("/");
     toast.success("Senha alterada com sucesso!");
   };
